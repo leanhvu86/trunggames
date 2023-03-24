@@ -6,6 +6,7 @@ import {ActionTypes} from './constants/actionTypes';
 import 'react-slideshow-image/dist/styles.css'
 import Banner from "./components/Banner";
 import TopMenu from "./components/TopMenu";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const mapStateToProps = state => {
     return {...state}
@@ -154,7 +155,8 @@ class App extends Component {
 
     render() {
         const style = {
-            background: '#1e1327'
+            background: '#1e1327',
+            height:'100%'
         }
         // const slideStyle={
         //     height:'50%'
@@ -162,49 +164,10 @@ class App extends Component {
         return (
 
             <div style={style}>
+
                 <TopMenu/>
                 <Banner banner={fadeImages}/>
-
-                {/*<header className="p-2">*/}
-                {/*    <div className="row">*/}
-                {/*        <div className="col-6">*/}
-                {/*            <h3>Quiz Kỳ I</h3>*/}
-                {/*        </div>*/}
-                {/*        <div className="col-6 text-right">*/}
-                {/*            <label className="mr-1">Vui lòng chọn đề:</label>*/}
-                {/*            <select onChange={this.onChange}>*/}
-                {/*                {this.state.quizes.map(q => <option key={q.id} value={q.id}>{q.name}</option>)}*/}
-                {/*            </select>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</header>*/}
-                {/*<Quiz quiz={this.state.quiz} quizId={this.state.quizId} mode={this.state.mode} stop={this.state.stop}/>*/}
-                {/*<br/>*/}
-                {/*<div className="row">*/}
-                {/*    <div className="col-8">*/}
-
-                {/*    </div>*/}
-                {/*    <div className="col-4">*/}
-                {/*        <div style={{float: 'right', color: 'red'}}>*/}
-                {/*            /!*<button onClick={this.startTimer}>Start</button>*!/*/}
-                {/*            <h5>{this.state.time.m} phút {this.state.time.s} giây </h5>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                {/*<footer>*/}
-                {/*    <br/>*/}
-                {/*    <div className="row">*/}
-                {/*        <div className="col-6">*/}
-                {/*            <h3>Quiz Kỳ I</h3>*/}
-                {/*        </div>*/}
-                {/*        <div className="col-6 text-right">*/}
-                {/*            <label className="mr-1">Vui lòng chọn đề:</label>*/}
-                {/*            <select onChange={this.onChange}>*/}
-                {/*                {this.state.quizes.map(q => <option key={q.id} value={q.id}>{q.name}</option>)}*/}
-                {/*            </select>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</footer>*/}
+                <LoadingSpinner/>
             </div>
         );
     }
