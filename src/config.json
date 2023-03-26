@@ -1,0 +1,7 @@
+{
+  "SERVER_URL": "http://52.41.255.157:8080/trunggame-0.0.1/api",
+  "THEME_COLORS": {
+    "PRIMARY": "#007bff",
+    "SECONDARY": "#fc3"
+  }
+}

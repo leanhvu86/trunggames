@@ -7,6 +7,7 @@ import 'react-slideshow-image/dist/styles.css'
 import Banner from "./components/Banner";
 import TopMenu from "./components/TopMenu";
 import LoadingSpinner from "./components/LoadingSpinner";
+import configData from "./config.json";
 
 const mapStateToProps = state => {
     return {...state}
@@ -38,20 +39,22 @@ function shuffle(array) {
 
 const fadeImages = [
     {
-        url: './image/banner.jpg',
+        url: configData.SERVER_URL+'/file/1bcd9b96-07e7-45e3-8820-b26cc475ac88-banner.jpg',
         caption: 'First Slide'
     },
     {
-        url: './image/banner2.jpg',
+        url: configData.SERVER_URL+'/file/c50eb9b4-b9f6-4bfe-8f86-262a241ea344-banner2.jpg',
         caption: 'Second Slide'
     },
     {
-        url: './image/banner3.png',
+        url: configData.SERVER_URL+'/file/859d34a3-5182-4dee-83bf-64c5dfd5080e-banner3.png',
         caption: 'Third Slide'
     },
 ];
 
-class App extends Component {
+class App extends React.Component {
+
+
     state = {
         quizes: [
             // { id: 'data/javascript.json', name: 'Javascript' },
@@ -160,14 +163,14 @@ class App extends Component {
         }
         // const slideStyle={
         //     height:'50%'
-        // }
+        // }npm
         return (
 
             <div style={style}>
 
                 <TopMenu/>
                 <Banner banner={fadeImages}/>
-                <LoadingSpinner/>
+                {/*<LoadingSpinner/>*/}
             </div>
         );
     }

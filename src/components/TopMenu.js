@@ -39,7 +39,7 @@ export default function TopMenu() {
 
                 <div style={style}>
                     <a className="nav-menu">Home</a>
-                    <a className="nav-menu">Shop</a>
+                    <a className="nav-menu">Games</a>
                     <a className="nav-menu">Hot Sale</a>
                     <a className="nav-menu">User Guide</a>
                     <a className="nav-menu">About</a>
