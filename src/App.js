@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {connect} from 'react-redux';
 import {ActionTypes} from './constants/actionTypes';
 import 'react-slideshow-image/dist/styles.css'
 import Banner from "./components/Banner";
 import TopMenu from "./components/TopMenu";
-import LoadingSpinner from "./components/LoadingSpinner";
+import { Translation } from "react-i18next";
 import configData from "./config.json";
+import NavBar from "./components/NavBar";
 
 const mapStateToProps = state => {
     return {...state}
@@ -161,19 +162,17 @@ class App extends React.Component {
             background: '#1e1327',
             height:'100%'
         }
-        // const slideStyle={
-        //     height:'50%'
-        // }npm
+
         return (
 
             <div style={style}>
-
-                <TopMenu/>
+                <Translation>{t => <TopMenu t={t} />}</Translation>
+                <NavBar/>
                 <Banner banner={fadeImages}/>
-                {/*<LoadingSpinner/>*/}
             </div>
         );
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+

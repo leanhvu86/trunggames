@@ -22,19 +22,7 @@ a{
   color:honeydew;
   border: none;
 }
-.nav-menu{
-  padding:5px 40px;
-  color:white;
-  text-align: center;
-  cursor: pointer;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-.nav-menu:hover{
-  color: #ff8000;
-  text-decoration: none;
-  cursor: pointer;
-}
+
 
 @keyframes spinner {
   0% {

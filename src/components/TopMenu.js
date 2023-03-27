@@ -1,51 +1,48 @@
 import React from 'react';
-import 'react-dropdown/style.css';
-import Dropdown from 'react-dropdown';
+import * as i18n from "i18next";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const options = [
-    { value: 'vi', label: 'Tiếng Việt' },
-    { value: 'en', label: 'English' },
-];
+export default class TopMenu extends React.Component {
 
+    state = {
+        lang: "en"
+    };
+    langChange = e => {
+        console.log('lang change'+e.target.name)
+        this.setState({[e.target.name]: e.target.value}, () => {
+            localStorage.setItem("lang", this.state.lang);
+            const lang = localStorage.getItem("lang");
+            i18n.changeLanguage(lang).then();
+        });
+    };
 
-export default function TopMenu() {
+    render() {
+        const {t} = this.props;
 
-    const style ={
-        width:'70%',
-        float:'left',
-        justifyContent:'center',
-        color:'white',
-        alignItems:'center'
-    }
-    const styleTop ={
-        width:'100%',
-        justifyContent:'center'
-    }
+        const {lang} = this.state;
+        const styleTop = {
+            width: '100%',
+            borderBottom: '0.5px solid #a6a6a6',
+            float:'right'
+        }
 
-    let handleGenreChange;
-    const defaultOption= options[0];
-    return (
-        <div className="navbar">
-            <div className="row" style={styleTop}>
-                <div className="col">
-
-                </div>
-                <div className="col">
-                    <Dropdown className="topDropdown" options={options} onChange={handleGenreChange} value={defaultOption} placeholder="Need help?" />
-                </div>
-            </div>
-            <div className="row" style={styleTop}>
-                <img className="logo" src={'./website-logo.png'} alt=""/>
-
-                <div style={style}>
-                    <a className="nav-menu">Home</a>
-                    <a className="nav-menu">Games</a>
-                    <a className="nav-menu">Hot Sale</a>
-                    <a className="nav-menu">User Guide</a>
-                    <a className="nav-menu">About</a>
-                </div>
+        return (
+            <div className="navbar" style={styleTop}>
+                <select
+                    className="selectBox"
+                    // onChange={this.langChange}
+                    name="lang"
+                    value={lang}
+                >
+                    <option className="optionsMenu" value="en">
+                        English
+                    </option>
+                    <option className="optionsMenu" value="vi">
+                        Việt Nam
+                    </option>
+                </select>
 
             </div>
-        </div>
-    );
+        );
+    }
 }
