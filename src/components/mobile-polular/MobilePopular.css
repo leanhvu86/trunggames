@@ -1,0 +1,23 @@
+.service-container{
+    display:flex;
+    width:98%;
+    margin-left:auto ;
+    margin-right:auto;
+}
+.center-title{
+    font-size: 40px;
+    line-height: 38px;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: #ffff;
+    /*background: #f9aa01;*/
+    text-transform: initial;
+    font-style: italic;
+    text-align: center;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+.center-title:hover{
+    color: #f9aa01;
+    /*border: 1px solid #ff8000;*/
+}
+

@@ -1,5 +1,3 @@
-
-
 @media only screen and (max-width: 480px) {
     h1, .h1 {
         font-size: 22px;
@@ -20,7 +18,7 @@
 }
 
 .navbar-1 {
-    background-color: #16104e;
+    /*background-color: #16104e;*/
     height: 100px;
     display: flex;
     justify-content: center;
@@ -41,13 +39,13 @@
     max-width: 1500px;
 }
 
-.main-container{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    background-color:rgba(0,0,0,0.3);
+.main-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .nav-logo {
@@ -74,10 +72,12 @@
     height: 100%;
     border-bottom: 3px solid transparent;
 }
-.nav-links:hover{
-    color: #ff8000 ;
-    text-decoration: none ;
+
+.nav-links:hover {
+    color: #ff8000;
+    text-decoration: none;
 }
+
 .fa-code {
     margin-left: 1rem;
 }
@@ -131,19 +131,22 @@
         transition: all 0.5s ease;
         z-index: 1;
     }
+
     .nav-item .active {
         color: #ff8000;
         border: none;
     }
+
     .nav-links {
         padding: 1.5rem;
         width: 100%;
         display: table;
         font-variant: none;
     }
-    .nav-links:hover{
-        color: #ff8000 ;
-        text-decoration: none ;
+
+    .nav-links:hover {
+        color: #ff8000;
+        text-decoration: none;
     }
 
     .nav-icon {
@@ -157,9 +160,37 @@
         color: #ff8000;
     }
 }
-.selectBox{
-    background:none;
-    color:white;
-    border:none;
-    float:right;
+
+.selectBox {
+    background: none;
+    color: white;
+    border: none;
+    float: right;
+}
+
+.scroll {
+    opacity: 0.3;
+    background-color: #ff8000;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.scroll:hover {
+    opacity: 1;
+}
+
+.scroll span {
+
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -6px;
 }

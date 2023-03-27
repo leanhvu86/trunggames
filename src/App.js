@@ -11,6 +11,8 @@ import configData from "./config.json";
 import NavBar from "./components/NavBar";
 import CustomerService from "./components/customer-service/CustomerService";
 import LoadingSpinner from "./components/LoadingSpinner";
+import MobilePopular from "./components/mobile-polular/MobilePopular";
+import ScrollButton from "./components/ScrollButton";
 
 const mapStateToProps = state => {
     return {...state}
@@ -62,7 +64,7 @@ class App extends React.Component {
 
     render() {
         const style = {
-            background: '#16104e',
+            // background: '#16104e',
             height:'100%',
         }
 
@@ -74,6 +76,8 @@ class App extends React.Component {
                 <NavBar/>
                 <Banner banner={fadeImages} onChange={this.onChange.bind(this)}/>
                 <CustomerService/>
+                <MobilePopular/>
+                <ScrollButton scrollStepInPx='50' delayInMs='16.66'/>
             </div>
         );
     }
