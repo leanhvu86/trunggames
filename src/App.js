@@ -9,7 +9,7 @@ import TopMenu from "./components/TopMenu";
 import { Translation } from "react-i18next";
 import configData from "./config.json";
 import NavBar from "./components/NavBar";
-import CustomerService from "./components/center-service/CustomerService";
+import CustomerService from "./components/customer-service/CustomerService";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 const mapStateToProps = state => {
@@ -63,7 +63,7 @@ class App extends React.Component {
     render() {
         const style = {
             background: '#16104e',
-            height:'100vh',
+            height:'100%',
         }
 
         return (

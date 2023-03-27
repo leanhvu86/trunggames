@@ -1,0 +1,46 @@
+.service-container{
+    display:flex;
+    width:98%;
+    margin-left:auto ;
+    margin-right:auto;
+}
+.image-tag{
+    margin-left:auto ;
+    margin-right:auto;
+    position: relative;
+}
+.static-text{
+    display: inline-block;
+    width: auto;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0;
+    font-weight: 700;
+    color: #000;
+    background: #f9aa01;
+    text-transform: initial;
+    top: 50px;
+    padding: 2px 6px;
+    position: absolute;
+    font-style: italic;
+    right: 158px;
+    transform: skew(-20deg);
+}
+
+.static-text2{
+    display: inline-block;
+    width: 350px;
+    font-size: 40px;
+    line-height: 38px;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: #ffff;
+    /*background: #f9aa01;*/
+    text-transform: initial;
+    top: 100px;
+    padding: 2px 6px;
+    position: absolute;
+    font-style: italic;
+    right: 34px;
+}
+

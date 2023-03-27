@@ -1,6 +1,6 @@
 /* this is the style for the container inside the app.js */
 /* you can remove it and just use the card CSS */
-.service-container {
+.card-container {
   position: relative;
   width: 100%;
   height: 100vh;
