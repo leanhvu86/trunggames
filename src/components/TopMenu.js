@@ -9,11 +9,11 @@ export default class TopMenu extends React.Component {
     };
     langChange = e => {
         console.log('lang change'+e.target.name)
-        this.setState({[e.target.name]: e.target.value}, () => {
-            localStorage.setItem("lang", this.state.lang);
-            const lang = localStorage.getItem("lang");
-            i18n.changeLanguage(lang).then();
-        });
+        // this.setState({[e.target.name]: e.target.value}, () => {
+        //     localStorage.setItem("lang", this.state.lang);
+        //     const lang = localStorage.getItem("lang");
+        //     i18n.changeLanguage(lang).then();
+        // });
     };
 
     render() {
@@ -22,15 +22,14 @@ export default class TopMenu extends React.Component {
         const {lang} = this.state;
         const styleTop = {
             width: '100%',
-            borderBottom: '0.5px solid #a6a6a6',
-            float:'right'
+            borderBottom: '0.5px solid #a6a6a6'
         }
 
         return (
             <div className="navbar" style={styleTop}>
                 <select
                     className="selectBox"
-                    // onChange={this.langChange}
+                    onChange={this.langChange}
                     name="lang"
                     value={lang}
                 >

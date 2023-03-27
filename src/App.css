@@ -1,83 +1,4 @@
-.btn {
-    border-radius: 0;
-}
 
-.btn + .btn {
-    margin-left: 10px;
-}
-
-.pre-css{
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-
-}
-.image-quiz{
-    margin-bottom: 20px;
-    max-height: 300px;
-    image-rendering: crisp-edges;
-}
-.option {
-    background-color: #cadaee;
-    cursor: pointer;
-    font-size: 20px;
-    margin: 4px;
-}
-
-.option label {
-    cursor: pointer;
-    display: block;
-    padding: 10px;
-}
-
-#quiz .options input[type=checkbox] {
-    height: 22px;
-    margin-right: 6px;
-    width: 22px;
-}
-
-.cursor-pointer {
-    cursor: pointer;
-}
-
-.result-question {
-    background-color: #eee;
-    margin: 4px;
-    padding: 6px;
-}
-
-/* Create Quiz Styles */
-.create-quiz .question {
-    text-align: left;
-}
-
-.create-quiz input[type=text] {
-    border: 1px solid #ddd;
-    width: 95%;
-}
-
-.create-quiz .tb-quiz-name {
-    background-color: #ccffcc;
-    text-align: center;
-}
-
-.create-quiz .tb-desc {
-    background-color: #fff;
-}
-
-.create-quiz .options > div {
-    margin-left: 20px;
-}
-
-.create-quiz .options input[type=checkbox] {
-    border: 1px solid #262626;
-    display: inline-block;
-    height: 20px;
-    margin-top: 10px;
-    margin-bottom: 0;
-    padding: 0;
-    width: 20px;
-}
 
 @media only screen and (max-width: 480px) {
     h1, .h1 {
@@ -99,7 +20,7 @@
 }
 
 .navbar-1 {
-    background-color: #1e1327;
+    background-color: #16104e;
     height: 100px;
     display: flex;
     justify-content: center;
@@ -177,12 +98,12 @@
 
 .nav-item:hover:after {
     width: 100%;
-    background: #ffdd40;
+    background: #ff8000;
 }
 
 .nav-item.active {
-    color: #ffdd40;
-    border: 1px solid #ffdd40;
+    color: #ff8000;
+    border: 1px solid #ff8000;
 }
 
 .nav-icon {
@@ -211,7 +132,7 @@
         z-index: 1;
     }
     .nav-item .active {
-        color: #ffdd40;
+        color: #ff8000;
         border: none;
     }
     .nav-links {
@@ -233,7 +154,7 @@
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
         cursor: pointer;
-        color: #ffdd40;
+        color: #ff8000;
     }
 }
 .selectBox{
