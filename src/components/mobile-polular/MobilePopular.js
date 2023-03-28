@@ -71,6 +71,42 @@ class MobilePopular extends React.Component {
                         </div>
                     </div>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <div className="center-title">
+                    <h1 align="center" >Most Popular Desktop Games</h1>
+                    <div className="underline-span"/>
+
+                </div>
+
+                <div className="service-container1">
+                    <div className="image-content">
+                        <div className="img-block">
+                            <span/>
+                            <img  src={require("./mobile-image/category-image-01-446x550_t.jpg")} alt="Dark souls"/>
+
+                        </div>
+
+                    </div>
+                    <div className="image-content ">
+                        <div className="img-block">
+                            <span/>
+                            <img  src={require("./mobile-image/category-image-02-446x550_t.jpg")} alt="Dark souls"/>
+
+                        </div>
+
+                    </div>
+                    <div className="image-content">
+                        <div className="img-block">
+                            <span/>
+                            <img  src={require("./mobile-image/category-image-03-446x550_t.jpg")} alt="Dark souls"/>
+
+                        </div>
+                       
+                    </div>
+
+                </div>
             </div>
         )
     }

@@ -82,3 +82,49 @@ color: #f9aa01;
     color: white;
     font-size: 20px;
 }
+
+.img-block {
+    position: relative;
+    overflow: hidden;
+    width: 425px;
+    transition: 0.5s;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+
+.img-block:hover {
+    box-shadow: 0 30px 35px rgba(0, 0, 0, 0.7);
+}
+.img-block span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -120%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.4s;
+    transform: skewX(10deg);
+}
+
+.img-block img {
+    width: 100%;
+}
+
+.img-block:hover span {
+    left: 120%;
+}
+
+/* PRESENTATION */
+
+/*.img-block {*/
+/*    background-color: #667;*/
+/*    height: 425px;*/
+/*}*/
+.image-content{
+    width: 33%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
