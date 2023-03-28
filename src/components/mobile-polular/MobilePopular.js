@@ -75,7 +75,7 @@ class MobilePopular extends React.Component {
                 <br/>
                 <br/>
                 <div className="center-title">
-                    <h1 align="center" >Most Popular Desktop Games</h1>
+                    <h1 align="center" >Most Popular PC Games</h1>
                     <div className="underline-span"/>
 
                 </div>
@@ -84,7 +84,7 @@ class MobilePopular extends React.Component {
                     <div className="image-content">
                         <div className="img-block">
                             <span/>
-                            <img  src={require("./mobile-image/category-image-01-446x550_t.jpg")} alt="Dark souls"/>
+                            <img  src={require("./mobile-image/dragon-nest.png")} alt="Dragon Nest"/>
 
                         </div>
 
@@ -92,7 +92,7 @@ class MobilePopular extends React.Component {
                     <div className="image-content ">
                         <div className="img-block">
                             <span/>
-                            <img  src={require("./mobile-image/category-image-02-446x550_t.jpg")} alt="Dark souls"/>
+                            <img  src={require("./mobile-image/final-fantasy-xvi.png")} alt="Final Fantasy XVI"/>
 
                         </div>
 
@@ -100,10 +100,10 @@ class MobilePopular extends React.Component {
                     <div className="image-content">
                         <div className="img-block">
                             <span/>
-                            <img  src={require("./mobile-image/category-image-03-446x550_t.jpg")} alt="Dark souls"/>
+                            <img  src={require("./mobile-image/bless-unleashed.png")} alt="Bless unleashed"/>
 
                         </div>
-                       
+
                     </div>
 
                 </div>

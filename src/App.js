@@ -13,6 +13,9 @@ import CustomerService from "./components/customer-service/CustomerService";
 import LoadingSpinner from "./components/LoadingSpinner";
 import MobilePopular from "./components/mobile-polular/MobilePopular";
 import ScrollButton from "./components/ScrollButton";
+import NewGame from "./components/new-game/NewGame";
+import NewPackage from "./components/new-package/NewPackage";
+import Footer from "./components/Footer";
 
 const mapStateToProps = state => {
     return {...state}
@@ -27,18 +30,18 @@ const mapDispatchToProps = dispatch => ({
 
 const fadeImages = [
     {
-        url: configData.SERVER_URL+'/file/1bcd9b96-07e7-45e3-8820-b26cc475ac88-banner.jpg',
-        // url: './image/banner.jpg',
+        // url: configData.SERVER_URL+'/file/1bcd9b96-07e7-45e3-8820-b26cc475ac88-banner.jpg',
+        url: './image/banner.jpg',
         caption: 'First Slide'
     },
     {
-        url: configData.SERVER_URL+'/file/c50eb9b4-b9f6-4bfe-8f86-262a241ea344-banner2.jpg',
-        // url: './image/banner2.jpg',
+        // url: configData.SERVER_URL+'/file/c50eb9b4-b9f6-4bfe-8f86-262a241ea344-banner2.jpg',
+        url: './image/banner4.jpg',
         caption: 'Second Slide'
     },
     {
-        url: configData.SERVER_URL+'/file/859d34a3-5182-4dee-83bf-64c5dfd5080e-banner3.png',
-        // url: './image/banner3.png',
+        // url: configData.SERVER_URL+'/file/859d34a3-5182-4dee-83bf-64c5dfd5080e-banner3.png',
+        url: './image/banner5.jpg',
         caption: 'Third Slide'
     },
 ];
@@ -77,6 +80,9 @@ class App extends React.Component {
                 <Banner banner={fadeImages} onChange={this.onChange.bind(this)}/>
                 <CustomerService/>
                 <MobilePopular/>
+                <NewGame/>
+                <NewPackage/>
+                <Footer/>
                 <ScrollButton scrollStepInPx='50' delayInMs='16.66'/>
             </div>
         );

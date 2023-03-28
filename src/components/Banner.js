@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {ActionTypes} from '../constants/actionTypes';
 import {connect} from 'react-redux';
-import {Fade, Zoom} from "react-slideshow-image";
-import LoadingSpinner from "./LoadingSpinner";
+import {Zoom} from "react-slideshow-image";
 
 const mapStateToProps = state => ({ ...state.banner, ...state.mode, ...state.pager });
 

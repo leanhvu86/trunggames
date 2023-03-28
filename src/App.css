@@ -201,3 +201,11 @@
     margin-right: auto;
     margin-left: auto;
 }
+.site-footer {
+    background-color: #170f1f;
+    background-image: url(../public/image/footer-bg.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    height: 400px;
+}

@@ -92,5 +92,6 @@
     position: absolute;
     font-style: italic;
     right: 34px;
+    cursor: pointer;
 }
 
