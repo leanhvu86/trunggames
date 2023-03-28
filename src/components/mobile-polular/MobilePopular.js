@@ -1,15 +1,37 @@
 import React from 'react';
 import './MobilePopular.css';
-import {ParallaxHover} from 'react-parallax-hover';
-
 
 class MobilePopular extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {loaded: false};
+        this.state = {
+            isHover: false,
+        };
+        this.handleHover = this.handleHover.bind(this);
+        this.getSpringProps = this.getSpringProps.bind(this);
     }
 
+    handleHover(active) {
+        this.setState({isHover: active});
+    }
+    getSpringProps() {
+        return {
+            defaultStyle: {
+                scale: 1.15,
+                marginTop: 25,
+                imageOpacity: 0.7,
+                opacity: 0,
+            },
+            style:{
+                scale: spring(this.state.isHover ? 1 : 1.15),
+                marginTop: spring(this.state.isHover ? 22 : 25),
+                imageOpacity: spring(this.state.isHover ? 0.4 : 0.7),
+                opacity: spring(this.state.isHover ? 1 : 0)
+            },
+        };
+    }
     render() {
 
         return (
@@ -17,11 +39,37 @@ class MobilePopular extends React.Component {
                 <br/>
                 <br/>
                 <br/>
-                <h1 align="center" className="center-title">Most Popular Mobile Games</h1>
-                <div className="underline-span"/>
-                <div className="service-container">
+                <div className="center-title">
+                    <h1 align="center" >Most Popular Mobile Games</h1>
+                    <div className="underline-span"/>
 
+                </div>
 
+                <div className="service-container1">
+                    <div className="img-hover-zoom">
+                        <img  src={require("./mobile-image/category-image-02-446x550_t.jpg")} alt="Batman"/>
+                        <div className="image-footer">
+                            <span className="game-name">Batman</span>
+                            <br/>
+                            <span className="shop-now">Shop now</span>
+                        </div>
+                    </div>
+                    <div className="img-hover-zoom">
+                        <img  src={require("./mobile-image/category-image-01-446x550_t.jpg")} alt="Bayonetta"/>
+                        <div className="image-footer">
+                            <span className="game-name">Bayonetta</span>
+                            <br/>
+                            <span className="shop-now">Shop now</span>
+                        </div>
+                    </div>
+                    <div className="img-hover-zoom">
+                        <img  src={require("./mobile-image/category-image-03-446x550_t.jpg")} alt="Dark souls"/>
+                        <div className="image-footer">
+                            <span className="game-name">Dark souls</span>
+                            <br/>
+                            <span className="shop-now">Shop now</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
