@@ -19,6 +19,7 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     justify-content: center;
     align-items: center;
+    margin-top: 60px;
 }
 .center-title:hover{
     color: #f9aa01;

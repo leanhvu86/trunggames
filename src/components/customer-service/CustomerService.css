@@ -57,6 +57,7 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    margin-top: 10px;
 }
 
 .static-text {
@@ -93,5 +94,8 @@
     font-style: italic;
     right: 34px;
     cursor: pointer;
+}
+.parallaxHover__outter{
+    margin-left: auto !important;
 }
 

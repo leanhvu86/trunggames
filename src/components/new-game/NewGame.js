@@ -1,12 +1,15 @@
 import React from 'react';
 import './NewGame.css';
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-
+import SwiperCore, {EffectCoverflow, Pagination} from "swiper";
+import {Swiper, SwiperSlide} from "swiper/react";
+import 'swiper/css/autoplay';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
+import "swiper/swiper.min.css";
 
 
 SwiperCore.use([EffectCoverflow, Pagination]);
@@ -30,27 +33,32 @@ class NewGame extends React.Component {
 
     }
 
-    onClickGame(e){
-        console.log(e.target.src);
+    state = {
+        slideIndex: 3
+    }
+
+    onClickGame(i) {
+        console.log(i)
+        this.setState({slideIndex: i});
+
     }
 
     render() {
-        const style={
-            width:'20%'
+        const style = {
+            width: '300px'
         }
         return (
             <div>
-                <br/>
-                <br/>
                 <div className="center-title">
-                    <h1 align="center" >New Games</h1>
+                    <h1 align="center">New Games</h1>
                     <div className="underline-span"/>
 
                 </div>
                 <br/>
                 <br/>
                 <Swiper
-                    initialSlide="3"
+
+                    initialSlide={this.state.slideIndex}
                     effect={"coverflow"}
                     grabCursor={true}
                     centeredSlides={true}
@@ -65,11 +73,14 @@ class NewGame extends React.Component {
                     pagination={true}
                     className="mySwiper"
                 >
-                    // Using array
-                    {slide_img.map((img, i) => {
+
+                    {this.props.newGame.map((img, i) => {
                         return (
                             <SwiperSlide style={style} key={i}>
-                                <img src={img} alt=""  onClick={(e)=>this.onClickGame(e)}/>
+                                <Tippy placement="right" content={<span>{img.caption}</span>}>
+                                    <img src={img.url} alt="" onClick={(e) => this.onClickGame(i)}/>
+                                </Tippy>
+
                             </SwiperSlide>
                         );
                     })}

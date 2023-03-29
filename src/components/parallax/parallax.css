@@ -1,0 +1,36 @@
+
+.section {
+    position: relative;
+    padding: 20% 10%;
+    min-height: 100%; /* Đảm bảo background luôn hiển thị full page */
+    width: 100%;
+    box-sizing: border-box;
+    /*box-shadow: 0 5px 1px rgba(0, 0, 0, .7), 0 -5px 1px rgba(0, 0, 0, .7);*/
+    background: 50% 50% / cover;
+    color:white;
+    text-align:center;
+}
+/* Tạo style cho text */
+.text {
+    width: 50%;
+    padding: 10px 50px;
+    border-radius: 5px;
+    background: rgba(200,200,200, .7);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, .8);*/
+}
+
+#section1 .text {
+    margin-left: auto;
+    margin-right: auto;
+}
+#title {
+    background-image: url('./parallax/parallax.jpg');
+    background-attachment: fixed; /* Cố định background, move section sau section đè lên nó */
+}
+
+#section1 {
+    background-image: url("./parallax/parallax.jpg");
+    transform: translateZ(-1px) scale(2);
+    /* scale = 1 + (translateZ * -1) / perspective với perspective được đặt ở trên*/
+    z-index: -1; /* section này sẽ nằm đè lên các section trước và sau nó (khi  cuộn trang)*/
+}

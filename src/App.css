@@ -63,6 +63,7 @@
     list-style: none;
     text-align: center;
     margin-right: 2rem;
+    z-index:9999 !important;
 }
 
 .nav-links {
@@ -71,6 +72,7 @@
     padding: 0.5rem 1rem;
     height: 100%;
     border-bottom: 3px solid transparent;
+
 }
 
 .nav-links:hover {
@@ -125,7 +127,7 @@
     }
 
     .nav-menu.active {
-        background: #1f5156;
+        background: #1e1327;
         left: 0px;
         opacity: 1;
         transition: all 0.5s ease;
@@ -195,17 +197,9 @@
     margin-left: -6px;
 }
 .underline-span{
-    width: 200px;
-    height: 3px;
+    width: 100px;
+    height: 2px;
     background: #ff8000;
     margin-right: auto;
     margin-left: auto;
-}
-.site-footer {
-    background-color: #170f1f;
-    background-image: url(../public/image/footer-bg.png);
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    height: 400px;
 }

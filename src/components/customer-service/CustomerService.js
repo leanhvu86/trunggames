@@ -18,10 +18,10 @@ class CustomerService extends React.Component {
         return (
             <div>
                 <br/>
-                <div className="service-container">
+                <div className="row row-cols-auto service-container">
 
 
-                    <div className="service-tag">
+                    <div className="col service-tag">
                         <a className="icon-image">
                             <img src={require("./service-image/delivery.ico")}
                                  onMouseOver={e => (e.currentTarget.src = require("./service-image/delivery-hover.ico"))}
@@ -33,7 +33,7 @@ class CustomerService extends React.Component {
                             <div className="service_other_text">Free Shipping On All Order</div>
                         </div>
                     </div>
-                    <div className="service-tag">
+                    <div className="col service-tag">
                         <a className="icon-image"> <img
                             src={require("./service-image/pack-money.ico")}
                             onMouseOver={e => (e.currentTarget.src = require("./service-image/pack-money-hover.ico"))}
@@ -44,7 +44,7 @@ class CustomerService extends React.Component {
                             <div className="service_other_text">Back Guarantee in 7 days</div>
                         </div>
                     </div>
-                    <div className="service-tag">
+                    <div className="col service-tag">
                         <a className="icon-image">
                             <img src={require("./service-image/discount.ico")}
                                  onMouseOver={e => (e.currentTarget.src = require("./service-image/discount-hover.ico"))}
@@ -55,7 +55,7 @@ class CustomerService extends React.Component {
                             <div className="service_other_text">On every order over $130.00</div>
                         </div>
                     </div>
-                    <div className="service-tag">
+                    <div className="col service-tag">
                         <a className="icon-image">
                             <img src={require("./service-image/return.ico")}
                                  onMouseOver={e => (e.currentTarget.src = require("./service-image/return-hover.ico"))}
@@ -70,12 +70,12 @@ class CustomerService extends React.Component {
                 <br/>
                 <br/>
                 <br/>
-                <div className="service-container">
-                    <div className="image-tag">
+                <div className="row  service-container">
+                    <div className="col image-tag">
                         <ParallaxHover borderRadius={5} height={350} scale={5} width={620}>
                             <img className={imgStyle} alt="Demo image"
                                  src={require("./service-image/cms-banner-01.jpg")}
-                                 // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-01.jpg"
+                                // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-01.jpg"
                             />
 
                         </ParallaxHover>
@@ -84,13 +84,13 @@ class CustomerService extends React.Component {
                         </span>
                         <span className="static-text2">
                         The Battlefield 4 Naval Strike
-                    </span>
+                        </span>
                     </div>
-                    <div className="image-tag">
+                    <div className="col image-tag">
                         <ParallaxHover borderRadius={5} height={350} scale={5} width={620}>
                             <img className={imgStyle} alt="Demo image"
                                  src={require("./service-image/cms-banner-02.jpg")}
-                                 // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-02.jpg"
+                                // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-02.jpg"
                             />
 
                         </ParallaxHover>
