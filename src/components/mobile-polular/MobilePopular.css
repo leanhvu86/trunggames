@@ -11,7 +11,7 @@
     line-height: 38px;
     letter-spacing: 0;
     font-weight: 500;
-    color: #ffff;
+    color: whitesmoke;
     /*background: #f9aa01;*/
     text-transform: initial;
     font-style: italic;
@@ -22,7 +22,7 @@
     margin-top: 60px;
 }
 .center-title:hover{
-    color: #f9aa01;
+    /*color: #f9aa01;*/
     /*border: 1px solid #ff8000;*/
 }
 
@@ -87,7 +87,7 @@ color: #f9aa01;
 .img-block {
     position: relative;
     overflow: hidden;
-    width: 425px;
+    width: 80%;
     transition: 0.5s;
     margin-left: auto;
     margin-right: auto;

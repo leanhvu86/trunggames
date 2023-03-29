@@ -52,7 +52,7 @@ class NewPackage extends React.Component {
                                     textAlign: 'center',
                                     padding: '20px auto',
                                     fontSize: '30px',
-                                    height:'auto', width:'400px'
+                                    height:'auto', width:'70%'
                                 }} />
                         );
                     })}

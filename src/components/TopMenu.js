@@ -8,7 +8,7 @@ export default class TopMenu extends React.Component {
         lang: "en"
     };
     langChange = e => {
-        console.log('lang change'+e.target.name)
+        console.log('lang change' + e.target.name)
         // this.setState({[e.target.name]: e.target.value}, () => {
         //     localStorage.setItem("lang", this.state.lang);
         //     const lang = localStorage.getItem("lang");
@@ -26,20 +26,31 @@ export default class TopMenu extends React.Component {
         }
 
         return (
-            <div className="navbar" style={styleTop}>
-                <select
-                    className="selectBox"
-                    onChange={this.langChange}
-                    name="lang"
-                    value={lang}
-                >
-                    <option className="optionsMenu" value="en">
-                        English
-                    </option>
-                    <option className="optionsMenu" value="vi">
-                        Việt Nam
-                    </option>
-                </select>
+            <div className="row navbar" style={styleTop}>
+                <div className="col-4">
+
+                </div>
+                <div className="col-8">
+
+                    <select
+                        className="selectBox"
+                        onChange={this.langChange}
+                        name="lang"
+                        value={lang}
+                    >
+                        <option className="optionsMenu" value="en">
+                            English
+                        </option>
+                        <option className="optionsMenu" value="vi">
+                            Việt Nam
+                        </option>
+                    </select>
+                    <div className="search-box">
+                        <button className="btn-search"><i className="fas fa-search"/></button>
+                        <input type="text" className="input-search" placeholder="Type to Search..."/>
+                    </div>
+                </div>
+
 
             </div>
         );
