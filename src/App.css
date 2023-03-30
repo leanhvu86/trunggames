@@ -114,13 +114,13 @@
 @media screen and (max-width: 960px) {
 
     .nav-menu {
-        /*display: flex;*/
+        display: flex;
         flex-direction: column;
         width: 100%;
-        /*border: #1px solid #bfbfbf;*/
+        border-top: #1pxsolid #bfbfbf;
         position: absolute;
         top: 80px;
-        /*left: -110%;*/
+        left: -110%;
         opacity: 1;
         transition: all 0.5s ease;
     }
@@ -166,7 +166,7 @@
     background: none;
     color: #bfbfbf;
     border: none;
-    float: right;
+    /*float: right;*/
 }
 
 .scroll {
@@ -206,20 +206,20 @@
     width: fit-content;
     height: fit-content;
     position: relative;
+    float:right;
 }
 .input-search{
     height: 50px;
     width: 50px;
-    border: 0.5px solid white;
+    border-style: none;
     padding: 10px;
     font-size: 18px;
     letter-spacing: 2px;
     outline: none;
     border-radius: 25px;
     transition: all .5s ease-in-out;
-    background-color: #1e1327;
-    padding-right: 40px;
-    color:#fff;
+    background-color: whitesmoke;
+    color:#1e1327;
 }
 .input-search::placeholder{
     color:rgba(255,255,255,.5);
@@ -238,7 +238,7 @@
     border-radius: 50%;
     position: absolute;
     right: 0px;
-    color:#ffffff ;
+    color:#1e1327 ;
     background-color:transparent;
     pointer-events: painted;
 }

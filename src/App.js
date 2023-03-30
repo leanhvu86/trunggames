@@ -1,5 +1,5 @@
 import React from 'react';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {connect} from 'react-redux';
 import 'react-slideshow-image/dist/styles.css'
@@ -17,7 +17,7 @@ import Footer from "./components/Footer";
 import ParallaxImage from "./components/parallax/ParallaxImage";
 
 const mapStateToProps = state => {
-    return {...state}
+    return {...state.quiz}
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -31,23 +31,26 @@ export default class TopMenu extends React.Component {
 
                 </div>
                 <div className="col-8">
+                    <div className="row">
+                        <div className="col-8">
+                            <select className="selectBox" onChange={this.langChange} name="lang" value={lang}>
+                                <option className="optionsMenu" value="en">
+                                    English
+                                </option>
+                                <option className="optionsMenu" value="vi">
+                                    Việt Nam
+                                </option>
+                            </select>
+                        </div>
+                        <div className="col-4">
 
-                    <select
-                        className="selectBox"
-                        onChange={this.langChange}
-                        name="lang"
-                        value={lang}
-                    >
-                        <option className="optionsMenu" value="en">
-                            English
-                        </option>
-                        <option className="optionsMenu" value="vi">
-                            Việt Nam
-                        </option>
-                    </select>
-                    <div className="search-box">
-                        <button className="btn-search"><i className="fas fa-search"/></button>
-                        <input type="text" className="input-search" placeholder="Type to Search..."/>
+                            <div className="search-box">
+                                <button className="btn-search"><i className="fa fa-search" aria-hidden="true"/>
+                                </button>
+                                <input type="text" className="input-search" placeholder="Type to Search..."/>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 

@@ -42,12 +42,12 @@ function NavBar() {
                                 className="nav-links"
                                 onClick={click ? handleClick : null}
                             >
-                                Top Sales
+                                Top Sale
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link
-                                to="/guide"
+                                to="/user-guide"
                                 // activeClassName="active"
                                 className="nav-links"
                                 onClick={click ? handleClick : null}
@@ -57,7 +57,7 @@ function NavBar() {
                         </li>
                         <li className="nav-item">
                             <Link
-                                to="/about"
+                                to="/about-us"
                                 // activeClassName="active"
                                 className="nav-links"
                                 onClick={click ? handleClick : null}
