@@ -38,7 +38,7 @@ class NewGame extends React.Component {
     }
 
     onClickGame(i) {
-        console.log(i)
+        // console.log(i)
         this.setState({slideIndex: i});
 
     }

@@ -33,23 +33,21 @@ export default class TopMenu extends React.Component {
                 <div className="col-8">
                     <div className="row">
                         <div className="col-8">
-                            <select className="selectBox" onChange={this.langChange} name="lang" value={lang}>
-                                <option className="optionsMenu" value="en">
-                                    English
-                                </option>
-                                <option className="optionsMenu" value="vi">
-                                    Việt Nam
-                                </option>
-                            </select>
+                            {/*<select className="selectBox" onChange={this.langChange} name="lang" value={lang}>*/}
+                            {/*    <option className="optionsMenu" value="en">*/}
+                            {/*        English*/}
+                            {/*    </option>*/}
+                            {/*    <option className="optionsMenu" value="vi">*/}
+                            {/*        Việt Nam*/}
+                            {/*    </option>*/}
+                            {/*</select>*/}
                         </div>
                         <div className="col-4">
 
-                            <div className="search-box">
-                                <button className="btn-search"><i className="fa fa-search" aria-hidden="true"/>
-                                </button>
-                                <input type="text" className="input-search" placeholder="Type to Search..."/>
-                            </div>
-
+                            <input type="text" className="search-input " id="addEventstart" required
+                                   name="startDate" placeholder="Type a Game"/>
+                            {/*<button >Search<i className="fa fa-search" aria-hidden="true"/>*/}
+                            {/*</button>*/}
                         </div>
                     </div>
                 </div>

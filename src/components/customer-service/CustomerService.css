@@ -1,6 +1,6 @@
 .service-container {
     display: flex;
-    width: 98%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -53,12 +53,12 @@
     color: #a8a5a5;
 }
 
-.image-tag {
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    margin-top: 10px;
-}
+/*.image-tag {*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*position: relative;*/
+    /*margin-top: 10px;*/
+/*}*/
 
 .static-text {
     display: inline-block;

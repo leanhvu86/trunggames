@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: scroll;
   color: #888888;
+  background-size: 100% 100%;
 }
 
 .logo{
@@ -108,4 +109,14 @@ a{
   padding: 5px 20px;
   text-align: center;
   color: #bfbfbf;
+}
+.search-input {
+  background-image: url("./components/share-image/icons8-search-more-32.png");
+  display: inline-block;
+  width: 230px;
+  height: 21px;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  vertical-align: middle;
+  border: 0.2px solid #888888;
 }

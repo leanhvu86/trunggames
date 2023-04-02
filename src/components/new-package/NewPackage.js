@@ -1,8 +1,13 @@
 import React from 'react';
 import './NewPackage.css';
-import {Slide} from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import {Autoplay, Pagination} from "swiper";
+// Import Swiper React components
+import {Swiper, SwiperSlide} from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import {Autoplay, Navigation, Pagination} from "swiper";
+
 
 const responsiveSettings = [{
     breakpoint: 800,
@@ -26,37 +31,47 @@ class NewPackage extends React.Component {
 
     }
 
-    onClickGame(e){
+    onClickGame(e) {
         console.log(e.target.src);
     }
 
     render() {
-        const style={
-            width:'25%'
+        const style = {
+            width: '25%'
         }
         return (
             <div>
                 <br/>
                 <br/>
-                <Slide
-                    modules={[ Pagination, Autoplay]}
-                    navigation
-                    autoplay={{ delay: 1500 }}
-                    slidesToScroll={1}
-                    slidesToShow={1}
-                    indicators={true}
-                    responsive={responsiveSettings}>
+                <Swiper
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    // onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Autoplay, Pagination, Navigation]}
+                >
                     {this.props.slideImage.map((img, i) => {
                         return (
-                                <img src={img.url} alt="" key={i}  style={{
-                                    textAlign: 'center',
-                                    padding: '20px auto',
-                                    fontSize: '30px',
-                                    height:'auto', width:'70%'
-                                }} />
+                            <SwiperSlide key={i}><img src={img.url} alt="" key={i} style={{
+                                textAlign: 'center',
+                                padding: '20px auto',
+                                fontSize: '30px',
+                                height: 'auto', width: '70%'
+                            }}/></SwiperSlide>
+
                         );
                     })}
-                </Slide>
+                </Swiper>
+                <br/>
+                <br/>
             </div>
         )
     }

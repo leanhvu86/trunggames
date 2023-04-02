@@ -1,6 +1,6 @@
 
 export const ActionTypes = {
-    QuizLoad: 'QuizLoad',
+    GameDetail: 'GameDetail',
     QuizAnswer: 'QuizAnswer',
     QuizSubmit: 'QuizSubmit',
     PagerUpdate: 'PagerUpdate'

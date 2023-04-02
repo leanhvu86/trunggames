@@ -165,6 +165,7 @@ const newPackage = [
 class App extends React.Component {
 
 
+
     state = {
 
         banner: this.props.banner,
@@ -172,7 +173,10 @@ class App extends React.Component {
     };
 
     componentDidMount() {
-
+        const AnimationFramerRes = window.requestAnimationFrame((e) =>
+            console.log(e)
+        )
+        window.cancelAnimationFrame(AnimationFramerRes)
     }
 
     onChange( value) {

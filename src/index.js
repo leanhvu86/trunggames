@@ -10,6 +10,7 @@ import Games from "./components/games/Games";
 import TopSale from "./components/top-sale/TopSale";
 import UserGuide from "./components/user-guide/UserGuide";
 import AboutUs from "./components/about-us/about-us";
+import GameDetail from "./components/games/game-detail/GameDetail";
 
 ReactDOM.render(
     <Provider store={store}>
@@ -20,6 +21,7 @@ ReactDOM.render(
                 <Route path="/top-sale" element={<TopSale />} />
                 <Route path="/user-guide" element={<UserGuide />} />
                 <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/game-detail" element={<GameDetail />} />
             </Routes>
         </BrowserRouter>
     </Provider>,
