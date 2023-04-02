@@ -68,7 +68,7 @@
 .close-collapse{
     /*border: 0.5px solid #888888;*/
     /*border-radius: 2px;*/
-    /*padding: 2px 2px;*/
+    /*padding: 1px 3px;*/
     cursor: pointer;
     position: absolute;
     right: 10px;
@@ -82,10 +82,10 @@
     right: 10px;
 }
 .close-collapse:hover{
-    background-color: #888888;
+    /*background-color: #888888;*/
     color: white;
 }
 .open-collapse:hover{
-    background-color: #888888;
+    /*background-color: #888888;*/
     color: white;
 }
