@@ -182,7 +182,7 @@ class App extends React.Component {
     onChange( value) {
         // parent class change handler is always called with field name and value
         this.setState({'loaded': value});
-        console.log('App load success',value)
+        // console.log('App load success',value)
     }
 
     render() {

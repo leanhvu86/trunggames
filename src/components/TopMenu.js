@@ -44,8 +44,8 @@ export default class TopMenu extends React.Component {
                         </div>
                         <div className="col-4">
 
-                            <input type="text" className="search-input " id="addEventstart" required
-                                   name="startDate" placeholder="Type a Game"/>
+                            {/*<input type="text" className="search-input " id="addEventstart" required*/}
+                            {/*       name="startDate" placeholder="Type a Game"/>*/}
                             {/*<button >Search<i className="fa fa-search" aria-hidden="true"/>*/}
                             {/*</button>*/}
                         </div>

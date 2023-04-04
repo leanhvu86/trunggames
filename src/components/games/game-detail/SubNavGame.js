@@ -1,5 +1,7 @@
 import React from 'react';
 import './game-detail.css';
+import {CKEditor} from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 class SubNavGame extends React.Component {
 
@@ -46,15 +48,34 @@ class SubNavGame extends React.Component {
                                 <div className="col-8 content-des">
                                     <br/>
 
-                                    <p style={{
-                                        fontSize: '10px', backgroundColor: '#081538',
+                                    <div style={{
+                                        fontSize: '10px',
                                         borderRadius: '15px',
-                                        padding: '10px 10px', color: 'white'
+                                        padding: '10px 10px'
 
                                     }}>
-                                        <strong>Giới thiệu về {this.props.game.name}</strong>
+                                        <strong style={{color:'white'}}>Giới thiệu về {this.props.game.name}</strong>
                                         <br/>
-                                        {this.props.game.description}</p>
+                                        <CKEditor
+                                            editor={ ClassicEditor }
+                                            data={this.props.game.description}
+                                            onReady={ editor => {
+                                                // You can store the "editor" and use when it is needed.
+                                                // console.log( 'Editor is ready to use!', editor );
+
+                                            } }
+                                            onChange={ ( event, editor ) => {
+                                                const data = editor.getData();
+                                                // console.log( { event, editor, data } );
+                                            } }
+                                            onBlur={ ( event, editor ) => {
+                                                // console.log( 'Blur.', editor );
+                                            } }
+                                            onFocus={ ( event, editor ) => {
+                                                // console.log( 'Focus.', editor );
+                                            } }
+                                        />
+                                        </div>
                                 </div>
                             </div>
                         </div>

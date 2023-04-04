@@ -32,7 +32,7 @@ class NewPackage extends React.Component {
     }
 
     onClickGame(e) {
-        console.log(e.target.src);
+        // console.log(e.target.src);
     }
 
     render() {
@@ -47,7 +47,9 @@ class NewPackage extends React.Component {
                     spaceBetween={50}
                     slidesPerView={3}
                     // onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    onSwiper={(swiper) =>{}
+                        // console.log(swiper)
+                    }
                     autoplay={{
                         delay: 2500,
                         disableOnInteraction: false,

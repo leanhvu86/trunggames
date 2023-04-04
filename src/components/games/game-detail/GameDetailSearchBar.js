@@ -22,17 +22,17 @@ class GameDetailSearchBar extends React.Component {
     }
 
     onChangeServer(e) {
-        console.log(e)
+        // console.log(e)
     }
 
     onChangeCardType(e) {
-        console.log(e)
+        // console.log(e)
 
     }
 
     handleClick(event) {
         // 👇️ toggle isActive state on click
-        console.log(event);
+        // console.log(event);
         event.target.classList.add('active');
     };
 

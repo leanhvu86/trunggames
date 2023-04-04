@@ -165,6 +165,7 @@ class Games extends React.Component {
             loaded: false,
             game: undefined,
             listGame: gameList,
+            isMobile:window.innerWidth,
             root: {
                 title: 'Category',
                 children: [
@@ -250,17 +251,19 @@ class Games extends React.Component {
 
     componentDidMount() {
         this.filterList("HOT", 1);
-        this.onTreeEvent("openAll", undefined, undefined)
+        this.onTreeEvent("openAll", undefined, undefined);
     }
 
+
     onClickGame(e) {
+
         console.log(e)
         this.setState({game: e});
 
     }
 
     filterList(type, value) {
-        console.log(value)
+        // console.log(value)
         let listTemp = [];
         gameList.forEach(game => {
             if (type === "HOT") {
@@ -279,7 +282,7 @@ class Games extends React.Component {
             }
         });
         this.setState({listGame: listTemp});
-        console.log(listTemp);
+        // console.log(listTemp);
     }
 
     onUpdateData(root) {
@@ -289,9 +292,9 @@ class Games extends React.Component {
     }
 
     onTreeEvent(eventStr, eventData, path) {
-        console.log(eventStr)
-        console.log(eventData)
-        console.log(path)
+        // console.log(eventStr)
+        // console.log(eventData)
+        // console.log(path)
         const {root = {}} = this.state
         const obj = pathGet(root, path)
 
@@ -321,19 +324,28 @@ class Games extends React.Component {
                 break;
         }
     }
-    onChange( value) {
+
+    onChange(value) {
         // parent class change handler is always called with field name and value
         this.setState({'loaded': value});
-        console.log('App load success',value)
+        // console.log('App load success', value)
     }
 
+    renderCategory(){
+        return(
+            <div className="col-3">
+                <h3 style={{marginLeft: '20px', color: '#888888'}}>Category</h3>
+
+                <TreeRenderer Template={DefaultTemplate} data={this.state.root} onUpdateData={this.onUpdateData.bind(this)}
+                              onTreeEvent={this.onTreeEvent.bind(this)}/>
+                <br/>
+            </div>
+        )
+    }
     render() {
-        const onUpdateData = this.onUpdateData.bind(this)
-        const onTreeEvent = this.onTreeEvent.bind(this)
-        const {root = {}} = this.state
         return (
             <div>
-                {this.state.loaded ? null :<LoadingSpinner/>}
+                {this.state.loaded ? null : <LoadingSpinner/>}
                 <Translation>{t => <TopMenu t={t}/>}</Translation>
                 <NavBar/>
                 <div className="container">
@@ -428,16 +440,7 @@ class Games extends React.Component {
 
                 <br/>
                 <div className="row">
-                    <div className="col-3">
-                        <h3 style={{
-                            marginLeft: '20px',
-                            color: '#888888'
-                        }}>Category</h3>
-
-                        <TreeRenderer Template={DefaultTemplate} data={root} onUpdateData={onUpdateData}
-                                      onTreeEvent={onTreeEvent}/>
-                        <br/>
-                    </div>
+                    {window.innerWidth<600?'mobile':this.renderCategory()}
                     <div className="col-8">
                         <GameList slideImage={this.state.listGame}
                                   onChange={this.onChange.bind(this)}

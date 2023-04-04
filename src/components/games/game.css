@@ -33,7 +33,7 @@
 }
 .wrapper{
     overflow-x:hidden;
-
+    width: 100%;
 }
 .game-hover:hover img {
     -webkit-transform: scale(1.08);
@@ -88,4 +88,18 @@
 .open-collapse:hover{
     /*background-color: #888888;*/
     color: white;
+}
+.product-nav-links{
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+    font-variant: none;
+    list-style: none;
+    color: #888888;
+    font-size: 10px;
+}
+
+.product-nav-links:hover {
+    color: #ff8000;
+    text-decoration: none;
 }

@@ -8,7 +8,7 @@ class CustomerService extends React.Component {
     constructor(props) {
         super(props);
         this.state = {loaded: false};
-        console.log(window.innerWidth);
+        // console.log(window.innerWidth);
     }
 
     render() {

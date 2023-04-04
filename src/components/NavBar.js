@@ -32,7 +32,7 @@ function NavBar() {
                                 className="nav-links"
                                 onClick={click ? handleClick : null}
                             >
-                                Games
+                                Shop
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -52,7 +52,7 @@ function NavBar() {
                                 className="nav-links"
                                 onClick={click ? handleClick : null}
                             >
-                                User Guide
+                                BLog
                             </Link>
                         </li>
                         <li className="nav-item">
