@@ -92,6 +92,7 @@ color: #f9aa01;
     margin-left: auto;
     margin-right: auto;
     height: 100%;
+    border-radius: 10px;
 }
 
 .img-block:hover {

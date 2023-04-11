@@ -35,6 +35,74 @@ class NewPackage extends React.Component {
         // console.log(e.target.src);
     }
 
+    renderMobile(){
+        return(
+            <Swiper
+                spaceBetween={50}
+                slidesPerView={1}
+                // onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) =>{}
+                    // console.log(swiper)
+                }
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+            >
+                {this.props.slideImage.map((img, i) => {
+                    return (
+                        <SwiperSlide key={i}>
+                            <img src={img.url} alt="" key={i} style={{
+                                textAlign: 'center',
+                                margin: '20px auto',
+                                fontSize: '30px',
+                                height: 'auto', width: '80%'
+                            }}/></SwiperSlide>
+
+                    );
+                })}
+            </Swiper>
+        )
+    }
+    renderWebsite(){
+        return(
+            <Swiper
+                spaceBetween={50}
+                slidesPerView={3}
+                // onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) =>{}
+                    // console.log(swiper)
+                }
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+            >
+                {this.props.slideImage.map((img, i) => {
+                    return (
+                        <SwiperSlide key={i}>
+                            <img src={img.url} alt="" key={i} style={{
+                                textAlign: 'center',
+                                margin: '20px auto',
+                                fontSize: '30px',
+                                height: 'auto', width: '80%'
+                            }}/></SwiperSlide>
+
+                    );
+                })}
+            </Swiper>
+        )
+    }
     render() {
         const style = {
             width: '25%'
@@ -43,35 +111,7 @@ class NewPackage extends React.Component {
             <div>
                 <br/>
                 <br/>
-                <Swiper
-                    spaceBetween={50}
-                    slidesPerView={3}
-                    // onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) =>{}
-                        // console.log(swiper)
-                    }
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    navigation={true}
-                    modules={[Autoplay, Pagination, Navigation]}
-                >
-                    {this.props.slideImage.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}><img src={img.url} alt="" key={i} style={{
-                                textAlign: 'center',
-                                padding: '20px auto',
-                                fontSize: '30px',
-                                height: 'auto', width: '70%'
-                            }}/></SwiperSlide>
-
-                        );
-                    })}
-                </Swiper>
+                {window.innerWidth<600?this.renderMobile():this.renderWebsite()}
                 <br/>
                 <br/>
             </div>

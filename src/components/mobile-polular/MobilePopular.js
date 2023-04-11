@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './MobilePopular.css';
 import spring from "react-motion/lib/spring";
+import {Link} from "react-router-dom";
 
 class MobilePopular extends React.Component {
 
@@ -72,24 +73,30 @@ class MobilePopular extends React.Component {
                 <div className=" image-content">
                     <div className="img-block">
                         <span/>
-                        <img src={require("./mobile-image/dragon-nest.png")} alt="Dragon Nest"/>
+                        <Link to="/game-detail" className="product-nav-links">
 
+                        <img src={require("./mobile-image/dragon-nest.png")} alt="Dragon Nest"/>
+                        </Link>
                     </div>
 
                 </div>
                 <div className=" image-content ">
                     <div className="img-block">
                         <span/>
-                        <img src={require("./mobile-image/final-fantasy-xvi.png")} alt="Final Fantasy XVI"/>
+                        <Link to="/game-detail" className="product-nav-links">
 
+                        <img src={require("./mobile-image/final-fantasy-xvi.png")} alt="Final Fantasy XVI"/>
+                        </Link>
                     </div>
 
                 </div>
                 <div className=" image-content">
                     <div className="img-block">
                         <span/>
-                        <img src={require("./mobile-image/bless-unleashed.png")} alt="Bless unleashed"/>
+                        <Link to="/game-detail" className="product-nav-links">
 
+                        <img src={require("./mobile-image/bless-unleashed.png")} alt="Bless unleashed"/>
+                        </Link>
                     </div>
 
                 </div>

@@ -79,7 +79,8 @@ class CustomerService extends React.Component {
                     <div className="col">
                         <div style={{width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
 
-                            <ParallaxHover borderRadius={5} height={350} scale={5} width={620}>
+                            <ParallaxHover borderRadius={5} height={window.innerWidth < 600 ? 250 : 350} scale={5}
+                                           width={window.innerWidth < 600 ? 400 : 620}>
                                 <img className={imgStyle} alt="Demo image"
                                      src={require("./service-image/cms-banner-01.jpg")}
                                     // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-01.jpg"
@@ -87,17 +88,16 @@ class CustomerService extends React.Component {
 
                             </ParallaxHover>
                             <span className="static-text">
-                            Most Popular
-                        </span>
+                            Most Popular</span>
                             <span className="static-text2">
-                        The Battlefield 4 Naval Strike
-                        </span>
+                        The Battlefield 4 Naval Strike</span>
                         </div>
-
+                        <br/>
                     </div>
                     <div className="col">
                         <div style={{width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
-                            <ParallaxHover borderRadius={5} height={350} scale={5} width={620}>
+                            <ParallaxHover borderRadius={5} height={window.innerWidth < 600 ? 250 : 350} scale={5}
+                                           width={window.innerWidth < 600 ? 400 : 620}>
                                 <img className={imgStyle} alt="Demo image"
                                      src={require("./service-image/cms-banner-02.jpg")}
                                     // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-02.jpg"
@@ -110,7 +110,7 @@ class CustomerService extends React.Component {
                             <span className="static-text2">
                         Assassin's Creed Unity Game</span>
                         </div>
-
+                        <br/>
                     </div>
                 </div>
             </div>

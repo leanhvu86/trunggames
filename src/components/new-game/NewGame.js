@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import "swiper/swiper.min.css";
+import {Link} from "react-router-dom";
 
 
 SwiperCore.use([EffectCoverflow, Pagination]);
@@ -40,7 +41,6 @@ class NewGame extends React.Component {
     onClickGame(i) {
         // console.log(i)
         this.setState({slideIndex: i});
-
     }
 
     render() {
@@ -77,10 +77,12 @@ class NewGame extends React.Component {
                     {this.props.newGame.map((img, i) => {
                         return (
                             <SwiperSlide style={style} key={i}>
-                                <Tippy placement="right" content={<span>{img.caption}</span>}>
-                                    <img src={img.url} alt="" onClick={(e) => this.onClickGame(i)}/>
-                                </Tippy>
-
+                                <Link to="/game-detail" className="product-nav-links">
+                                    <Tippy placement="right" content={<span>{img.caption}</span>}>
+                                        <img src={img.url} alt="" style={{borderRadius: '10px'}}
+                                             onClick={(e) => this.onClickGame(i)}/>
+                                    </Tippy>
+                                </Link>
                             </SwiperSlide>
                         );
                     })}

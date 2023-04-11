@@ -1,6 +1,6 @@
 .sub-nav {
-    background-image: url(gradient.jpg);
-    background-size: clamp(800px, 100%, 1920px) auto, auto;
+    background-image: url(gradient2.jpg);
+    /*background-size: clamp(800px, 100%, 1920px) auto, auto;*/
     background-position: top center;
     background-repeat: repeat-x, no-repeat;
     height: 250px;
@@ -55,12 +55,16 @@
 }
 
 .item-content-card {
-    height: 300px;
-    background-color: #ffffff;
+    /*background-color: #1e1327;*/
+    height: 100%;
+    padding: 20px 0;
 }
 
 .search-detail-bar {
     padding: 20px 20px;
+    background-color: #2e2039;
+    color: #ffff;
+    border-radius: 10px;
 
 }
 
@@ -108,4 +112,24 @@ select {
 
 .ck .ck-sticky-panel{
     display:none !important;
+}
+.view-type-button:hover{
+    color: #f5b921;
+    border: 0.5px solid #f5b921;
+
+}
+.view-type-button{
+    height: 50px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 0.5px solid #888888;
+    cursor: pointer;
+}
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+
+}
+.ck.ck-editor__main>.ck-editor__editable{
+    background-color: #2e2039 !important;
+    border: none;
+    color: white;
 }

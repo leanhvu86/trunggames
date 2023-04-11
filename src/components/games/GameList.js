@@ -36,7 +36,6 @@ class GameList extends React.Component {
                     />
                 </div>
                 <div className="col-8 game-item">
-                    <br/>
                     <h6>{game.name}</h6>
                     <span>{game.type}</span>&nbsp;/&nbsp;<span>{game.marketType}</span>
                     <br/>
@@ -51,10 +50,10 @@ class GameList extends React.Component {
             <div className="row">
                 {this.props.slideImage.map((game, i) => {
                     return (
-                        <div className="col-sm " key={i}>
+                        <div className="col-4" key={i}>
                             <Link to="/game-detail" className="product-nav-links" >
                                 {window.innerWidth<600?
-                                    <div className="wrapper">
+                                    <div className=" game-hover wrapper">
                                         <img src={game.thumbnail} alt="" key={i}
                                              onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
                                              onClick={() => this.onClickGame(game)}

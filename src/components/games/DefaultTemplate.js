@@ -34,19 +34,19 @@ export default class DefaultTemplate extends React.Component {
             }
             if (isOpen) {
                 return (<em>
-                        <span onClick={() => handleOpenAll(false)} className="close-collapse"><i className="fa fa-minus" aria-hidden="true"/></span>
+                        <span onClick={() => handleOpenAll(false)} className="close-collapse"><i className="fa fa-chevron-up" aria-hidden="true"/></span>
                     {/*<span onClick={() => handleOpenAll(false)}>close all</span>*/}
                 </em>)
             }
             return (<em>
-                        <span onClick={() => handleOpenAll(true)} className="open-collapse"><i className="fa fa-plus" aria-hidden="true"/></span>
+                        <span onClick={() => handleOpenAll(true)} className="open-collapse"><i className="fa fa-chevron-down" aria-hidden="true"/></span>
                         {/*<span onClick={() => handleOpenAll(true)}><i className="fa fa-bars" aria-hidden="true"/></span>*/}
                     </em>)
         }
 
         return (
             <div className="tree-content">
-                {data.title==='Category'?'':<a className="category-item" style={{fontSize:'20px'}}>{data.title}{getControls(data.isOpen)}</a>}
+                {data.title==='Category'?'':<a className="category-item" style={{fontSize:'12px'}}>{data.title}{getControls(data.isOpen)}</a>}
                 <span style={{ display:data.isOpen?'block':'none'}}>
                     {children.map((x, i) => (<span className="category-item" key={i}>{x}</span>))}
                 </span>
