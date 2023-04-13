@@ -218,7 +218,7 @@ class GameDetailSearchBar extends React.Component {
 
                 </div>
                 <div className="seach-content search-detail-bar">
-                    {window.innerWidth < 600 ? this.renderSearchMobile() : this.renderSearchWebsite()}
+                    {window.innerWidth < 1000 ? this.renderSearchMobile() : this.renderSearchWebsite()}
                     <hr/>
                 </div>
             </div>

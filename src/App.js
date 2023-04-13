@@ -169,7 +169,7 @@ class App extends React.Component {
     state = {
 
         banner: this.props.banner,
-        loaded: false
+        loaded: false,
     };
 
     componentDidMount() {
@@ -186,14 +186,9 @@ class App extends React.Component {
     }
 
     render() {
-        const style = {
-            // background: '#16104e',
-            height:'100%',
-        }
-
         return (
 
-            <div style={style}>
+            <div>
                 {this.state.loaded ? null :<LoadingSpinner/>}
                 <Translation>{t => <TopMenu t={t} />}</Translation>
                 <NavBar/>

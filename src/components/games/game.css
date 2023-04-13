@@ -15,9 +15,15 @@
 
 }
 
+.search-item:active {
+    border: 0.5px solid #888888;
+    color: #ff8000;
+
+}
+
 .search-item:hover {
     border: 0.5px solid #888888;
-    color: #f5b921;
+    color: #ff8000;
 
 }
 
@@ -76,7 +82,7 @@
 }
 
 .category-item:hover {
-    color: #f5b921;
+    color: #ff8000;
 }
 .tree-content {
     color: #888888;
@@ -109,14 +115,14 @@
 
 .close-collapse:hover {
     /*background-color: #888888;*/
-    color: #f5b921;
+    color: #ff8000;
     opacity: 1;
 
 }
 
 .open-collapse:hover {
     /*background-color: #888888;*/
-    color: #f5b921;
+    color: #ff8000;
     opacity: 1;
 
 }

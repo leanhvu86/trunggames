@@ -83,8 +83,8 @@ a{
 }
 
 .footer-title{
-  color: #f5b921;
-  font-size: 25px;
+  color: #ff8000;
+  font-size: 25px !important;
   font-variant: inherit;
 
 }
@@ -93,13 +93,16 @@ a{
   text-decoration: none !important;
 
 }
+.a{
+  font-size: 14px;
+}
 .footer-item{
   color: #bfbfbf;
   cursor: pointer;
   padding-top: 15px;
 }
 .footer-item:hover{
-  color: #f5b921;
+  color: #ff8000;
 }
 .content-wrapper{
   margin-top: 50px;

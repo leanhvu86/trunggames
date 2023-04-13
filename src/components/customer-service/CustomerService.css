@@ -43,7 +43,7 @@
 }
 
 .service-title:hover {
-    color: #f9aa01;
+    color: #ff8000;
     cursor: pointer;
     font-style: normal;
 }
@@ -68,7 +68,7 @@
     letter-spacing: 0;
     font-weight: 700;
     color: #000;
-    background: #f9aa01;
+    background: #ff8000;
     text-transform: initial;
     top: 50px;
     padding: 2px 6px;

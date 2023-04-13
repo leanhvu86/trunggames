@@ -15,7 +15,7 @@ class ParallaxImage extends React.Component {
                 <div id="title" className="section header">
                     {/*<h1>Trung AboutUs</h1>*/}
                     <h1>Your happiness is our business mission</h1>
-                    <p>Top ten of Best Game Charging in Vietnam</p>
+                    <span>Top ten of Best Game Charging in Vietnam</span>
                 </div>
         )
     }

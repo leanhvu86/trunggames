@@ -114,8 +114,8 @@ select {
     display:none !important;
 }
 .view-type-button:hover{
-    color: #f5b921;
-    border: 0.5px solid #f5b921;
+    color: #ff8000;
+    border: 0.5px solid #ff8000;
 
 }
 .view-type-button{

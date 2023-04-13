@@ -47,7 +47,7 @@ function NavBar() {
                         </li>
                         <li className="nav-item">
                             <Link
-                                to="/user-guide"
+                                to="/blog"
                                 // activeClassName="active"
                                 className="nav-links"
                                 onClick={click ? handleClick : null}

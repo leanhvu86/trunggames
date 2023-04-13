@@ -79,8 +79,8 @@ class CustomerService extends React.Component {
                     <div className="col">
                         <div style={{width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
 
-                            <ParallaxHover borderRadius={5} height={window.innerWidth < 600 ? 250 : 350} scale={5}
-                                           width={window.innerWidth < 600 ? 400 : 620}>
+                            <ParallaxHover borderRadius={5} height={window.innerWidth < 1000 ? 250 : 350} scale={5}
+                                           width={window.innerWidth < 1000 ? 400 : 620}>
                                 <img className={imgStyle} alt="Demo image"
                                      src={require("./service-image/cms-banner-01.jpg")}
                                     // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-01.jpg"
@@ -96,8 +96,8 @@ class CustomerService extends React.Component {
                     </div>
                     <div className="col">
                         <div style={{width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
-                            <ParallaxHover borderRadius={5} height={window.innerWidth < 600 ? 250 : 350} scale={5}
-                                           width={window.innerWidth < 600 ? 400 : 620}>
+                            <ParallaxHover borderRadius={5} height={window.innerWidth < 1000 ? 250 : 350} scale={5}
+                                           width={window.innerWidth < 1000 ? 400 : 620}>
                                 <img className={imgStyle} alt="Demo image"
                                      src={require("./service-image/cms-banner-02.jpg")}
                                     // src="https://capricathemes.com/wordpress/WCM04/WCM040086/wp-content/uploads/2020/08/cms-banner-02.jpg"

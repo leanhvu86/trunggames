@@ -8,9 +8,11 @@ import {store} from './store';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Games from "./components/games/Games";
 import TopSale from "./components/top-sale/TopSale";
-import UserGuide from "./components/user-guide/UserGuide";
-import AboutUs from "./components/about-us/about-us";
+import Blog from "./components/blog/Blog";
+import AboutUs from "./components/about-us/AboutUs";
 import GameDetail from "./components/games/game-detail/GameDetail";
+import AuthenticateForm from "./components/user/AuthenticateForm";
+import UserProfile from "./components/user/user-profile/UserProfile";
 
 ReactDOM.render(
     <Provider store={store}>
@@ -19,9 +21,11 @@ ReactDOM.render(
                 <Route path="/" element={<App/>}/>
                 <Route path="/games" element={<Games />} />
                 <Route path="/top-sale" element={<TopSale />} />
-                <Route path="/user-guide" element={<UserGuide />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/game-detail" element={<GameDetail />} />
+                <Route path="/login" element={<AuthenticateForm />} />
+                <Route path="/user-profile" element={<UserProfile />} />
             </Routes>
         </BrowserRouter>
     </Provider>,

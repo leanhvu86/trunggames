@@ -111,7 +111,7 @@ class NewPackage extends React.Component {
             <div>
                 <br/>
                 <br/>
-                {window.innerWidth<600?this.renderMobile():this.renderWebsite()}
+                {window.innerWidth<1000?this.renderMobile():this.renderWebsite()}
                 <br/>
                 <br/>
             </div>

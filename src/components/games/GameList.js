@@ -31,9 +31,7 @@ class GameList extends React.Component {
                     <img src={game.thumbnail} alt="" key={game.name}
                          onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
                          onClick={() => this.onClickGame(game)}
-                         style={{height: 'auto', width: '100%'}}
-
-                    />
+                         style={{height: 'auto', width: '100%'}} />
                 </div>
                 <div className="col-8 game-item">
                     <h6>{game.name}</h6>
@@ -45,6 +43,18 @@ class GameList extends React.Component {
         )
     }
 
+    renderMobile(game){
+        return(
+            <div className=" game-hover wrapper">
+                <img src={game.thumbnail} alt="" key={game.name}
+                     onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
+                     onClick={() => this.onClickGame(game)}
+                     style={{height: 'auto', width: '100%'}}
+
+                />
+            </div>
+        )
+    }
     render() {
         return (
             <div className="row">
@@ -52,15 +62,8 @@ class GameList extends React.Component {
                     return (
                         <div className="col-4" key={i}>
                             <Link to="/game-detail" className="product-nav-links" >
-                                {window.innerWidth<600?
-                                    <div className=" game-hover wrapper">
-                                        <img src={game.thumbnail} alt="" key={i}
-                                             onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
-                                             onClick={() => this.onClickGame(game)}
-                                             style={{height: 'auto', width: '100%'}}
-
-                                        />
-                                    </div>
+                                {window.innerWidth<1000?
+                                    this.renderMobile(game)
                                 :this.renderGameContent(game)}
                             </Link>
                         </div>

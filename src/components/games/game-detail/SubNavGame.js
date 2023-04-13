@@ -130,7 +130,7 @@ class SubNavGame extends React.Component {
         return (
             <div className="sub-nav">
                 <div className="container">
-                    {window.innerWidth<600?this.renderMobile():this.renderWebsite()}
+                    {window.innerWidth<1000?this.renderMobile():this.renderWebsite()}
                 </div>
             </div>
         )

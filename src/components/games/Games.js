@@ -232,7 +232,9 @@ class Games extends React.Component {
             loaded: false,
             game: undefined,
             listGame: gameList,
-            isMobile:window.innerWidth<600,
+            isMobile: window.innerWidth < 1000,
+            searchType: '',
+            category: [],
             root: {
                 title: 'Category',
                 children: [
@@ -318,9 +320,38 @@ class Games extends React.Component {
 
     componentDidMount() {
         this.filterList("HOT", 1);
-        this.onTreeEvent("openAll", undefined, undefined);
+
+        fetch(
+            "http://52.41.255.157:8080/trunggame-0.0.1/api/category/list")
+            .then((res) => res.json())
+            .then((json) => {
+                const tree = this.buildTree(json.data, 0);
+                const root= { title: 'Category', children: tree } ;
+                this.setState({root: root});
+                this.onUpdateData(this.state.root);
+                this.onTreeEvent("openAll", undefined, undefined);
+            });
+
+    }
+    buildTree(categories, parentId) {
+        const nodes = [];
+        categories
+            .filter(category => category.parentId === parentId)
+            .forEach(category => {
+                const node  = { title: category.name };
+                const children = this.buildTree(categories, category.id);
+                if (children.length > 0) {
+                    node.children = children;
+                }
+                nodes.push(node);
+            });
+        return nodes;
     }
 
+    // const response = { /* The response data here */ };
+    // const categories: Category[] = response.data;
+    // const tree = buildTree(categories, null);
+    // const result = { root: { title: 'Category', children: tree } };
 
     onClickGame(e) {
 
@@ -332,20 +363,26 @@ class Games extends React.Component {
     filterList(type, value) {
         // console.log(value)
         let listTemp = [];
+
         gameList.forEach(game => {
             if (type === "HOT") {
                 if (game.gamePriority === 1) {
-                    listTemp.push(game)
+                    listTemp.push(game);
+
                 }
+                this.setState({searchType: type})
             } else if (type === "Char") {
                 if (game.name.toUpperCase().startsWith(value)) {
                     listTemp.push(game);
+
                 }
+                this.setState({searchType: value})
             } else {
                 if (Number.isInteger(parseInt(game.name.charAt(0)))) {
                     listTemp.push(game);
 
                 }
+                this.setState({searchType: "#"})
             }
         });
         this.setState({listGame: listTemp});
@@ -398,19 +435,21 @@ class Games extends React.Component {
         // console.log('App load success', value)
     }
 
-    handleOpenCategory(){
-        this.setState({isMobile:!this.state.isMobile})
+    handleOpenCategory() {
+        this.setState({isMobile: !this.state.isMobile})
     }
 
-    renderCategory(){
-        return(
+    renderCategory() {
+        return (
             <div className="col-3">
-                <TreeRenderer Template={DefaultTemplate} data={this.state.root} onUpdateData={this.onUpdateData.bind(this)}
+                <TreeRenderer Template={DefaultTemplate} data={this.state.root}
+                              onUpdateData={this.onUpdateData.bind(this)}
                               onTreeEvent={this.onTreeEvent.bind(this)}/>
                 <br/>
             </div>
         )
     }
+
     render() {
         return (
             <div>
@@ -506,28 +545,20 @@ class Games extends React.Component {
                         </div>
                     </div>
                 </div>
-
-                <br/>
                 <div className="row">
 
                     <div className="col-3">
 
                         <Tippy placement="right" content={<span>Click to open or close category!</span>}>
-                            <h3 className="category-title" onClick={()=>this.handleOpenCategory(this)}>Category </h3>
+                            <h3 className="category-title" onClick={() => this.handleOpenCategory(this)}>Category </h3>
                         </Tippy>
-
-                        {/*{this.state.isMobile?*/}
-                        {/*    <span onClick={() => this.handleOpenCategory.bind(this)} className="close-collapse"><i className="fa fa-minus" aria-hidden="true"/></span>*/}
-                        {/*    :*/}
-                        {/*    <span onClick={() => this.handleOpenCategory.bind(this)} className="open-collapse"><i className="fa fa-plus" aria-hidden="true"/></span>*/}
-                        {/*}*/}
                     </div>
-                    <div className="col-8">
-
+                    <div className="col-8 category-title">
+                        <span>Game&nbsp;>&nbsp;{this.state.searchType}</span>
                     </div>
                 </div>
                 <div className="row">
-                    {this.state.isMobile?"":this.renderCategory()}
+                    {this.state.isMobile ? "" : this.renderCategory()}
                     <div className="col-8 auto-margin-game-list">
                         <GameList slideImage={this.state.listGame}
                                   onChange={this.onChange.bind(this)}
