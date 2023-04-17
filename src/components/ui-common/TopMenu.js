@@ -1,6 +1,7 @@
 import React from 'react';
 import * as i18n from "i18next";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom";
 
 export default class TopMenu extends React.Component {
 
@@ -41,6 +42,7 @@ export default class TopMenu extends React.Component {
                             {/*        Việt Nam*/}
                             {/*    </option>*/}
                             {/*</select>*/}
+
                         </div>
                         <div className="col-4">
 
@@ -48,6 +50,9 @@ export default class TopMenu extends React.Component {
                             {/*       name="startDate" placeholder="Type a Game"/>*/}
                             {/*<button >Search<i className="fa fa-search" aria-hidden="true"/>*/}
                             {/*</button>*/}
+                            <Link to="/cart" className="nav-links float-right">
+                                <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"/>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -34,10 +34,10 @@ export default (state = { ...initialQuiz }, action) => {
             return {
                 ...state, pager: action.payload, mode: 'quiz'
             }
-        case ActionTypes.QuizLoad:
-            return {
-                ...state, quiz: action.payload
-            }
+        // case ActionTypes.QuizLoad:
+        //     return {
+        //         ...state, quiz: action.payload
+        //     }
         case ActionTypes.QuizSubmit:
             console.log('quiz.js Submitted.');
             return {

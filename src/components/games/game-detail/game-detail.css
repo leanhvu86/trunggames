@@ -65,7 +65,6 @@
     background-color: #2e2039;
     color: #ffff;
     border-radius: 10px;
-
 }
 
 .seach-content {
@@ -132,4 +131,24 @@ select {
     background-color: #2e2039 !important;
     border: none;
     color: white;
+}
+.title-center{
+    text-align: center;
+    color: white;
+}
+
+.pack-content {
+    margin-top: 20px;
+    border: 0.5px solid #c4c0c0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: #2e2039;
+    color: #ffffff;
+}
+.unit-package{
+    color: #888888;
+}
+.react-star-rate{
+    font-size: 15px !important;
 }

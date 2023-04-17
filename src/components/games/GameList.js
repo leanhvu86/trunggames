@@ -1,11 +1,11 @@
 import React from 'react';
 import './game.css';
 import {Translation} from "react-i18next";
-import TopMenu from "../TopMenu";
-import NavBar from "../NavBar";
+import TopMenu from "../ui-common/TopMenu";
+import NavBar from "../ui-common/NavBar";
 import ParallaxImage from "../parallax/ParallaxImage";
 import Footer from "../Footer";
-import ScrollButton from "../ScrollButton";
+import ScrollButton from "../ui-common/ScrollButton";
 import {Link} from "react-router-dom";
 
 

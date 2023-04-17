@@ -1,15 +1,15 @@
 import React from 'react';
 import './game.css';
 import {Translation} from "react-i18next";
-import TopMenu from "../TopMenu";
-import NavBar from "../NavBar";
+import TopMenu from "../ui-common/TopMenu";
+import NavBar from "../ui-common/NavBar";
 import ParallaxImage from "../parallax/ParallaxImage";
 import Footer from "../Footer";
-import ScrollButton from "../ScrollButton";
+import ScrollButton from "../ui-common/ScrollButton";
 import GameList from "./GameList";
 import TreeRenderer, {pathGet, pathMerge} from 'react-tree-renderer';
 import {default as DefaultTemplate, eventTypes} from './DefaultTemplate'
-import LoadingSpinner from "../LoadingSpinner";
+import LoadingSpinner from "../ui-common/LoadingSpinner";
 import Tippy from "@tippyjs/react";
 
 
@@ -235,86 +235,8 @@ class Games extends React.Component {
             isMobile: window.innerWidth < 1000,
             searchType: '',
             category: [],
-            root: {
-                title: 'Category',
-                children: [
-                    {
-                        title: 'Action game',
-                        children: [
-                            {
-                                title: 'Platform games',
-                            },
-                            {
-                                title: 'Shooter games',
-                            },
-                            {
-                                title: 'Fighting games',
-                            },
-                            {
-                                title: 'Beat \'em up games',
-                            },
-                            {
-                                title: 'Stealth games',
-                            },
-                            {
-                                title: 'Survival games',
-                            },
-                            {
-                                title: 'Rhythm games',
-                            },
-                            {
-                                title: 'Battle Royale games',
-                            },
-
-                        ],
-                    },
-                    {
-                        title: 'Action - adventure',
-                        children: [
-                            {title: "Survival horror"},
-                            {title: "Metroidvania"}
-
-                        ]
-                    },
-                    {
-                        title: 'Adventure',
-                        children: [
-                            {title: "Text adventures"},
-                            {title: "Visual novels"},
-                            {title: "Interactive movie"},
-                            {title: "Real-time 3D adventures"}
-
-                        ]
-                    },
-                    {
-                        title: 'Role-playing',
-                        children: [
-                            {title: "Action RPG"},
-                            {title: "MMORPG"},
-                            {title: "Roguelikes"},
-                            {title: "Tactical RPG"},
-                            {title: "Sandbox RPG"},
-                            {title: "First-person party-based RPG"},
-                            {title: "JRPGG"},
-                            {title: "Monster Tamer"}
-
-                        ]
-                    },
-                    {
-                        title: 'Simulation',
-                        children: [
-                            {title: "Construction and management simulation"},
-                            {title: "MMORPG"},
-                            {title: "Life simulation"},
-                            {title: "Vehicle simulation"}
-
-                        ]
-                    }
-
-                ],
-            }
+            root: {}
         };
-
         this.filterList = this.filterList.bind(this);
     }
 
@@ -326,19 +248,20 @@ class Games extends React.Component {
             .then((res) => res.json())
             .then((json) => {
                 const tree = this.buildTree(json.data, 0);
-                const root= { title: 'Category', children: tree } ;
+                const root = {title: 'Category', children: tree};
                 this.setState({root: root});
                 this.onUpdateData(this.state.root);
                 this.onTreeEvent("openAll", undefined, undefined);
             });
 
     }
+
     buildTree(categories, parentId) {
         const nodes = [];
         categories
             .filter(category => category.parentId === parentId)
             .forEach(category => {
-                const node  = { title: category.name };
+                const node = {title: category.name};
                 const children = this.buildTree(categories, category.id);
                 if (children.length > 0) {
                     node.children = children;

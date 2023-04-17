@@ -4,13 +4,13 @@ import './App.css';
 import {connect} from 'react-redux';
 import 'react-slideshow-image/dist/styles.css'
 import Banner from "./components/Banner";
-import TopMenu from "./components/TopMenu";
+import TopMenu from "./components/ui-common/TopMenu";
 import {Translation} from "react-i18next";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/ui-common/NavBar";
 import CustomerService from "./components/customer-service/CustomerService";
-import LoadingSpinner from "./components/LoadingSpinner";
+import LoadingSpinner from "./components/ui-common/LoadingSpinner";
 import MobilePopular from "./components/mobile-polular/MobilePopular";
-import ScrollButton from "./components/ScrollButton";
+import ScrollButton from "./components/ui-common/ScrollButton";
 import NewGame from "./components/new-game/NewGame";
 import NewPackage from "./components/new-package/NewPackage";
 import Footer from "./components/Footer";

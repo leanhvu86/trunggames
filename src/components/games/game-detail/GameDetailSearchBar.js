@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './game-detail.css';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
+import PackageList from "./PackageList";
 
 
 const list = ['Hot',]
@@ -221,6 +222,7 @@ class GameDetailSearchBar extends React.Component {
                     {window.innerWidth < 1000 ? this.renderSearchMobile() : this.renderSearchWebsite()}
                     <hr/>
                 </div>
+                    <PackageList gamePackages={this.props.game.gamePackages}/>
             </div>
         )
     }

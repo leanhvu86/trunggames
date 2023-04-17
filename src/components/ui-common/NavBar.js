@@ -12,9 +12,12 @@ function NavBar() {
             <div className={click ? "main-container" : ""} onClick={() => Close()}/>
             <nav className="navbar" onClick={e => e.stopPropagation()}>
                 <div className="nav-container">
-                    <Link className="nav-logo" to="/">
-                        <img className="logo" src={'./website-logo.png'} alt=""/>
-                    </Link>
+                    <div className="nav-logo">
+                        <Link  to="/">
+                            <img className="logo" src={'./website-logo.png'} alt=""/>
+                        </Link>
+                    </div>
+
                     <ul className={click ? "nav-menu active" : "nav-menu"}>
                         <li className="nav-item">
                             <Link to="/"
