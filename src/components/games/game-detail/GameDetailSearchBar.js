@@ -17,11 +17,13 @@ class GameDetailSearchBar extends React.Component {
             server: '',
             attribute: '',
             type: '',
-            viewType: true
+            viewType: true,
+            packages:this.props.game.gamePackages
         }
     }
 
     componentDidMount() {
+
     }
 
     onChangeServer(e) {
@@ -39,13 +41,17 @@ class GameDetailSearchBar extends React.Component {
             if (this.state.type === type) {
                 document.getElementById("hot-search").classList.remove('active');
                 this.setState({type:0})
+                this.setState({packages:this.props.game.gamePackages})
             } else {
                 document.getElementById("hot-search").classList.add('active');
                 document.getElementById("new-search").classList.remove('active');
                 document.getElementById("price-search").classList.remove('active');
                 document.getElementById("rating-search").classList.remove('active');
                 this.setState({type:type})
-
+                let tempPackage =this.props.game.gamePackages;
+                tempPackage.sort((a,b) => a.rating - b.rating);
+                this.setState({packages:tempPackage})
+                console.log(this.state.packages)
             }
         } else if (type === 2) {
             if (this.state.type === type) {
@@ -139,13 +145,13 @@ class GameDetailSearchBar extends React.Component {
         return (
             <div className="row">
                 <div className="col-8">
-                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this)}>
+                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,1)}>
                                 <i className="fa fa-fire" aria-hidden="true"/>&nbsp;Hot</span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this)}>
+                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,2)}>
                                 <i className="fa fa-clock-o" aria-hidden="true"/>&nbsp;New</span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this)}>
+                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,3)}>
                                 <i className="fa fa-usd" aria-hidden="true"/>&nbsp;Price</span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this)}>
+                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,4)}>
                                 <i className="fa fa-thumbs-o-up" aria-hidden="true"/>&nbsp;Rating</span>
 
                 </div>
@@ -222,7 +228,7 @@ class GameDetailSearchBar extends React.Component {
                     {window.innerWidth < 1000 ? this.renderSearchMobile() : this.renderSearchWebsite()}
                     <hr/>
                 </div>
-                    <PackageList gamePackages={this.props.game.gamePackages}/>
+                    <PackageList gamePackages={this.state.packages}/>
             </div>
         )
     }

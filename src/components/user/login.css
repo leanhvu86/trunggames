@@ -30,3 +30,11 @@
     text-align: left !important;
     color: #888888;
 }
+.form{
+    padding: 5px 5px;
+}
+.error-text{
+    padding-left: 20px;
+    font-size: 15px;
+    color: red;
+}

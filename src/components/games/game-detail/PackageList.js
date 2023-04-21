@@ -7,12 +7,12 @@ import StarsRating from 'react-star-rate';
 
 class PackageList extends React.Component {
 
+
     handleClick = (id) => {
         this.props.addToCart(id);
     }
 
     render() {
-        console.log(this.props.gamePackages)
         let itemList = this.props.gamePackages.map(item => {
             return (
                 <div className="pack-content" key={item.id}>

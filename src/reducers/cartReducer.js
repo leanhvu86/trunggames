@@ -3,8 +3,13 @@ import {
     REMOVE_ITEM,
     SUB_QUANTITY,
     ADD_QUANTITY,
-    ADD_SHIPPING
+    ADD_SHIPPING,
 } from '../constants/action-types/cart-actions'
+import {
+    LOGIN_SUCCESS,
+    LOG_OUT,
+    UPDATE_USER,
+} from '../constants/action-types/user-actions'
 
 
 const initState = {
@@ -15,6 +20,7 @@ const initState = {
             price: 19442,
             unit: '65',
             rating: 5,
+            topSale:true,
             server: [
                 {
                     serverId: 1,
@@ -61,11 +67,11 @@ const initState = {
             ],
             attribute: 'tokens',
             warehouseQuantity: 895,
-            tradeCount: 1,
+            tradeCount: 100,
             imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/2e89d21a-56a8-42fa-a412-945ca039dae8-Screenshot 2023-04-16 at 22.34.45.png",
             descriptionVi: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
             descriptionEn: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
-            deliveryTime: 10
+            deliveryTime: 10,
         },
         {
             id: 2,
@@ -73,6 +79,7 @@ const initState = {
             price: 19152,
             unit: '65',
             rating: 5,
+            topSale:true,
             server: [
                 {
                     serverId: 1,
@@ -118,7 +125,7 @@ const initState = {
                 }
             ],
             warehouseQuantity: 895,
-            tradeCount: 1,
+            tradeCount: 15,
             imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4cb1f4f3-9a89-4b20-82a8-75f1df0add43-Screenshot 2023-04-16 at 22.34.31.png",
             descriptionVi: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
             descriptionEn: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
@@ -130,6 +137,7 @@ const initState = {
             price: 315780,
             unit: '650',
             rating: 5,
+            topSale:false,
             server: [
                 {
                     serverId: 1,
@@ -175,7 +183,7 @@ const initState = {
                 }
             ],
             warehouseQuantity: 895,
-            tradeCount: 1,
+            tradeCount: 13,
             imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4cb1f4f3-9a89-4b20-82a8-75f1df0add43-Screenshot 2023-04-16 at 22.34.31.png",
             descriptionVi: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
             descriptionEn: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
@@ -187,6 +195,7 @@ const initState = {
             price: 77897,
             unit: '565',
             rating: 5,
+            topSale:true,
             server: [
                 {
                     serverId: 1,
@@ -244,6 +253,7 @@ const initState = {
             price: 195281,
             unit: '6',
             rating: 5,
+            topSale:false,
             server: [
                 {
                     serverId: 1,
@@ -301,6 +311,7 @@ const initState = {
             price: 896143,
             unit: '1',
             rating: 5,
+            topSale:true,
             server: [
                 {
                     serverId: 1,
@@ -355,7 +366,10 @@ const initState = {
     ],
     addedItems: [],
     total: 0,
+    user: {},
+    token:'',
     currency:'S',
+    language:'en',
     game: {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/9e9450d8-1564-49b1-834c-fc0c748e3675-ace-racer.png",
         name: "Ace Racer",
@@ -765,6 +779,20 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             total: newTotal
+        }
+    }
+    if (action.type === LOGIN_SUCCESS) {
+        return {
+            ...state,
+            user: action['user'],
+            token:action['user'].token
+        }
+    }
+    if (action.type === LOG_OUT) {
+        return {
+            ...state,
+            user: {},
+            token:''
         }
     }
     if (action.type === SUB_QUANTITY) {

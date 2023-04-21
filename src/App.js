@@ -176,7 +176,10 @@ class App extends React.Component {
         const AnimationFramerRes = window.requestAnimationFrame((e) =>
             console.log(e)
         )
-        window.cancelAnimationFrame(AnimationFramerRes)
+        window.cancelAnimationFrame(AnimationFramerRes);
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
     }
 
     onChange( value) {
