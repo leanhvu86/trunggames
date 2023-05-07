@@ -99,3 +99,24 @@
     margin-left: auto !important;
 }
 
+.remove-button {
+    color: red;
+
+    cursor: pointer;
+    font-style: normal;
+}
+
+.remove-button:hover {
+    color: #ff8000;
+    cursor: pointer;
+    font-style: normal;
+}
+.icon-button-cart:hover{
+    color: #ff8000;
+    cursor: pointer;
+}
+.icon-button-cart{
+
+    cursor: pointer;
+    font-style: normal;
+}

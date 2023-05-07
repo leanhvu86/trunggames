@@ -60,6 +60,7 @@ class TopMenu extends React.Component {
                             {/*</button>*/}
                             <Link to="/cart" className="nav-links float-right">
                                 <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"/>
+                                <span className="total-count">{this.props.packageCount}</span>
                             </Link>
                             <button onClick={this.handleLogOut}>Logout</button>
                         </div>
@@ -76,6 +77,7 @@ const mapStateToProps = (state) => {
     return {
         currency: state.currency,
         language: state.language,
+        packageCount: state.packageCount,
     }
 }
 const mapDispatchToProps = (dispatch) => {

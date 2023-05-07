@@ -1,8 +1,10 @@
 import React from 'react';
 import './game-detail.css';
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import {CKEditor} from "@ckeditor/ckeditor5-react";
-import PackageList from "./PackageList";
+import * as CurrencyFormat from "react-currency-format";
+import StarsRating from "react-star-rate";
+import GameContent from "./GameContent";
+import connect from "react-redux/lib/connect/connect";
+import {addToCart} from "../../../constants/cartActions";
 
 
 const list = ['Hot',]
@@ -18,7 +20,10 @@ class GameDetailSearchBar extends React.Component {
             attribute: '',
             type: '',
             viewType: true,
-            packages:this.props.game.gamePackages
+            packages: this.props.game.gamePackages,
+            packageView: window.innerWidth > 1000,
+            isViewPackage:false,
+            package:{}
         }
     }
 
@@ -27,7 +32,7 @@ class GameDetailSearchBar extends React.Component {
     }
 
     onChangeServer(e) {
-        // console.log(e)
+        console.log(e.target.value)
     }
 
     onChangeCardType(e) {
@@ -35,61 +40,73 @@ class GameDetailSearchBar extends React.Component {
 
     }
 
+    removeActive() {
+        document.getElementById("new-search").classList.remove('active');
+        document.getElementById("price-search").classList.remove('active');
+        document.getElementById("rating-search").classList.remove('active');
+        document.getElementById("hot-search").classList.remove('active');
+    }
+
     handleClick(type) {
         console.log(type)
+        this.removeActive();
+        let tempPackage;
         if (type === 1) {
             if (this.state.type === type) {
-                document.getElementById("hot-search").classList.remove('active');
-                this.setState({type:0})
-                this.setState({packages:this.props.game.gamePackages})
+                this.setState({type: 0})
+                this.setState({packages: this.props.game.gamePackages})
             } else {
                 document.getElementById("hot-search").classList.add('active');
-                document.getElementById("new-search").classList.remove('active');
-                document.getElementById("price-search").classList.remove('active');
-                document.getElementById("rating-search").classList.remove('active');
-                this.setState({type:type})
-                let tempPackage =this.props.game.gamePackages;
-                tempPackage.sort((a,b) => a.rating - b.rating);
-                this.setState({packages:tempPackage})
-                console.log(this.state.packages)
+                this.setState({type: type})
+                tempPackage = this.props.game.gamePackages;
+                tempPackage.sort((a, b) => a.tradeCount - b.tradeCount);
+                tempPackage.reverse();
+                this.setState({packages: tempPackage})
             }
         } else if (type === 2) {
             if (this.state.type === type) {
-                document.getElementById("new-search").classList.remove('active');
-                this.setState({type:0})
+                this.setState({type: 0})
             } else {
-                document.getElementById("hot-search").classList.remove('active');
                 document.getElementById("new-search").classList.add('active');
-                document.getElementById("price-search").classList.remove('active');
-                document.getElementById("rating-search").classList.remove('active');
-                this.setState({type:type})
-
+                this.setState({type: type})
+                tempPackage = this.props.game.gamePackages;
+                tempPackage.sort((a, b) => a.rating - b.rating);
+                tempPackage.reverse();
+                this.setState({packages: tempPackage});
             }
 
         } else if (type === 3) {
             if (this.state.type === type) {
-                document.getElementById("price-search").classList.remove('active');
-                this.setState({type:0})
+                this.setState({type: 0})
             } else {
-                document.getElementById("hot-search").classList.remove('active');
-                document.getElementById("new-search").classList.remove('active');
                 document.getElementById("price-search").classList.add('active');
-                document.getElementById("rating-search").classList.remove('active');
-                this.setState({type:type})
+                this.setState({type: type})
+                tempPackage = this.props.game.gamePackages;
+                tempPackage.sort((a, b) => {
+                    if (a.price > b.price) {
+                        return 1;
+                    }
 
+                    if (a.price < b.price) {
+                        return -1;
+                    }
+
+                    return 0;
+                });
+
+                this.setState({packages: tempPackage});
             }
         } else {
             if (this.state.type === type) {
-                document.getElementById("rating-search").classList.remove('active');
-                this.setState({type:0})
+                this.setState({type: 0})
 
             } else {
-                document.getElementById("hot-search").classList.remove('active');
-                document.getElementById("new-search").classList.remove('active');
-                document.getElementById("price-search").classList.remove('active');
                 document.getElementById("rating-search").classList.add('active');
-                this.setState({type:type})
-
+                this.setState({type: type})
+                tempPackage = this.props.game.gamePackages;
+                tempPackage.sort((a, b) => a.rating - b.rating);
+                tempPackage.reverse();
+                this.setState({packages: tempPackage});
             }
         }
     };
@@ -97,6 +114,22 @@ class GameDetailSearchBar extends React.Component {
     handleChangeViewType() {
         this.setState({viewType: !this.state.viewType});
     }
+
+    handleChangePackageViewType() {
+        this.setState({packageView: !this.state.packageView});
+    }
+
+
+
+    onClickChangeContent(e) {
+        this.setState({viewType: !this.state.viewType});
+    }
+
+    onViewPackage(event) {
+        this.props.onViewPackage(event);
+        console.log(event);
+    }
+
 
     renderSearchWebsite() {
         return (
@@ -121,18 +154,16 @@ class GameDetailSearchBar extends React.Component {
                         float: 'right', display: 'flex',
                         justifyContent: 'center'
                     }}>
-                                <span onClick={this.handleChangeViewType.bind(this)}>
-                                    {this.state.viewType ? <i className="fa fa-list fa-lg" aria-hidden="true"/> :
-                                        <i className="fa fa-table fa-lg" aria-hidden="true"/>}
-
-
+                                <span onClick={this.handleChangePackageViewType.bind(this)}>
+                                    {this.state.packageView ?
+                                        <i className="fa fa-list fa-lg icon-button" aria-hidden="true"/> :
+                                        <i className="fa fa-table fa-lg icon-button" aria-hidden="true"/>}
                                     &nbsp;&nbsp;
                             </span>
                         <span>
-                                <i className="fa fa-chevron-left "
-                                   aria-hidden="true"/>&nbsp;&nbsp;&nbsp;Page&nbsp;&nbsp;&nbsp;
-                            <i className="fa fa-chevron-right" aria-hidden="true"/>
-
+                                <i className="fa fa-chevron-left icon-button " aria-hidden="true"/>
+                            &nbsp;&nbsp;&nbsp;Page&nbsp;&nbsp;&nbsp;
+                            <i className="fa fa-chevron-right icon-button" aria-hidden="true"/>
                             </span>
                     </div>
 
@@ -145,32 +176,22 @@ class GameDetailSearchBar extends React.Component {
         return (
             <div className="row">
                 <div className="col-8">
-                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,1)}>
+                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 1)}>
                                 <i className="fa fa-fire" aria-hidden="true"/>&nbsp;Hot</span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,2)}>
+                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 2)}>
                                 <i className="fa fa-clock-o" aria-hidden="true"/>&nbsp;New</span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,3)}>
+                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 3)}>
                                 <i className="fa fa-usd" aria-hidden="true"/>&nbsp;Price</span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this,4)}>
+                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 4)}>
                                 <i className="fa fa-thumbs-o-up" aria-hidden="true"/>&nbsp;Rating</span>
 
                 </div>
                 <div className="col-4">
-                    <div style={{
-                        float: 'right', display: 'flex',
-                        justifyContent: 'center'
-                    }}>
-                                <span onClick={this.handleChangeViewType.bind(this)}>
-                                    {this.state.viewType ? <i className="fa fa-list fa-lg" aria-hidden="true"/> :
-                                        <i className="fa fa-table fa-lg" aria-hidden="true"/>}
-
-
-                                    &nbsp;&nbsp;
-                            </span>
+                    <div style={{float: 'right', display: 'flex', justifyContent: 'center'}}>
                         <span>
-                                <i className="fa fa-chevron-left "
+                                <i className="fa fa-chevron-left icon-button"
                                    aria-hidden="true"/>&nbsp;&nbsp;&nbsp;Page&nbsp;&nbsp;&nbsp;
-                            <i className="fa fa-chevron-right" aria-hidden="true"/>
+                            <i className="fa fa-chevron-right icon-button" aria-hidden="true"/>
 
                             </span>
                     </div>
@@ -181,6 +202,53 @@ class GameDetailSearchBar extends React.Component {
     }
 
     renderListPackage() {
+        let itemList = this.state.packages.map(item => {
+            return (
+                <div className="pack-content" key={item.id}>
+                    <div className="row">
+                        <div className="col">
+                            <div className="row">
+                                <div className="col-3">
+                                    <div className="crop">
+                                        <img src={item.imageId} alt={item.name}/>
+                                    </div>
+                                </div>
+                                <div className="col-9">
+                                    <span className="package-name service-title">
+                                        <a onClick={this.onViewPackage.bind(this,item.id)}> {item.name}</a>
+                                           </span>
+                                    <br/>
+                                    <br/>
+                                    <span>Máy chủ:&nbsp;{item.server[0].name} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="row">
+                                <div className="col" style={{textAlign: 'center'}}>
+
+                                    <p><b className="currency">
+                                        <CurrencyFormat displayType={'text'} value={item.price} thousandSeparator={true}
+                                                        prefix={this.props.currency}/>
+                                        </b>&nbsp;/&nbsp;
+                                        <span className="unit-package">{item.unit}</span>
+                                    </p>
+                                    <span>Kho: {item.warehouseQuantity}&nbsp;&nbsp; Số lượng đã bán:{item.tradeCount}</span>
+                                </div>
+                                <div className="col">
+                                    <div className="float-right">
+                                        <StarsRating
+                                            value={item.rating}
+                                            disabled={true}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
         return (
             <div>
                 <div className="seach-content search-detail-bar">
@@ -198,7 +266,7 @@ class GameDetailSearchBar extends React.Component {
                             <div className="child-search-content">
                                 <a>Server</a>
                                 <br/>
-                                <select onSelect={this.onChangeServer.bind(this)}>
+                                <select onChange={this.onChangeServer.bind(this)}>
                                     <option value="">Tất cả máy chủ</option>
                                     <option value="Korea">Korea</option>
                                     <option value="Japan">Japan</option>
@@ -222,53 +290,71 @@ class GameDetailSearchBar extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className="seach-content search-detail-bar">
                     {window.innerWidth < 1000 ? this.renderSearchMobile() : this.renderSearchWebsite()}
                     <hr/>
                 </div>
-                    <PackageList gamePackages={this.state.packages}/>
+                <br/>
+                {this.state.packageView ? <div className="box">
+                        {itemList}
+                    </div> :
+                    <div className="row box">
+                        {this.state.packages.map(item => {
+                            return (
+                                <div className="col-lg-4 " key={item.id}>
+                                    <div className=" pack-content-mobile">
+                                        <div className="row ">
+                                            <div className="col-3">
+                                                <div className="crop">
+                                                    <img src={item.imageId} alt={item.name}/>
+                                                </div>
+                                            </div>
+                                            <div className="col-8">
+                                                <span className="package-name service-title">
+                                                    <a onClick={this.onViewPackage.bind(this,item.id)}>
+                                                        {item.name}
+                                                    </a>
+                                                    </span>
+                                                <br/>
+                                                <br/>
+                                                <div className="float-right ">
+                                                    <p><b className="currency">
+                                                        <CurrencyFormat displayType={'text'} value={item.price}
+                                                                        thousandSeparator={true}
+                                                                        prefix={this.props.currency}/>
+                                                        </b>&nbsp;/&nbsp;
+                                                        <span className="unit-package">{item.unit}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="underline-footer"/>
+                                        <div className="row">
+                                            <div className="col-4">
+                                                <span>Máy chủ:&nbsp;{item.server[0].name} </span>
+                                            </div>
+                                            <div className="col-8">
+                                                <div className="float-right">
+                                                    <StarsRating
+                                                        value={item.rating}
+                                                        disabled={true}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>}
             </div>
         )
     }
 
-    renderContent() {
-        return (
-            <div className="container search-detail-bar">
-                <div className="row search-detail-bar">
-                    <br/>
-                    <CKEditor
-                        editor={ClassicEditor}
-                        disabled
-                        data={this.props.game.contentEn}
-                        onReady={editor => {
-                            // You can store the "editor" and use when it is needed.
-                            // console.log( 'Editor is ready to use!', editor );
-
-                        }}
-                        onChange={(event, editor) => {
-                            const data = editor.getData();
-                            // console.log( { event, editor, data } );
-                        }}
-                        onBlur={(event, editor) => {
-                            // console.log( 'Blur.', editor );
-                        }}
-                        onFocus={(event, editor) => {
-                            // console.log( 'Focus.', editor );
-                        }}
-                    />
-                </div>
-
-            </div>
-
-        )
+    setIsModalVisible(){
+        this.setState({setIsModalVisible:!this.state.isModalVisible})
     }
-
-    onClickChangeContent(e) {
-        this.setState({viewType: !this.state.viewType});
-    }
-
     render() {
         return (
             <div className="container ">
@@ -289,10 +375,24 @@ class GameDetailSearchBar extends React.Component {
 
                 </div>
                 <br/>
-                {this.state.viewType ? this.renderListPackage() : this.renderContent()}
+                {this.state.viewType ? this.renderListPackage() : <GameContent game={this.props.game}/>}
             </div>
         )
     }
 }
 
-export default (GameDetailSearchBar);
+const mapStateToProps = (state) => {
+    return {
+        currency: state.currency
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        addToCart: (id) => {
+            dispatch(addToCart(id))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameDetailSearchBar)

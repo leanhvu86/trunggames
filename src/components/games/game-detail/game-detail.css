@@ -88,12 +88,12 @@ select {
 
 .active {
     background-color: #ebf3ff;
-    color: #1c90ff;
+    color: #ff8000;
 }
 
 .search-bar-icon-filter:hover {
-    background-color: #e8e8e8;
-    color: #1c90ff;
+    /*background-color: #e8e8e8;*/
+    color: #ff8000;
 }
 
 .search-bar-icon-filter {
@@ -138,17 +138,52 @@ select {
 }
 
 .pack-content {
-    margin-top: 20px;
+    margin: 20px auto;
     border: 0.5px solid #c4c0c0;
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 12px;
     background-color: #2e2039;
     color: #ffffff;
+    width: 95%;
+
+}
+
+.icon-button{
+    cursor: pointer;
 }
 .unit-package{
     color: #888888;
 }
 .react-star-rate{
     font-size: 15px !important;
+}
+.pack-content-mobile {
+    margin: 4px auto;
+    border: 0.5px solid #c4c0c0;
+    padding: 10px 10px !important;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: #2e2039;
+    color: #ffffff;
+    width: 95%;
+}
+.crop {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.package-name{
+    cursor: pointer;
+}
+.currency{
+    color:#ff8000 ;
+    font-weight: bold;
 }

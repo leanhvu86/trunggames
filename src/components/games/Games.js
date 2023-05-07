@@ -17,7 +17,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4980a3f1-96d2-4d56-b215-0c5c2eca5b07-4-fun.png",
         name: "4Fun",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -31,7 +31,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/3824cfb4-f4ee-481c-876b-93c166f23123-4X-my-empire.png",
         name: "4X My Empire",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -46,7 +46,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/33cfd6b6-86d7-47ce-b74f-45cec9b7905b-8-pool.png",
         name: "8 Pool",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 0,
         type: "Mobile",
@@ -61,7 +61,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/97517577-45bf-4ab8-84c2-842b29c9edaf-17-live.png",
         name: "17 Live",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -76,7 +76,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/9e9450d8-1564-49b1-834c-fc0c748e3675-ace-racer.png",
         name: "Ace Racer",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 0,
         type: "Mobile",
@@ -91,7 +91,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/35655913-d914-4802-8167-0ff241a8d1df-age-of-frostfall.png",
         name: "Age Of Frostfall",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 0,
         type: "Mobile",
@@ -106,7 +106,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/fccccb21-fd9b-4132-b636-9e2c202f579b-age-z.png",
         name: "Age Z",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -121,7 +121,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4980a3f1-96d2-4d56-b215-0c5c2eca5b07-4-fun.png",
         name: "4Fun",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -135,7 +135,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/3824cfb4-f4ee-481c-876b-93c166f23123-4X-my-empire.png",
         name: "4X My Empire",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -150,7 +150,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/33cfd6b6-86d7-47ce-b74f-45cec9b7905b-8-pool.png",
         name: "8 Pool",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 0,
         type: "Mobile",
@@ -165,7 +165,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/97517577-45bf-4ab8-84c2-842b29c9edaf-17-live.png",
         name: "17 Live",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -180,7 +180,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/9e9450d8-1564-49b1-834c-fc0c748e3675-ace-racer.png",
         name: "Ace Racer",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 0,
         type: "Mobile",
@@ -195,7 +195,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/35655913-d914-4802-8167-0ff241a8d1df-age-of-frostfall.png",
         name: "Age Of Frostfall",
-        categoryId: "1",
+        categoryId: 14,
         categoryName: "Shoot Game",
         gamePriority: 0,
         type: "Mobile",
@@ -210,7 +210,7 @@ const gameList = [
     {
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/fccccb21-fd9b-4132-b636-9e2c202f579b-age-z.png",
         name: "Age Z",
-        categoryId: "1",
+        categoryId: 1,
         categoryName: "Shoot Game",
         gamePriority: 1,
         type: "Mobile",
@@ -230,7 +230,6 @@ class Games extends React.Component {
         super(props);
         this.state = {
             loaded: false,
-            game: undefined,
             listGame: gameList,
             isMobile: window.innerWidth < 1000,
             searchType: '',
@@ -242,7 +241,9 @@ class Games extends React.Component {
 
     componentDidMount() {
         this.filterList("HOT", 1);
-
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
         fetch(
             "http://52.41.255.157:8080/trunggame-0.0.1/api/category/list")
             .then((res) => res.json())
@@ -258,6 +259,7 @@ class Games extends React.Component {
 
     buildTree(categories, parentId) {
         const nodes = [];
+        this.setState({category: categories})
         categories
             .filter(category => category.parentId === parentId)
             .forEach(category => {
@@ -283,7 +285,7 @@ class Games extends React.Component {
 
     }
 
-    filterList(type, value) {
+    filterList(type, value, category) {
         // console.log(value)
         let listTemp = [];
 
@@ -294,6 +296,12 @@ class Games extends React.Component {
 
                 }
                 this.setState({searchType: type})
+            } else if (type === "Category") {
+                if (game.categoryId === value) {
+                    listTemp.push(game);
+
+                }
+                this.setState({searchType: category })
             } else if (type === "Char") {
                 if (game.name.toUpperCase().startsWith(value)) {
                     listTemp.push(game);
@@ -319,9 +327,7 @@ class Games extends React.Component {
     }
 
     onTreeEvent(eventStr, eventData, path) {
-        // console.log(eventStr)
-        // console.log(eventData)
-        // console.log(path)
+
         const {root = {}} = this.state
         const obj = pathGet(root, path)
 
@@ -339,7 +345,12 @@ class Games extends React.Component {
                 root: newRoot,
             })
         }
-
+        const clickNode = (e) => {
+            const cate = this.state.category.find((obj) => {
+                return obj.name === e;
+            });
+            this.filterList('Category', cate.id, cate.name);
+        }
         switch (eventStr) {
             case eventTypes.closeAll:
                 updateState(setOpenRecursive(false, obj))
@@ -347,20 +358,22 @@ class Games extends React.Component {
             case eventTypes.openAll:
                 updateState(setOpenRecursive(true, obj))
                 break;
+            case eventTypes.clickNode:
+                clickNode(eventData.props.data.title)
+                break;
             default:
                 break;
         }
     }
 
     onChange(value) {
-        // parent class change handler is always called with field name and value
         this.setState({'loaded': value});
-        // console.log('App load success', value)
     }
 
     handleOpenCategory() {
         this.setState({isMobile: !this.state.isMobile})
     }
+
 
     renderCategory() {
         return (

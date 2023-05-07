@@ -64,7 +64,7 @@ class Footer extends React.Component {
 
                     </div>
                 </div>
-                <div className="row underline-footer"/>
+                <div className="underline-footer"/>
                 <div className=" row copy-right"> Copy right &#169; 2023 Trung Games</div>
             </footer>
         )

@@ -80,6 +80,7 @@ a{
   width: 100%;
   height: 1px;
   background: #bfbfbf;
+  display: inline-block;
 }
 
 .footer-title{
@@ -99,14 +100,14 @@ a{
 .footer-item{
   color: #bfbfbf;
   cursor: pointer;
-  padding-top: 15px;
+  padding-top: 12px;
 }
 .footer-item:hover{
   color: #ff8000;
 }
 .content-wrapper{
   margin-top: 50px;
-  padding-left: 50px;
+  padding-left: 30px;
 }
 .copy-right{
   padding: 5px 20px;

@@ -3,7 +3,8 @@ import './game.css';
 
 export const eventTypes = {
     closeAll: 'closeAll',
-    openAll: 'openAll'
+    openAll: 'openAll',
+    clickNode:'clickNode'
 }
 
 
@@ -22,15 +23,20 @@ export default class DefaultTemplate extends React.Component {
         const { treeEvent } = this.props
         treeEvent(isOpen ? eventTypes.openAll : eventTypes.closeAll)
     }
+    onClickNode(e){
+        const { treeEvent } = this.props
+        treeEvent(eventTypes.clickNode,e);
+    }
 
     render() {
         const { data = {}, children = [], } = this.props
         const handleOpen = this.handleOpen.bind(this)
         const handleOpenAll = this.handleOpenAll.bind(this)
+        const onClickNode = this.onClickNode.bind(this)
         const empty=children.length === 0;
         const getControls = (isOpen) => {
             if(empty){
-                return (<em></em>)
+                return (<em/>)
             }
             if (isOpen) {
                 return (<em>
@@ -48,7 +54,7 @@ export default class DefaultTemplate extends React.Component {
             <div className="tree-content">
                 {data.title==='Category'?'':<a className="category-item" style={{fontSize:'12px'}}>{data.title}{getControls(data.isOpen)}</a>}
                 <span style={{ display:data.isOpen?'block':'none'}}>
-                    {children.map((x, i) => (<span className="category-item" key={i}>{x}</span>))}
+                    {children.map((x, i) => (<span onClick={()=>onClickNode(x)} className="category-item" key={i}>{x}</span>))}
                 </span>
             </div>
         )

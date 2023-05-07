@@ -6,6 +6,7 @@ import {addToCart} from "../../constants/cartActions";
 import {connect} from "react-redux";
 import {login} from "../../constants/userActions";
 import {Link} from "react-router-dom";
+import Recaptcha from "./Recaptcha";
 
 class AuthenticateForm extends React.Component {
 
@@ -61,6 +62,7 @@ class AuthenticateForm extends React.Component {
                     // this.setState({root: root});
                     console.log(json)
                     if (json.status === 200) {
+                        alert("Login successfully!")
                         this.props.login(json.data);
                         window.location.href = '/';
                     } else
@@ -78,7 +80,7 @@ class AuthenticateForm extends React.Component {
                         },
                         body: JSON.stringify({
                             "username": this.state.username,
-                            "password": this.state.password,
+                            "password": '',
                             "email": this.state.email,
                             "phoneNumber": this.state.phoneNumber,
                             "fullName": this.state.fullName,
@@ -89,7 +91,10 @@ class AuthenticateForm extends React.Component {
                 )
                     .then((res) => res.json())
                     .then((json) => {
-                        this.props.login(json.data);
+                        // this.props.login(json.data);
+                        alert("Register successfully!");
+                        this.changeForm();
+
                     }, (error) => {
                         if (error) {
                             this.setState({error: 'Can not sign up. Please contact to administrator!'})
@@ -134,11 +139,7 @@ class AuthenticateForm extends React.Component {
                          style={{width: '150px', height: 'auto'}} alt=""/>
                 </Link>
 
-                <form
-                    className="needs-validation"
-                    noValidate
-                    onSubmit={this.handleSubmit}
-                >
+                <form className="needs-validation" onSubmit={this.handleSubmit}>
                     <br/>
                     <div className="form-group">
 
@@ -176,7 +177,7 @@ class AuthenticateForm extends React.Component {
                                         type="number"
                                         name="phoneNumber"
                                         className="form-control"
-                                        id="exampleInputEmail1"
+                                        id="exampleInputPhone1"
                                         aria-describedby="emailHelp"
                                         required
                                         placeholder="Enter Phone"
@@ -262,6 +263,7 @@ class AuthenticateForm extends React.Component {
                 {window.innerWidth < 1000 ?
                     <div className="row form-authen">
                         {this.renderForm()}
+                        <Recaptcha/>
                     </div>
                     :
                     <div className="row form-authen">
@@ -270,6 +272,7 @@ class AuthenticateForm extends React.Component {
                         </div>
                         <div className="col-5">
                             {this.renderForm()}
+                            <Recaptcha/>
                         </div>
                     </div>
                 }

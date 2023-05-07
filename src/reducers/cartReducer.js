@@ -3,7 +3,7 @@ import {
     REMOVE_ITEM,
     SUB_QUANTITY,
     ADD_QUANTITY,
-    ADD_SHIPPING,
+    ADD_SHIPPING, SELECT_ALL, DESELECT_ALL, SELECT, DESELECT,
 } from '../constants/action-types/cart-actions'
 import {
     LOGIN_SUCCESS,
@@ -20,7 +20,7 @@ const initState = {
             price: 19442,
             unit: '65',
             rating: 5,
-            topSale:true,
+            topSale: true,
             server: [
                 {
                     serverId: 1,
@@ -79,7 +79,7 @@ const initState = {
             price: 19152,
             unit: '65',
             rating: 5,
-            topSale:true,
+            topSale: true,
             server: [
                 {
                     serverId: 1,
@@ -137,7 +137,7 @@ const initState = {
             price: 315780,
             unit: '650',
             rating: 5,
-            topSale:false,
+            topSale: false,
             server: [
                 {
                     serverId: 1,
@@ -195,7 +195,7 @@ const initState = {
             price: 77897,
             unit: '565',
             rating: 5,
-            topSale:true,
+            topSale: true,
             server: [
                 {
                     serverId: 1,
@@ -253,7 +253,7 @@ const initState = {
             price: 195281,
             unit: '6',
             rating: 5,
-            topSale:false,
+            topSale: false,
             server: [
                 {
                     serverId: 1,
@@ -311,7 +311,7 @@ const initState = {
             price: 896143,
             unit: '1',
             rating: 5,
-            topSale:true,
+            topSale: true,
             server: [
                 {
                     serverId: 1,
@@ -366,11 +366,14 @@ const initState = {
     ],
     addedItems: [],
     total: 0,
+    packageCount: 0,
+    checkoutAll: false,
     user: {},
-    token:'',
-    currency:'S',
-    language:'en',
+    token: '',
+    currency: 'S',
+    language: 'en',
     game: {
+        id: 10,
         thumbnail: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/9e9450d8-1564-49b1-834c-fc0c748e3675-ace-racer.png",
         name: "Ace Racer",
         categoryId: "1",
@@ -391,6 +394,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                 name: 'Ace Racer Top Up 60+5 Tokens, only need User ID & Server.\n',
                 price: 19442,
                 unit: '65',
+                attribute: 'tokens',
                 rating: 5,
                 server: [
                     {
@@ -436,7 +440,6 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                         parentId: 5
                     }
                 ],
-                attribute: 'tokens',
                 warehouseQuantity: 895,
                 tradeCount: 1,
                 imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/2e89d21a-56a8-42fa-a412-945ca039dae8-Screenshot 2023-04-16 at 22.34.45.png",
@@ -449,6 +452,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                 name: 'Ace Racer Top Up 1180+120 Tokens, only need User ID & Server.',
                 price: 19152,
                 unit: '65',
+                attribute: 'tokens',
                 rating: 4,
                 server: [
                     {
@@ -495,7 +499,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                     }
                 ],
                 warehouseQuantity: 895,
-                tradeCount: 1,
+                tradeCount: 4,
                 imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4cb1f4f3-9a89-4b20-82a8-75f1df0add43-Screenshot 2023-04-16 at 22.34.31.png",
                 descriptionVi: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
                 descriptionEn: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
@@ -506,6 +510,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                 name: 'Ace Racer Top Up 250+20 Tokens, only need User ID & Server.',
                 price: 315780,
                 unit: '650',
+                attribute: 'tokens',
                 rating: 4.5,
                 server: [
                     {
@@ -552,7 +557,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                     }
                 ],
                 warehouseQuantity: 895,
-                tradeCount: 1,
+                tradeCount: 15,
                 imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4cb1f4f3-9a89-4b20-82a8-75f1df0add43-Screenshot 2023-04-16 at 22.34.31.png",
                 descriptionVi: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
                 descriptionEn: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
@@ -562,6 +567,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                 id: 4,
                 name: 'Ace Racer Top Up 680+60 Tokens, only need User ID & Server.',
                 price: 77897,
+                attribute: 'tokens',
                 unit: '565',
                 rating: 2,
                 server: [
@@ -620,6 +626,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                 name: 'Ace Racer Top Up 2880+300 Tokens, only need User ID & Server.',
                 price: 195281,
                 unit: '6',
+                attribute: 'tokens',
                 rating: 5,
                 server: [
                     {
@@ -677,6 +684,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                 name: 'Ace Racer Top Up 5880+650 Tokens, only need User ID & Server.',
                 price: 896143,
                 unit: '1',
+                attribute: 'tokens',
                 rating: 5,
                 server: [
                     {
@@ -723,7 +731,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
                     }
                 ],
                 warehouseQuantity: 895,
-                tradeCount: 1,
+                tradeCount: 100,
                 imageId: "http://52.41.255.157:8080/trunggame-0.0.1/api/file/4cb1f4f3-9a89-4b20-82a8-75f1df0add43-Screenshot 2023-04-16 at 22.34.31.png",
                 descriptionVi: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
                 descriptionEn: `<p>- Please double confirm your User ID &amp; Server<br />- For Top Up, No Login Account or Password is Needed<br />- Once the top up is done, you will receive the Tokens immediately.</p>`,
@@ -736,46 +744,42 @@ const cartReducer = (state = initState, action) => {
 
     //INSIDE HOME COMPONENT
     if (action.type === ADD_TO_CART) {
-        let addedItem = state.packages.find(item => item.id === action.id)
-        //check if the action id exists in the addedItems
-        let existed_item = state.addedItems.find(item => action.id === item.id)
-        if (existed_item) {
-            addedItem.quantity += 1
-            return {
-                ...state,
-                total: state.total + addedItem.price
-            }
-        } else {
-            addedItem.quantity = 1;
-            //calculating the total
-            let newTotal = state.total + addedItem.price
+        let addedItem = action.id;
 
-            return {
-                ...state,
-                addedItems: [...state.addedItems, addedItem],
-                total: newTotal
-            }
+        //calculating the total
+        let newTotal = state.total + addedItem.amount;
+        let newPackageCount = state.packageCount + 1;
 
+        return {
+            ...state,
+            addedItems: [...state.addedItems, addedItem],
+            total: newTotal,
+            packageCount: newPackageCount
         }
     }
     if (action.type === REMOVE_ITEM) {
-        let itemToRemove = state.addedItems.find(item => action.id === item.id)
-        let new_items = state.addedItems.filter(item => action.id !== item.id)
-
+        let itemToRemove = state.addedItems.find(item => action.id === item.packageId)
+        let new_items = state.addedItems.filter(item => action.id !== item.packageId)
+        console.log("remove_item", action.id)
         //calculating the total
-        let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity)
+        let newTotal = state.total - itemToRemove.amount
+        let newPackageCount = state.packageCount - 1
         console.log(itemToRemove)
         return {
             ...state,
             addedItems: new_items,
-            total: newTotal
+            total: newTotal,
+            packageCount: newPackageCount
         }
     }
     //INSIDE CART COMPONENT
     if (action.type === ADD_QUANTITY) {
-        let addedItem = state.packages.find(item => item.id === action.id)
+        console.log("ADD_QUANTITY", action.id)
+
+        let addedItem = state.addedItems.find(item => item.packageId === action.id)
         addedItem.quantity += 1
-        let newTotal = state.total + addedItem.price
+        addedItem.amount += addedItem.price
+        let newTotal = state.total + addedItem.amount
         return {
             ...state,
             total: newTotal
@@ -785,29 +789,89 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             user: action['user'],
-            token:action['user'].token
+            token: action['user'].token
         }
     }
     if (action.type === LOG_OUT) {
         return {
             ...state,
             user: {},
-            token:''
+            token: ''
+        }
+    }
+    if (action.type === SELECT_ALL) {
+        let newItem = state.addedItems;
+        newItem.forEach(item => item.checkout = true)
+        console.log(newItem)
+        return {
+            ...state,
+            addedItems: newItem,
+            checkoutAll: true
+        }
+    }
+    if (action.type === SELECT) {
+        let newItem = state.addedItems;
+        let checkAll = 0;
+        newItem.forEach(item => {
+                if (item.packageId === action.id) {
+                    item.checkout = true
+                }
+                if (item.checkout === true) {
+                    checkAll += 1;
+                }
+            }
+        )
+        let selectAll = false;
+        if (checkAll === state.addedItems.length) selectAll = true
+        return {
+            ...state,
+            addedItems: newItem,
+            checkoutAll: selectAll
+        }
+    }
+    if (action.type === DESELECT) {
+        let newItem = state.addedItems;
+        newItem.forEach(item => {
+                if (item.packageId === action.id) {
+                    item.checkout = false
+                }
+            }
+        )
+        return {
+            ...state,
+            addedItems: newItem,
+            checkoutAll: false,
+        }
+    }
+
+    if (action.type === DESELECT_ALL) {
+        let newItem = state.addedItems;
+        newItem.forEach(item => item.checkout = false)
+        console.log(newItem)
+        return {
+            ...state,
+            addedItems: newItem,
+            checkoutAll: false
         }
     }
     if (action.type === SUB_QUANTITY) {
-        let addedItem = state.packages.find(item => item.id === action.id)
+        console.log("SUB_QUANTITY", action.id)
+
+        let addedItem = state.addedItems.find(item => item.packageId === action.id)
         //if the qt == 0 then it should be removed
         if (addedItem.quantity === 1) {
-            let new_items = state.addedItems.filter(item => item.id !== action.id)
-            let newTotal = state.total - addedItem.price
+            let new_items = state.addedItems.filter(item => item.packageId !== action.id)
+            let newTotal = state.total - 1;
+            let newPackageCount = state.packageCount - 1
             return {
                 ...state,
                 addedItems: new_items,
-                total: newTotal
+                total: newTotal,
+                packageCount:newPackageCount
             }
         } else {
-            addedItem.quantity -= 1
+            addedItem.quantity -= 1;
+            addedItem.amount = addedItem.amount - addedItem.price;
             let newTotal = state.total - addedItem.price
             return {
                 ...state,
