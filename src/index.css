@@ -97,13 +97,16 @@ a{
 .a{
   font-size: 14px;
 }
-.footer-item{
-  color: #bfbfbf;
+.footer-item a{
+  color: #bfbfbf !important;
   cursor: pointer;
   padding-top: 12px;
+  text-decoration: none;
 }
-.footer-item:hover{
+.footer-item a:hover{
   color: #ff8000;
+  text-decoration: none;
+
 }
 .content-wrapper{
   margin-top: 50px;

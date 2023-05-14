@@ -1,7 +1,6 @@
 import React from 'react';
-import {ActionTypes} from '../constants/actionTypes';
-import {connect} from 'react-redux';
-import {Zoom} from "react-slideshow-image";
+import {Link} from "react-router-dom";
+import './../index.css';
 
 class Footer extends React.Component {
 
@@ -31,17 +30,28 @@ class Footer extends React.Component {
                     <div className="col">
                         <div className="content-wrapper">
                             <p className="footer-title">Information</p>
-                            <p className="footer-item">Contact</p>
-                            <p className="footer-item">About Us</p>
-                            <p className="footer-item">Blog</p>
+                            <p className="footer-item"><a className="footer-item">Contact</a></p>
+                            <p className="footer-item">
+                                <Link to="/about-us" className="footer-item">About Us </Link>
+                            </p>
+                            <p className="footer-item">
+                                <Link to="/blog" className="footer-item">Blog</Link>
+                            </p>
                         </div>
                     </div>
                     <div className="col">
                         <div className="content-wrapper">
                             <p className="footer-title">Extras</p>
-                            <p className="footer-item">Cart</p>
-                            <p className="footer-item">Top Sales</p>
-                            <p className="footer-item">My acount</p>
+
+                            <p className="footer-item">
+                                <Link to="/cart" className="footer-item">Cart</Link>
+                            </p>
+                            <p className="footer-item">
+                                <Link to="/top-sale" className="footer-item">Top Sale </Link>
+                            </p>
+                            <p className="footer-item">
+                                <Link to="/user-profile" className="footer-item">User Profile </Link>
+                            </p>
                         </div>
                     </div>
                     <div className="col">
@@ -54,7 +64,7 @@ class Footer extends React.Component {
                                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required/>
                             <br/>
                             <br/>
-                            <p className="footer-item" style={{alignItem:'center'}}>
+                            <p className="footer-item" style={{alignItem: 'center'}}>
                                 <img src={require("./share-image/icons8-facebook-32.png")} alt=""/>
                                 <img src={require("./share-image/icons8-zalo-32.png")} alt=""/>
                                 <img src={require("./share-image/icons8-instagram-32.png")} alt=""/>
