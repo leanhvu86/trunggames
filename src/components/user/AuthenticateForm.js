@@ -8,6 +8,7 @@ import { login } from '../../constants/userActions';
 import { Link } from 'react-router-dom';
 import Recaptcha from './Recaptcha';
 import LocaleOptions from '../ui-common/Locale';
+import { FormattedMessage } from 'react-intl';
 
 class AuthenticateForm extends React.Component {
   constructor(props) {
@@ -149,7 +150,15 @@ class AuthenticateForm extends React.Component {
               </div>
             </div>
             <div className="row m-0 align-items-center w-100">
-              <h1 className="m-0 font-weight-bold">{this.state.loginForm ? 'Login' : 'Sign up'}</h1>
+              <h1 className="m-0 font-weight-bold">
+                {this.state.forgetForm ? (
+                  <FormattedMessage id="forgot password" />
+                ) : this.state.loginForm ? (
+                  <FormattedMessage id="login" />
+                ) : (
+                  <FormattedMessage id="sign up" />
+                )}
+              </h1>
             </div>
           </div>
 
@@ -171,7 +180,7 @@ class AuthenticateForm extends React.Component {
             </div>
             {!this.state.loginForm ? (
               <div className="row">
-                <div className="col">
+                <div className="col pl-0">
                   <div className="form-group">
                     <input
                       type="text"
@@ -184,7 +193,7 @@ class AuthenticateForm extends React.Component {
                     />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col pr-0">
                   <div className="form-group">
                     <input
                       type="number"
@@ -230,7 +239,7 @@ class AuthenticateForm extends React.Component {
               </div>
             ) : null}
             <button type="submit" className="btn btn-primary w-100">
-              Submit
+              <FormattedMessage id="submit" />
             </button>
             <div className="mt-3">
               <a
@@ -242,9 +251,11 @@ class AuthenticateForm extends React.Component {
                 }}
                 onClick={this.changeFormForget}
               >
-                {this.state.forgetForm ? '' : 'Forgot your password?'}
+                {this.state.forgetForm ? '' : <FormattedMessage id="forgot your password?" />}
               </a>
-              <p className="mt-2">{this.state.loginForm ? 'Do not have an account?' : 'Already have account?'}</p>
+              <p className="mt-2">
+                {this.state.loginForm ? <FormattedMessage id="do not have an account?" /> : <FormattedMessage id="already have account?" />}
+              </p>
               <a
                 className="color-primary"
                 style={{
@@ -254,7 +265,7 @@ class AuthenticateForm extends React.Component {
                 }}
                 onClick={this.changeForm}
               >
-                {this.state.loginForm ? 'Sign Up' : 'Sign In'}
+                {this.state.loginForm ? <FormattedMessage id="sign up" /> : <FormattedMessage id="sign in" />}
               </a>
             </div>
           </form>
