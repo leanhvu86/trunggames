@@ -122,12 +122,12 @@ class Cart extends React.Component {
                                             <div className="row">
                                                 <div className="col">
                                                     <span>
-                                                        <i className="fa fa-minus icon-button-cart" aria-hidden="true"
+                                                        <i className="fa fa-minus cart-icon" aria-hidden="true"
                                                            onClick={() => {
                                                                this.handleSubtractQuantity(item.packageId)
                                                            }}/>
                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <i className="fa fa-plus icon-button-cart" aria-hidden="true"
+                                                        <i className="fa fa-plus cart-icon" aria-hidden="true"
                                                            onClick={() => {
                                                                this.handleAddQuantity(item.packageId)
                                                            }}/>
@@ -142,7 +142,7 @@ class Cart extends React.Component {
                                                                             prefix={this.props.currency}/>
                                                         </b>
                                                         </p>
-                                                        <span><i className="fa fa-trash-o fa-2x remove-button"
+                                                        <span><i className="fa fa-trash-o fa-2x cart-icon"
                                                                  onClick={() => {
                                                                      this.handleRemove(item.packageId)
                                                                  }} aria-hidden="true"/></span>

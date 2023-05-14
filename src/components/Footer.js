@@ -33,7 +33,7 @@ class Footer extends React.Component {
                             <p className="footer-title">Information</p>
                             <p className="footer-item">Contact</p>
                             <p className="footer-item">About Us</p>
-                            <p className="footer-item">User Guide</p>
+                            <p className="footer-item">Blog</p>
                         </div>
                     </div>
                     <div className="col">

@@ -117,7 +117,7 @@ class MobilePopular extends React.Component {
 
                 {this.renderMobileGames()}
                 <div className="center-title">
-                    <h1 align="center">Most Popular PC Games</h1>
+                    <h1 align="center">Top Sale</h1>
                     <div className="underline-span"/>
 
                 </div>

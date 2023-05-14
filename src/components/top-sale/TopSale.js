@@ -57,6 +57,7 @@ class TopSale extends React.Component {
                 {/*{this.state.loaded ? null :<LoadingSpinner/>}*/}
                 <Translation>{t => <TopMenu t={t} />}</Translation>
                 <NavBar/>
+                <h3 style={{marginLeft:"15%",color:'white'}}>TOP SALE</h3>
                 {this.state.package === 0 ?
                     <div className="item-content-card">
                         <GameDetailSearchBar game={this.props.game} onChange={this.onChange.bind(this)}

@@ -58,7 +58,7 @@ class TopMenu extends React.Component {
                             {/*       name="startDate" placeholder="Type a Game"/>*/}
                             {/*<button >Search<i className="fa fa-search" aria-hidden="true"/>*/}
                             {/*</button>*/}
-                            <Link to="/cart" className="nav-links float-right">
+                            <Link to="/cart" className="cart-icon float-right" style={{width:'30px',height:'30px',position:'relative'}}>
                                 <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"/>
                                 <span className="total-count">{this.props.packageCount}</span>
                             </Link>
