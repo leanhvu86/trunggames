@@ -45,6 +45,7 @@ ReactDOM.render(
             <Route path="/login" element={<AuthenticateForm />} />
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<UserProfile />} />
           </Routes>
         </BrowserRouter>
       </LocalesProvider>
