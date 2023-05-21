@@ -1,8 +1,8 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../../constants/userActions';
-import { connect } from 'react-redux';
 import LocaleOptions from './Locale';
 
 class TopMenu extends React.Component {
@@ -43,6 +43,13 @@ class TopMenu extends React.Component {
             <Link to="/cart" className="cart-icon" style={{ width: '30px', height: '30px', position: 'relative' }}>
               <i className="fa fa-shopping-cart fa-lg" aria-hidden="true" />
               <span className="total-count">{this.props.packageCount}</span>
+            </Link>
+            <Link
+              to="/profile"
+              className="d-flex align-items-center text-decoration-none font-weight-bold text-white"
+              style={{ fontFamily: 'inherit' }}
+            >
+              <span>Nguyen Van A</span>
             </Link>
             <button onClick={this.handleLogOut} className="logout-btn">
               Logout
