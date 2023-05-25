@@ -47,9 +47,7 @@ class AuthenticateForm extends React.Component {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          Authorization:
-            'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTY4MTY1OTMzNiwiZXhwIjoxNjgxNzQ1NzM2fQ.zxN9upN4w3YsCyd7z5tH5nmCWq3NwSo5idLH6P0dRyYlz_TzEvPG4bEem0qjJo-cWWmXfdLIvjSY2Xa3DvFrnA'
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({
           username: this.state.username,
@@ -72,13 +70,10 @@ class AuthenticateForm extends React.Component {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            Authorization:
-              'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTY4MTY1OTMzNiwiZXhwIjoxNjgxNzQ1NzM2fQ.zxN9upN4w3YsCyd7z5tH5nmCWq3NwSo5idLH6P0dRyYlz_TzEvPG4bEem0qjJo-cWWmXfdLIvjSY2Xa3DvFrnA'
-          },
+            'Access-Control-Allow-Origin': '*'
+              },
           body: JSON.stringify({
             username: this.state.username,
-            password: '',
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             fullName: this.state.fullName,
@@ -224,7 +219,7 @@ class AuthenticateForm extends React.Component {
                 />
               </div>
             ) : null}
-            {!this.state.forgetForm ? (
+            {!this.state.forgetForm&&this.state.loginForm ? (
               <div className="form-group">
                 <input
                   type="password"
@@ -287,7 +282,7 @@ class AuthenticateForm extends React.Component {
                 }}
               >
                 <div className="row w-100 m-0 flex-wrap-reverse" style={{ background: '#f2f0f3' }}>
-                  <div className="col-md-12 col-lg-7 form-authen m-0 w-100 d-lg-block d-md-none d-sm-none d-xs-none"></div>
+                  <div className="col-md-12 col-lg-7 form-authen m-0 w-100 d-lg-block d-md-none d-sm-none d-xs-none"/>
                   <div className="col-md-12 col-lg-5">
                     {this.renderForm()}
                     {/* <Recaptcha /> */}
