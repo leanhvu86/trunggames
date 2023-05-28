@@ -139,8 +139,11 @@ class Blog extends React.Component {
     viewContent(blog) {
         if (this.state.viewType)
             this.returnBlog();
-        this.setState({blogView: blog})
-    }
+        this.setState({blogView: blog});
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })    }
 
     returnBlog() {
         this.setState({viewType: !this.state.viewType})
@@ -154,7 +157,7 @@ class Blog extends React.Component {
                 <div className="row">
                     {blogs.map(blog => {
                         return (
-                            <div className={window.innerWidth<1000?"container":"col-4"} key={blog.id}>
+                            <div className={window.innerWidth < 1000 ? "container" : "col-4"} key={blog.id}>
                                 <div className="content-blog" onClick={() => this.viewContent(blog)}>
                                     <img style={{width: '100%', height: '200px'}}
                                          className="art lazy" alt=""
