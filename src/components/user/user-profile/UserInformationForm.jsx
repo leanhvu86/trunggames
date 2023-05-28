@@ -31,7 +31,7 @@ const UserInformationForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'username' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -43,7 +43,7 @@ const UserInformationForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'email' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -55,7 +55,7 @@ const UserInformationForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'mobile phone' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -67,7 +67,7 @@ const UserInformationForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'full name' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -79,7 +79,7 @@ const UserInformationForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'address' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>

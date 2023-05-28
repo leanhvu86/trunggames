@@ -35,35 +35,41 @@ class MobilePopular extends React.Component {
 
   renderMobileGames() {
     return (
-      <div className="row service-container1">
-        <div className="img-hover-zoom">
-          <img src={require('./mobile-image/category-image-02-446x550_t.jpg')} alt="Batman" />
-          <div className="image-footer">
-            <span className="game-name">Batman</span>
-            <br />
-            <span className="shop-now">
-              <FormattedMessage id="shop now" />
-            </span>
+      <div className="row justify-content-between service-container1">
+        <div className="col-12 col-md-4 col-lg-4 col-xl-3 p-2">
+          <div className="img-hover-zoom position-relative h-auto w-100">
+            <img src={require('./mobile-image/category-image-02-446x550_t.jpg')} alt="Batman" className="w-100 h-auto" />
+            <div className="image-footer py-4 py-md-3 h-auto">
+              <span className="game-name">Batman</span>
+              <br />
+              <span className="shop-now">
+                <FormattedMessage id="shop now" />
+              </span>
+            </div>
           </div>
         </div>
-        <div className="img-hover-zoom">
-          <img src={require('./mobile-image/category-image-01-446x550_t.jpg')} alt="Bayonetta" />
-          <div className="image-footer">
-            <span className="game-name">Bayonetta</span>
-            <br />
-            <span className="shop-now">
-              <FormattedMessage id="shop now" />
-            </span>
+        <div className="col-12 col-md-4 col-lg-4 col-xl-3 p-2">
+          <div className="img-hover-zoom position-relative h-auto w-100">
+            <img src={require('./mobile-image/category-image-01-446x550_t.jpg')} alt="Bayonetta" className="w-100 h-auto" />
+            <div className="image-footer py-4 py-md-3 h-auto">
+              <span className="game-name">Bayonetta</span>
+              <br />
+              <span className="shop-now">
+                <FormattedMessage id="shop now" />
+              </span>
+            </div>
           </div>
         </div>
-        <div className="img-hover-zoom">
-          <img src={require('./mobile-image/category-image-03-446x550_t.jpg')} alt="Dark souls" />
-          <div className="image-footer">
-            <span className="game-name">Dark souls</span>
-            <br />
-            <span className="shop-now">
-              <FormattedMessage id="shop now" />
-            </span>
+        <div className="col-12 col-md-4 col-lg-4 col-xl-3 p-2">
+          <div className="img-hover-zoom position-relative h-auto w-100">
+            <img src={require('./mobile-image/category-image-03-446x550_t.jpg')} alt="Dark souls" className="w-100 h-auto" />
+            <div className="image-footer py-4 py-md-3 h-auto">
+              <span className="game-name">Dark souls</span>
+              <br />
+              <span className="shop-now">
+                <FormattedMessage id="shop now" />
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -73,26 +79,26 @@ class MobilePopular extends React.Component {
   renderPCGame() {
     return (
       <div className="row service-container1">
-        <div className=" image-content">
+        <div className="image-content col-12 col-md-4 p-2">
           <div className="img-block">
             <span />
-            <Link to="/game-detail" className="product-nav-links">
+            <Link to="/game-detail" className="product-nav-links p-0">
               <img src={require('./mobile-image/dragon-nest.png')} alt="Dragon Nest" />
             </Link>
           </div>
         </div>
-        <div className=" image-content ">
+        <div className="image-content col-12 col-md-4 p-2">
           <div className="img-block">
             <span />
-            <Link to="/game-detail" className="product-nav-links">
+            <Link to="/game-detail" className="product-nav-links p-0">
               <img src={require('./mobile-image/final-fantasy-xvi.png')} alt="Final Fantasy XVI" />
             </Link>
           </div>
         </div>
-        <div className=" image-content">
+        <div className="image-content col-12 col-md-4 p-2">
           <div className="img-block">
             <span />
-            <Link to="/game-detail" className="product-nav-links">
+            <Link to="/game-detail" className="product-nav-links p-0">
               <img src={require('./mobile-image/bless-unleashed.png')} alt="Bless unleashed" />
             </Link>
           </div>
