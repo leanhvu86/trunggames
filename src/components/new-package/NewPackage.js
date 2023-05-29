@@ -78,8 +78,8 @@ class NewPackage extends React.Component {
   renderWebsite() {
     return (
       <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
+        spaceBetween={0} 
+        slidesPerView={Math.floor(window.innerWidth / 384) + 1}
         // onSlideChange={() => console.log('slide change')}
         onSwiper={
           (swiper) => {}
@@ -124,7 +124,7 @@ class NewPackage extends React.Component {
       <div>
         <br />
         <br />
-        {window.innerWidth < 1000 ? this.renderMobile() : this.renderWebsite()}
+        {this.renderWebsite()}
         <br />
         <br />
       </div>

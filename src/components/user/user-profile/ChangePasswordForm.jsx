@@ -30,7 +30,7 @@ const ChangePasswordForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'current password' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -41,7 +41,7 @@ const ChangePasswordForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'new password' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -52,7 +52,7 @@ const ChangePasswordForm = () => {
           <input
             type="text"
             placeholder={formatMessage({ id: 'confirm password' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>

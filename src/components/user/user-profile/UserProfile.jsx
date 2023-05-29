@@ -28,10 +28,10 @@ class UserProfile extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-4">
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-action active">Thông tin tài khoản</li>
-                <li class="list-group-item list-group-item-action">Đổi mật khẩu</li>
-                <li class="list-group-item list-group-item-action">
+              <ul className="list-group">
+                <li className="list-group-item list-group-item-action active">Thông tin tài khoản</li>
+                <li className="list-group-item list-group-item-action">Đổi mật khẩu</li>
+                <li className="list-group-item list-group-item-action">
                   <a href="/login" className="h-100 w-100 d-block">
                     Đăng xuất
                   </a>

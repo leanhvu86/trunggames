@@ -12,9 +12,9 @@ class Footer extends React.Component {
   render() {
     return (
       <footer id="colophon" className="site-footer" role="contentinfo">
-        <div className="row">
-          <div className="col">
-            <div className="content-wrapper">
+        <div className="row py-4 px-2 container m-auto">
+          <div className="col col-lg-3 col-md-6 col-sm-6">
+            <div>
               <p className="footer-title">
                 <FormattedMessage id="address info" />
               </p>
@@ -28,8 +28,8 @@ class Footer extends React.Component {
               </p>
             </div>
           </div>
-          <div className="col">
-            <div className="content-wrapper">
+          <div className="col col-lg-3 col-md-6 col-sm-6 d-none d-sm-block">
+            <div>
               <p className="footer-title">
                 <FormattedMessage id="information" />
               </p>
@@ -48,8 +48,8 @@ class Footer extends React.Component {
               </p>
             </div>
           </div>
-          <div className="col">
-            <div className="content-wrapper">
+          <div className="col col-lg-2 col-md-6 col-sm-6 d-none d-sm-block">
+            <div>
               <p className="footer-title">
                 <FormattedMessage id="extras" />
               </p>
@@ -71,29 +71,27 @@ class Footer extends React.Component {
               </p>
             </div>
           </div>
-          <div className="col">
-            <div className="content-wrapper">
-              <p className="footer-title">
-                <FormattedMessage id="our newsletter" />
-              </p>
-              <p className="footer-item">There are many variations of passages of form humour or randomised</p>
+          <div className="col col-lg-4 col-md-6 col-sm-6">
+            <p className="footer-title">
+              <FormattedMessage id="our newsletter" />
+            </p>
+            <p className="footer-item">There are many variations of passages of form humour or randomised</p>
 
-              <input
-                className="c-form__input"
-                placeholder="E-mail"
-                type="email"
-                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-                required
-              />
-              <br />
-              <br />
-              <p className="footer-item" style={{ alignItem: 'center' }}>
-                <img src={require('./share-image/icons8-facebook-32.png')} alt="" />
-                <img src={require('./share-image/icons8-zalo-32.png')} alt="" />
-                <img src={require('./share-image/icons8-instagram-32.png')} alt="" />
-                <img src={require('./share-image/icons8-telegram-app-32.png')} alt="" />
-              </p>
-            </div>
+            <input
+              className="c-form__input"
+              placeholder="E-mail"
+              type="email"
+              pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+              required
+            />
+            <br />
+            <br />
+            <p className="footer-item" style={{ alignItem: 'center' }}>
+              <img src={require('./share-image/icons8-facebook-32.png')} alt="" />
+              <img src={require('./share-image/icons8-zalo-32.png')} alt="" />
+              <img src={require('./share-image/icons8-instagram-32.png')} alt="" />
+              <img src={require('./share-image/icons8-telegram-app-32.png')} alt="" />
+            </p>
           </div>
         </div>
         <div className="underline-footer" />
