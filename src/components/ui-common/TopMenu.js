@@ -36,25 +36,22 @@ class TopMenu extends React.Component {
 
     return (
       <div className="row navbar" style={styleTop}>
-        <div className="col-4"></div>
-        <div className="col-8">
-          <div className="row justify-content-end text-white" style={{ gap: '1em' }}>
-            <LocaleOptions />
-            <Link to="/cart" className="cart-icon" style={{ width: '30px', height: '30px', position: 'relative' }}>
-              <i className="fa fa-shopping-cart fa-lg" aria-hidden="true" />
-              <span className="total-count">{this.props.packageCount}</span>
-            </Link>
-            <Link
-              to="/profile"
-              className="d-flex align-items-center text-decoration-none font-weight-bold text-white"
-              style={{ fontFamily: 'inherit' }}
-            >
-              <span>Nguyen Van A</span>
-            </Link>
-            <button onClick={this.handleLogOut} className="logout-btn">
-              Logout
-            </button>
-          </div>
+        <div className="row w-100 justify-content-end text-white" style={{ gap: '1em' }}>
+          <LocaleOptions />
+          <Link to="/cart" className="cart-icon" style={{ width: '30px', height: '30px', position: 'relative' }}>
+            <i className="fa fa-shopping-cart fa-lg" aria-hidden="true" />
+            <span className="total-count">{this.props.packageCount}</span>
+          </Link>
+          <Link
+            to="/profile"
+            className="d-flex align-items-center text-decoration-none font-weight-bold text-white"
+            style={{ fontFamily: 'inherit' }}
+          >
+            <span>Nguyen Van A</span>
+          </Link>
+          <button onClick={this.handleLogOut} className="logout-btn">
+            Logout
+          </button>
         </div>
       </div>
     );
@@ -77,3 +74,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopMenu);
+

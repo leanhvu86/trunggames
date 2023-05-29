@@ -1,3 +1,4 @@
+import { IconChevronDown } from '@tabler/icons-react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,8 +11,11 @@ const LocaleOptions = () => {
     dispatch({ type: 'UPDATE_LOCALE', payload: e.target.value });
   };
   return (
-    <div className="position-relative d-flex align-items-center" style={{ width: '90px' }}>
-      <span className="text-end w-100">{language === 'vi' ? formatMessage({ id: 'vietnamese' }) : formatMessage({ id: 'english' })}</span>
+    <div className="position-relative d-flex align-items-center" style={{ width: '85px' }}>
+      <div className="text-end w-100 row align-items-center justify-content-between">
+        <span>{language === 'vi' ? formatMessage({ id: 'vietnamese' }) : formatMessage({ id: 'english' })}</span>
+        <IconChevronDown size={14} />
+      </div>
       <select
         className="formSelect h-auto position-absolute l-0 w-100 cursor-pointer"
         onChange={handleChange}
@@ -31,3 +35,4 @@ const LocaleOptions = () => {
 };
 
 export default LocaleOptions;
+
