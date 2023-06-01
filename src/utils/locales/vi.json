@@ -64,5 +64,8 @@
   "email": "E-mail",
   "mobile phone": "Điện thoại di động",
   "full name": "Họ và tên",
-  "address": "Địa chỉ"
+  "address": "Địa chỉ",
+  "profile": "Hồ sơ",
+  "logout": "Đăng xuất"
 }
+

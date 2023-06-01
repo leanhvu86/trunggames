@@ -8,6 +8,7 @@ import Footer from '../../Footer';
 import ScrollButton from '../../ui-common/ScrollButton';
 import UserInformationForm from './UserInformationForm';
 import ChangePasswordForm from './ChangePasswordForm';
+import './user-profile.css';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -25,14 +26,14 @@ class UserProfile extends React.Component {
         {/*{this.state.loaded ? null :<LoadingSpinner/>}*/}
         <Translation>{(t) => <TopMenu t={t} />}</Translation>
         <NavBar />
-        <div className="container">
+        <div className="container py-4">
           <div className="row">
             <div className="col-4">
               <ul className="list-group">
                 <li className="list-group-item list-group-item-action active">Thông tin tài khoản</li>
                 <li className="list-group-item list-group-item-action">Đổi mật khẩu</li>
-                <li className="list-group-item list-group-item-action">
-                  <a href="/login" className="h-100 w-100 d-block">
+                <li className="list-group-item list-group-item-action p-0">
+                  <a href="/login" className="h-100 w-100 d-block text-inherit" style={{ padding: '12px 20px' }}>
                     Đăng xuất
                   </a>
                 </li>
@@ -53,3 +54,4 @@ class UserProfile extends React.Component {
 }
 
 export default UserProfile;
+

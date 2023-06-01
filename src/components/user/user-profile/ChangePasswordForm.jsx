@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import PasswordInput from './InputTypePassword';
 
 const ChangePasswordForm = () => {
   const { formatMessage } = useIntl();
@@ -11,7 +12,7 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <div className="w-100 p-3 border border-light text-white rounded mt-4">
+    <div className="w-100 p-3 border border-divider text-white rounded mt-4">
       <div className="d-flex align-items-center justify-content-between">
         <h5 className="m-0">Change password</h5>
         <button
@@ -27,37 +28,41 @@ const ChangePasswordForm = () => {
           <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
             <FormattedMessage id="current password" />
           </label>
-          <input
-            type="text"
-            placeholder={formatMessage({ id: 'current password' })}
-            className="form-control form-control-sm col-lg-5 col-md-8"
-            disabled={!enableEdit}
-          />
+          <div className="col-lg-5 col-md-8 m-0 p-0">
+            <PasswordInput
+              placeholder={formatMessage({ id: 'current password' })}
+              className="form-control form-control-sm"
+              disabled={!enableEdit}
+            />
+          </div>
         </div>
         <div className="row mt-2">
           <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
             <FormattedMessage id="new password" />
           </label>
-          <input
-            type="text"
-            placeholder={formatMessage({ id: 'new password' })}
-            className="form-control form-control-sm col-lg-5 col-md-8"
-            disabled={!enableEdit}
-          />
+          <div className="col-lg-5 col-md-8 m-0 p-0">
+            <PasswordInput
+              placeholder={formatMessage({ id: 'new password' })}
+              className="form-control form-control-sm"
+              disabled={!enableEdit}
+            />
+          </div>
         </div>
         <div className="row mt-2">
           <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
             <FormattedMessage id="confirm password" />
           </label>
-          <input
-            type="text"
-            placeholder={formatMessage({ id: 'confirm password' })}
-            className="form-control form-control-sm col-lg-5 col-md-8"
-            disabled={!enableEdit}
-          />
+          <div className="col-lg-5 col-md-8 m-0 p-0">
+            <PasswordInput
+              placeholder={formatMessage({ id: 'confirm password' })}
+              className="form-control form-control-sm"
+              disabled={!enableEdit}
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 export default ChangePasswordForm;
+

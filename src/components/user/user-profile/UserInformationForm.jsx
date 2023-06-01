@@ -11,7 +11,7 @@ const UserInformationForm = () => {
   };
 
   return (
-    <div className="w-100 p-3 border border-light text-white rounded">
+    <div className="w-100 p-3 border border-divider text-white rounded">
       <div className="d-flex align-items-center justify-content-between">
         <h5 className="m-0">User Information</h5>
         <button
@@ -44,7 +44,7 @@ const UserInformationForm = () => {
             type="text"
             placeholder={formatMessage({ id: 'email' })}
             className="form-control form-control-sm col-lg-5 col-md-8"
-            disabled={!enableEdit}
+            disabled
           />
         </div>
         <div className="row mt-2">
@@ -89,3 +89,4 @@ const UserInformationForm = () => {
 };
 
 export default UserInformationForm;
+
