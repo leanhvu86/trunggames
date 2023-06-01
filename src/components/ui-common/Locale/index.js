@@ -11,10 +11,10 @@ const LocaleOptions = () => {
     dispatch({ type: 'UPDATE_LOCALE', payload: e.target.value });
   };
   return (
-    <div className="position-relative d-flex align-items-center" style={{ width: '85px' }}>
+    <div className="position-relative d-flex align-items-center" style={{ width: 'fit-content' }}>
       <div className="text-end w-100 row align-items-center justify-content-between">
         <span>{language === 'vi' ? formatMessage({ id: 'vietnamese' }) : formatMessage({ id: 'english' })}</span>
-        <IconChevronDown size={14} />
+        <IconChevronDown size={14} className="ml-2" />
       </div>
       <select
         className="formSelect h-auto position-absolute l-0 w-100 cursor-pointer"
