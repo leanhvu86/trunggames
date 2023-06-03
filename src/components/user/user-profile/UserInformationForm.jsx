@@ -24,7 +24,7 @@ const UserInformationForm = () => {
       <hr className="border-top border-light" />
       <div className="d-flex flex-column">
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="username" />
           </label>
 
@@ -36,7 +36,7 @@ const UserInformationForm = () => {
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="email" />
           </label>
 
@@ -48,7 +48,7 @@ const UserInformationForm = () => {
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="mobile phone" />
           </label>
 
@@ -60,7 +60,7 @@ const UserInformationForm = () => {
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="full name" />
           </label>
 
@@ -72,7 +72,7 @@ const UserInformationForm = () => {
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="address" />
           </label>
 
