@@ -12,7 +12,7 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <div className="w-100 p-3 border border-divider text-white rounded mt-4">
+    <div className="w-100 p-3 border border-divider text-white rounded">
       <div className="d-flex align-items-center justify-content-between">
         <h5 className="m-0">Change password</h5>
         <button
@@ -25,7 +25,7 @@ const ChangePasswordForm = () => {
       <hr className="border-top border-light" />
       <div className="d-flex flex-column">
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="p-0 col-lg-4 col-xl-3 col-md-4">
             <FormattedMessage id="current password" />
           </label>
           <div className="col-lg-5 col-md-8 m-0 p-0">
@@ -37,7 +37,7 @@ const ChangePasswordForm = () => {
           </div>
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="p-0 col-lg-4 col-xl-3 col-md-4">
             <FormattedMessage id="new password" />
           </label>
           <div className="col-lg-5 col-md-8 m-0 p-0">
@@ -49,7 +49,7 @@ const ChangePasswordForm = () => {
           </div>
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="p-0 col-lg-4 col-xl-3 col-md-4">
             <FormattedMessage id="confirm password" />
           </label>
           <div className="col-lg-5 col-md-8 m-0 p-0">

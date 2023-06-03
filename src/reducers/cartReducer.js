@@ -751,6 +751,7 @@ Lấy bối cảnh h&agrave;ng trăm năm trong tương lai tr&ecirc;n h&agrave;
     ]
   }
 };
+
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
   if (action.type === ADD_TO_CART) {
