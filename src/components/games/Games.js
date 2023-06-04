@@ -11,6 +11,7 @@ import TreeRenderer, {pathGet, pathMerge} from 'react-tree-renderer';
 import {default as DefaultTemplate, eventTypes} from './DefaultTemplate'
 import LoadingSpinner from "../ui-common/LoadingSpinner";
 import Tippy from "@tippyjs/react";
+import configData from '../../config.json';
 
 
 const gameList = [
@@ -245,7 +246,7 @@ class Games extends React.Component {
         //     e.preventDefault();
         // });
         fetch(
-            "http://52.41.255.157:8080/trunggame-0.0.1/api/category/list")
+            configData.SERVER_URL + "/category/list")
             .then((res) => res.json())
             .then((json) => {
                 const tree = this.buildTree(json.data, 0);
@@ -301,7 +302,7 @@ class Games extends React.Component {
                     listTemp.push(game);
 
                 }
-                this.setState({searchType: category })
+                this.setState({searchType: category})
             } else if (type === "Char") {
                 if (game.name.toUpperCase().startsWith(value)) {
                     listTemp.push(game);

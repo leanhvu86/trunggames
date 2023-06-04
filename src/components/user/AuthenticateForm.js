@@ -1,12 +1,10 @@
-import React, {isValidElement} from 'react';
+import React from 'react';
 import './login.css';
 import validator from 'validator';
 import configData from '../../config.json';
-import {addToCart} from '../../constants/cartActions';
 import {connect} from 'react-redux';
 import {login} from '../../constants/userActions';
 import {Link} from 'react-router-dom';
-import Recaptcha from './Recaptcha';
 import LocaleOptions from '../ui-common/Locale';
 import {FormattedMessage} from 'react-intl';
 
