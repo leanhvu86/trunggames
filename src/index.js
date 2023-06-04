@@ -1,24 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Games from './components/games/Games';
-import TopSale from './components/top-sale/TopSale';
-import Blog from './components/blog/Blog';
+import { createStore } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import storage from 'redux-persist/lib/storage';
+import App from './App';
+import Cart from './components/Cart';
 import AboutUs from './components/about-us/AboutUs';
+import Blog from './components/blog/Blog';
+import Games from './components/games/Games';
 import GameDetail from './components/games/game-detail/GameDetail';
+import TopSale from './components/top-sale/TopSale';
 import AuthenticateForm from './components/user/AuthenticateForm';
 import UserProfile from './components/user/user-profile/UserProfile';
-import cartReducer from './reducers/cartReducer';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { createStore } from 'redux';
-import Cart from './components/Cart';
-import { PersistGate } from 'redux-persist/integration/react';
+import './index.scss';
 import LocalesProvider from './provider/Locales';
+import cartReducer from './reducers/cartReducer';
+import registerServiceWorker from './registerServiceWorker';
 
 const persistConfig = {
   key: 'root',
@@ -54,3 +54,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 registerServiceWorker();
+

@@ -35,7 +35,7 @@ class Banner extends React.Component {
                 <Zoom scale={1.4} indicators={true}>
                     {this.props.banner.map((each, index) => (
                         <div key={index} style={{ width: "100%" }}>
-                            <img style={{ objectFit: "cover", width: "100%",height:"580px" }} alt="Slide Image" src={each.url}
+                            <img style={{ objectFit: "cover", width: "100%",height:"auto", aspectRatio: '16/9' }} alt="Slide Image" src={each.url}
                                  onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}/>
                         </div>
                     ))}

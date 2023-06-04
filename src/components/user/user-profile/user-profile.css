@@ -1,0 +1,45 @@
+.list-group-item.list-group-item-action {
+  background: #332540;
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+  border-color: #c4c0c0;
+}
+
+.list-group-item.list-group-item-action:hover {
+  background-color: #ff8000;
+}
+
+.list-group-item.list-group-item-action.active {
+  background-color: #ff8000;
+}
+
+.border-divider {
+  border-color: #c4c0c0 !important;
+}
+
+.input-password-container input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 34px;
+}
+
+.inputEndAdornment {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4c0c0;
+  cursor: pointer;
+}
+
+.inputEndAdornment:hover {
+  color: rgb(197, 203, 208);
+}
+

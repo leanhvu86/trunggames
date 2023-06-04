@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../../constants/userActions';
 import LocaleOptions from './Locale';
+import { FormattedMessage } from 'react-intl';
 
 class TopMenu extends React.Component {
   constructor(props) {
@@ -36,24 +37,58 @@ class TopMenu extends React.Component {
 
     return (
       <div className="row navbar" style={styleTop}>
-        <div className="col-4"></div>
-        <div className="col-8">
-          <div className="row justify-content-end text-white" style={{ gap: '1em' }}>
-            <LocaleOptions />
-            <Link to="/cart" className="cart-icon" style={{ width: '30px', height: '30px', position: 'relative' }}>
-              <i className="fa fa-shopping-cart fa-lg" aria-hidden="true" />
-              <span className="total-count">{this.props.packageCount}</span>
-            </Link>
-            <Link
-              to="/profile"
-              className="d-flex align-items-center text-decoration-none font-weight-bold text-white"
-              style={{ fontFamily: 'inherit' }}
+        <div className="row w-100 justify-content-end text-white" style={{ gap: '1em' }}>
+          <LocaleOptions />
+          <Link to="/cart" className="cart-icon" style={{ width: '30px', height: '30px', position: 'relative' }}>
+            <i className="fa fa-shopping-cart fa-lg" aria-hidden="true" />
+            <span className="total-count">{this.props.packageCount}</span>
+          </Link>
+          {/* <Link
+            to="/profile"
+            className="d-flex align-items-center text-decoration-none font-weight-bold text-white"
+            style={{ fontFamily: 'inherit' }}
+          >
+            <span>Nguyen Van A</span>
+          </Link> */}
+          <div className="dropdown ml-3">
+            <div
+              className="dropdown-toggle d-flex align-items-center justify-content-end"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              <span>Nguyen Van A</span>
-            </Link>
-            <button onClick={this.handleLogOut} className="logout-btn">
-              Logout
-            </button>
+              <div style={{ width: '30px', height: '30px', overflow: 'hidden' }}>
+                <img src="https://i.pravatar.cc/100?img=3" style={{ aspectRatio: 1 / 1, width: '100%', height: 'auto' }} />
+              </div>
+            </div>
+            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style={{ zIndex: 99999 }}>
+              <div className="px-4 py-1" style={{ maxWidth: '220px' }}>
+                <p
+                  className="m-0 p-0 font-weight-bold"
+                  style={{ whiteSpace: 'nowrap', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                >
+                  Nguyen Van Minh
+                </p>
+                <p className="m-0 p-0 font-weight-lighter" style={{ fontSize: '0.875rem' }}>
+                  Premium
+                </p>
+              </div>
+              <hr className="mx-1 my-1" />
+              <ul className="m-0 p-0">
+                <li
+                  className="dropdown-item"
+                  onClick={() => {
+                    window.location.href = '/profile';
+                  }}
+                >
+                  <FormattedMessage id="profile" />
+                </li>
+                <li onClick={this.handleLogOut} className="dropdown-item">
+                  <FormattedMessage id="logout" />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -77,3 +112,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopMenu);
+

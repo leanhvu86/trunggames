@@ -11,7 +11,7 @@ const UserInformationForm = () => {
   };
 
   return (
-    <div className="w-100 p-3 border border-light text-white rounded">
+    <div className="w-100 p-3 border border-divider text-white rounded">
       <div className="d-flex align-items-center justify-content-between">
         <h5 className="m-0">User Information</h5>
         <button
@@ -24,62 +24,62 @@ const UserInformationForm = () => {
       <hr className="border-top border-light" />
       <div className="d-flex flex-column">
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="username" />
           </label>
 
           <input
             type="text"
             placeholder={formatMessage({ id: 'username' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="email" />
           </label>
 
           <input
             type="text"
             placeholder={formatMessage({ id: 'email' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
-            disabled={!enableEdit}
+            className="form-control form-control-sm col-lg-5 col-md-8"
+            disabled
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="mobile phone" />
           </label>
 
           <input
             type="text"
             placeholder={formatMessage({ id: 'mobile phone' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="full name" />
           </label>
 
           <input
             type="text"
             placeholder={formatMessage({ id: 'full name' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
         <div className="row mt-2">
-          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4">
+          <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
             <FormattedMessage id="address" />
           </label>
 
           <input
             type="text"
             placeholder={formatMessage({ id: 'address' })}
-            class="form-control form-control-sm col-lg-5 col-md-8"
+            className="form-control form-control-sm col-lg-5 col-md-8"
             disabled={!enableEdit}
           />
         </div>
@@ -89,3 +89,4 @@ const UserInformationForm = () => {
 };
 
 export default UserInformationForm;
+

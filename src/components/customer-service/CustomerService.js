@@ -22,7 +22,7 @@ class CustomerService extends React.Component {
           <br />
 
           <div className="row row-cols-auto service-container">
-            <div className="col service-tag">
+            <div className="col-6 col-lg-3 py-2 service-tag">
               <a className="icon-image">
                 <img
                   src={require('./service-image/delivery.ico')}
@@ -40,7 +40,7 @@ class CustomerService extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col service-tag">
+            <div className="col-6 col-lg-3 py-2 service-tag">
               <a className="icon-image">
                 {' '}
                 <img
@@ -59,7 +59,7 @@ class CustomerService extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col service-tag">
+            <div className="col-6 col-lg-3 py-2 service-tag">
               <a className="icon-image">
                 <img
                   src={require('./service-image/discount.ico')}
@@ -77,7 +77,7 @@ class CustomerService extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col service-tag">
+            <div className="col-6 col-lg-3 py-2 service-tag">
               <a className="icon-image">
                 <img
                   src={require('./service-image/return.ico')}

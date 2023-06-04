@@ -63,5 +63,8 @@
   "email": "Email",
   "mobile phone": "Mobile phone",
   "full name": "Full name",
-  "address": "Address"
+  "address": "Address",
+  "profile": "Profile",
+  "logout": "Logout"
 }
+
