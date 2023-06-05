@@ -112,7 +112,7 @@ class MobilePopular extends React.Component {
       <div>
         <div className="center-title">
           <h1 align="center">
-            <FormattedMessage id="most popular mobile games" />
+            <FormattedMessage id="most popular games" />
           </h1>
           <div className="underline-span" />
         </div>

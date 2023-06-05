@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 import ParallaxImage from './components/parallax/ParallaxImage';
 import {FormattedMessage} from 'react-intl';
 import configData from "./config.json";
+import {ParallaxCards} from "./components/customer-service/ParallaxCards";
 
 const mapStateToProps = (state) => {
     return {...state.quiz};
@@ -186,6 +187,10 @@ class App extends React.Component {
             .then((res) => res.json())
             .then((json) => {
                 console.log(json)
+                // const decoded = Buffer.from(json.data, 'base64').toString('utf8');
+
+                // console.log('Decoded text: ' + decoded);
+                this.setState({loaded:true})
             });
     }
 
@@ -202,7 +207,10 @@ class App extends React.Component {
                 <Translation>{(t) => <TopMenu t={t}/>}</Translation>
                 <NavBar/>
                 <Banner banner={fadeImages} onChange={this.onChange.bind(this)}/>
-                <CustomerService/>
+                {/*<CustomerService/>*/}
+                <div className=" service-container">
+                    <ParallaxCards />
+                </div>
                 <MobilePopular/>
                 <NewGame newGame={newGame}/>
                 <div className="center-title">

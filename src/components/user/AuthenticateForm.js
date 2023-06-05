@@ -231,7 +231,7 @@ class AuthenticateForm extends React.Component {
                                     className="form-control"
                                     id="exampleInputusername1"
                                     required
-                                    placeholder="Username"
+                                    placeholder="Email"
                                     value={this.state.username}
                                     onChange={this.handleChange}
                                 />
@@ -246,7 +246,7 @@ class AuthenticateForm extends React.Component {
                                         className="form-control"
                                         id="exampleInputusername1"
                                         required
-                                        placeholder="Username"
+                                        placeholder="Email"
                                         value={this.state.username}
                                         onChange={this.handleChange}
                                     />
@@ -279,7 +279,7 @@ class AuthenticateForm extends React.Component {
                                 }}
                                 onClick={this.changeFormForget}
                             >
-                                {this.state.forgetForm ? '' : <FormattedMessage id="forgot your password?"/>}
+                                {this.state.forgetForm ? '' : <FormattedMessage id="forgot_password"/>}
                             </a>
                             <p className="mt-2">
                                 {this.state.loginForm ? <FormattedMessage id="do not have an account?"/> :
@@ -294,8 +294,8 @@ class AuthenticateForm extends React.Component {
                                 }}
                                 onClick={this.changeForm}
                             >
-                                {this.state.loginForm ? <FormattedMessage id="sign up"/> :
-                                    <FormattedMessage id="sign in"/>}
+                                {this.state.loginForm ? <FormattedMessage id="sign_up"/> :
+                                    <FormattedMessage id="sign_in"/>}
                             </a>
                         </div>
                     </form>
