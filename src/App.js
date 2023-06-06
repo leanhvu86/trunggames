@@ -1,23 +1,27 @@
-import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import './App.css';
+import 'jquery/dist/jquery.min.js';
+import React from 'react';
+import { Translation } from 'react-i18next';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import 'react-slideshow-image/dist/styles.css';
+import './App.css';
 import Banner from './components/Banner';
-import TopMenu from './components/ui-common/TopMenu';
-import { Translation } from 'react-i18next';
-import NavBar from './components/ui-common/NavBar';
+import Footer from './components/Footer';
 import CustomerService from './components/customer-service/CustomerService';
-import LoadingSpinner from './components/ui-common/LoadingSpinner';
 import MobilePopular from './components/mobile-polular/MobilePopular';
-import ScrollButton from './components/ui-common/ScrollButton';
 import NewGame from './components/new-game/NewGame';
 import NewPackage from './components/new-package/NewPackage';
-import Footer from './components/Footer';
 import ParallaxImage from './components/parallax/ParallaxImage';
-import { FormattedMessage } from 'react-intl';
+import LoadingSpinner from './components/ui-common/LoadingSpinner';
+import NavBar from './components/ui-common/NavBar';
+import ScrollButton from './components/ui-common/ScrollButton';
+import TopMenu from './components/ui-common/TopMenu';
+
+AOS.init();
 
 const mapStateToProps = (state) => {
   return { ...state.quiz };
