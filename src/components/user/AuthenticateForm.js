@@ -1,12 +1,10 @@
-import React, {isValidElement} from 'react';
+import React from 'react';
 import './login.css';
 import validator from 'validator';
 import configData from '../../config.json';
-import {addToCart} from '../../constants/cartActions';
 import {connect} from 'react-redux';
 import {login} from '../../constants/userActions';
 import {Link} from 'react-router-dom';
-import Recaptcha from './Recaptcha';
 import LocaleOptions from '../ui-common/Locale';
 import {FormattedMessage} from 'react-intl';
 
@@ -233,7 +231,7 @@ class AuthenticateForm extends React.Component {
                                     className="form-control"
                                     id="exampleInputusername1"
                                     required
-                                    placeholder="Username"
+                                    placeholder="Email"
                                     value={this.state.username}
                                     onChange={this.handleChange}
                                 />
@@ -248,7 +246,7 @@ class AuthenticateForm extends React.Component {
                                         className="form-control"
                                         id="exampleInputusername1"
                                         required
-                                        placeholder="Username"
+                                        placeholder="Email"
                                         value={this.state.username}
                                         onChange={this.handleChange}
                                     />
@@ -281,7 +279,7 @@ class AuthenticateForm extends React.Component {
                                 }}
                                 onClick={this.changeFormForget}
                             >
-                                {this.state.forgetForm ? '' : <FormattedMessage id="forgot your password?"/>}
+                                {this.state.forgetForm ? '' : <FormattedMessage id="forgot_password"/>}
                             </a>
                             <p className="mt-2">
                                 {this.state.loginForm ? <FormattedMessage id="do not have an account?"/> :
@@ -296,8 +294,8 @@ class AuthenticateForm extends React.Component {
                                 }}
                                 onClick={this.changeForm}
                             >
-                                {this.state.loginForm ? <FormattedMessage id="sign up"/> :
-                                    <FormattedMessage id="sign in"/>}
+                                {this.state.loginForm ? <FormattedMessage id="sign_up"/> :
+                                    <FormattedMessage id="sign_in"/>}
                             </a>
                         </div>
                     </form>

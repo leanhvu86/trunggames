@@ -180,6 +180,19 @@ class App extends React.Component {
     // document.addEventListener('contextmenu', (e) => {
     //     e.preventDefault();
     // });
+    this.loadData();
+  }
+
+  loadData() {
+    fetch(configData.SERVER_URL + '/games/load-data')
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        // const decoded = Buffer.from(json.data, 'base64').toString('utf8');
+
+        // console.log('Decoded text: ' + decoded);
+        this.setState({ loaded: true });
+      });
   }
 
   onChange(value) {
@@ -195,7 +208,10 @@ class App extends React.Component {
         <Translation>{(t) => <TopMenu t={t} />}</Translation>
         <NavBar />
         <Banner banner={fadeImages} onChange={this.onChange.bind(this)} />
-        <CustomerService />
+        {/*<CustomerService/>*/}
+        <div className=" service-container">
+          <ParallaxCards />
+        </div>
         <MobilePopular />
         <NewGame newGame={newGame} />
         <div className="center-title">

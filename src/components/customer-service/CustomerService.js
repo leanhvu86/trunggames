@@ -100,9 +100,7 @@ class CustomerService extends React.Component {
           <br />
           <br />
         </div>
-        <div className=" service-container">
-          <ParallaxCards />
-        </div>
+
       </div>
     );
   }
