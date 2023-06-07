@@ -40,8 +40,8 @@
   "new package": "Gói mới",
   "your happiness is our business mission": "Hạnh phúc của bạn là sứ mệnh kinh doanh của chúng tôi",
   "top ten of best game charging in vietnam": "Top mười trò chơi hay nhất sạc ở Việt Nam",
-  "best sale": "Bán tốt nhất",
-  "top sale": "Bán hàng đầu",
+  "best sale": "Bán chạy nhất",
+  "top sale": "Giá hàng đầu",
   "address info": "Thông tin địa chỉ",
   "information": "Thông tin",
   "extras": "Bổ sung",
@@ -66,6 +66,7 @@
   "full name": "Họ và tên",
   "address": "Địa chỉ",
   "profile": "Hồ sơ",
-  "logout": "Đăng xuất"
+  "logout": "Đăng xuất",
+  "blog-game":"Blog game - Nơi chia sẻ kiến thức về game"
 }
 

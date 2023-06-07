@@ -58,7 +58,7 @@ class NewPackage extends React.Component {
           return (
             <SwiperSlide key={i}>
               <img
-                src={img.url}
+                src={img.previewUrl}
                 alt=""
                 key={i}
                 style={{
@@ -99,7 +99,7 @@ class NewPackage extends React.Component {
           return (
             <SwiperSlide key={i}>
               <img
-                src={img.url}
+                src={img.previewUrl}
                 alt=""
                 key={i}
                 style={{

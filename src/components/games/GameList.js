@@ -28,7 +28,7 @@ class GameList extends React.Component {
         return(
             <div className="row  game-hover ">
                 <div className="col-4 wrapper">
-                    <img src={game.thumbnail} alt="" key={game.name}
+                    <img src={game.imageUrl} alt="" key={game.name}
                          onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
                          onClick={() => this.onClickGame(game)}
                          style={{height: 'auto', width: '100%'}} />
@@ -46,7 +46,7 @@ class GameList extends React.Component {
     renderMobile(game){
         return(
             <div className=" game-hover wrapper">
-                <img src={game.thumbnail} alt="" key={game.name}
+                <img src={game.imageUrl} alt="" key={game.name}
                      onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
                      onClick={() => this.onClickGame(game)}
                      style={{height: 'auto', width: '100%'}}

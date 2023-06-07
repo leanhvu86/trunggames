@@ -6,6 +6,7 @@ import { logout } from '../../constants/userActions';
 import LocaleOptions from './Locale';
 import { FormattedMessage } from 'react-intl';
 
+
 class TopMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -68,7 +69,7 @@ class TopMenu extends React.Component {
                   className="m-0 p-0 font-weight-bold"
                   style={{ whiteSpace: 'nowrap', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis' }}
                 >
-                  Nguyen Van Minh
+                  {this.props.user.fullName}
                 </p>
                 <p className="m-0 p-0 font-weight-lighter" style={{ fontSize: '0.875rem' }}>
                   Premium
@@ -100,7 +101,8 @@ const mapStateToProps = (state) => {
   return {
     currency: state.currency,
     language: state.language,
-    packageCount: state.packageCount
+    packageCount: state.packageCount,
+    user:state.user
   };
 };
 const mapDispatchToProps = (dispatch) => {

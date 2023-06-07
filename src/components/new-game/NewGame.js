@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewGame.css';
-import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {EffectCoverflow, Pagination} from 'swiper';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css/autoplay';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -10,26 +10,25 @@ import 'swiper/css';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 import 'swiper/swiper.min.css';
-import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import {Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+import {connect} from "react-redux";
 
 SwiperCore.use([EffectCoverflow, Pagination]);
-// if you want to use array
-const slide_img = [
-  'https://swiperjs.com/demos/images/nature-1.jpg',
-  'https://swiperjs.com/demos/images/nature-2.jpg',
-  'https://swiperjs.com/demos/images/nature-3.jpg',
-  'https://swiperjs.com/demos/images/nature-4.jpg',
-  'https://swiperjs.com/demos/images/nature-5.jpg',
-  'https://swiperjs.com/demos/images/nature-6.jpg',
-  'https://swiperjs.com/demos/images/nature-7.jpg',
-  'https://swiperjs.com/demos/images/nature-8.jpg',
-  'https://swiperjs.com/demos/images/nature-9.jpg'
-];
 
+const mapStateToProps = (state) => {
+    return {
+        newGames: state.newGames,
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    // onAnswer: payload => dispatch({ type: ActionTypes.QuizAnswer, payload })
+});
 class NewGame extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.newGames)
   }
 
   state = {
@@ -71,12 +70,12 @@ class NewGame extends React.Component {
           pagination={true}
           className="mySwiper"
         >
-          {this.props.newGame.map((img, i) => {
+          {this.props.newGames.map((game, i) => {
             return (
               <SwiperSlide style={style} key={i}>
                 <Link to="/game-detail" className="product-nav-links">
-                  <Tippy placement="right" content={<span>{img.caption}</span>}>
-                    <img src={img.url} alt="" style={{ borderRadius: '10px' }} onClick={(e) => this.onClickGame(i)} />
+                  <Tippy placement="right" content={<span>{game.name}</span>}>
+                    <img src={game.imageUrl} alt="" style={{ borderRadius: '10px' }} onClick={(e) => this.onClickGame(i)} />
                   </Tippy>
                 </Link>
               </SwiperSlide>
@@ -88,4 +87,4 @@ class NewGame extends React.Component {
   }
 }
 
-export default NewGame;
+export default connect(mapStateToProps, mapDispatchToProps)(NewGame);

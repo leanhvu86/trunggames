@@ -7,6 +7,11 @@ import ParallaxImage from "../parallax/ParallaxImage";
 import Footer from "../Footer";
 import ScrollButton from "../ui-common/ScrollButton";
 import {Link} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
+import {connect} from "react-redux";
+import {logout} from "../../constants/userActions";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
 
 const blogs = [
     {
@@ -140,10 +145,12 @@ class Blog extends React.Component {
         if (this.state.viewType)
             this.returnBlog();
         this.setState({blogView: blog});
+        console.log(blog)
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
-        })    }
+        })
+    }
 
     returnBlog() {
         this.setState({viewType: !this.state.viewType})
@@ -155,20 +162,20 @@ class Blog extends React.Component {
                 <br/>
                 <br/>
                 <div className="row">
-                    {blogs.map(blog => {
+                    {this.props.blogs.map(bl => {
                         return (
-                            <div className={window.innerWidth < 1000 ? "container" : "col-4"} key={blog.id}>
-                                <div className="content-blog" onClick={() => this.viewContent(blog)}>
+                            <div className={window.innerWidth < 1000 ? "container" : "col-4"} key={bl.id}>
+                                <div className="content-blog" onClick={() => this.viewContent(bl)}>
                                     <img style={{width: '100%', height: '200px'}}
                                          className="art lazy" alt=""
-                                         src={blog.imageUrl}/>
+                                         src={bl.imageUrl}/>
                                     <br/>
-                                    <div className="blog-title">{blog.title}</div>
+                                    <div className="blog-title">{bl.title}</div>
                                     <br/>
-                                    <span className="blog-info">{blog.postDate} | {blog.author}</span>
+                                    <span className="blog-info">{bl.postDate} | {bl.author}</span>
                                     <br/>
 
-                                    <div className="blog-content">{blog.contentEn}</div>
+                                    <div className="blog-content">{bl.contentVI}</div>
 
                                 </div>
 
@@ -195,10 +202,28 @@ class Blog extends React.Component {
                         <span className="blog-info">{this.state.blogView.postDate} | {this.state.blogView.author}</span>
                         <br/>
 
-                        <div className="blog-content-detail">{this.state.blogView.contentEn}</div>
-                        <img style={{width: '100%', height: 'auto'}}
-                             className="art lazy" alt=""
-                             src={this.state.blogView.imageUrl}/>
+                        <CKEditor
+                            editor={ClassicEditor}
+                            data={this.state.blogView.contentVI}
+                            onReady={editor => {
+                                // You can store the "editor" and use when it is needed.
+                                // console.log( 'Editor is ready to use!', editor );
+
+                            }}
+                            onChange={(event, editor) => {
+                                const data = editor.getData();
+                                // console.log( { event, editor, data } );
+                            }}
+                            onBlur={(event, editor) => {
+                                // console.log( 'Blur.', editor );
+                            }}
+                            onFocus={(event, editor) => {
+                                // console.log( 'Focus.', editor );
+                            }}
+                        />
+                        {/*<img style={{width: '100%', height: 'auto'}}*/}
+                        {/*     className="art lazy" alt=""*/}
+                        {/*     src={this.state.blogView.imageUrl}/>*/}
                     </div>
                     {window.innerWidth < 1000 ? null :
                         <div className="col-3">
@@ -215,7 +240,7 @@ class Blog extends React.Component {
                                             <span className="blog-info">{blog.postDate} | {blog.author}</span>
                                             <br/>
 
-                                            <div className="blog-content">{blog.contentEn}</div>
+                                            <div className="blog-content">{this.props.language==='en'?blog.contentEn:blog.contentVi}</div>
 
                                         </div>
 
@@ -237,9 +262,10 @@ class Blog extends React.Component {
                 {/*{this.state.loaded ? null :<LoadingSpinner/>}*/}
                 <Translation>{t => <TopMenu t={t}/>}</Translation>
                 <NavBar/>
-                <h2 style={{textAlign: 'center', color: 'white'}}>Blog game - Sharing the knowledge about game</h2>
+                <h2 style={{textAlign: 'center', color: 'white'}}><FormattedMessage id="blog-game"/>
+                </h2>
                 <span style={{marginLeft: '10%', color: 'white'}}>
-                    <Link to="/" style={{color: 'white'}}>  Home </Link> &nbsp;>&nbsp;<a
+                    <Link to="/" style={{color: 'white'}}>  <FormattedMessage id="home"/> </Link> &nbsp;>&nbsp;<a
                     onClick={() => this.returnBlog()}>Blog</a>
                 </span>
                 {this.state.viewType ?
@@ -254,4 +280,17 @@ class Blog extends React.Component {
     }
 }
 
-export default (Blog);
+const mapStateToProps = (state) => {
+    return {
+        blogs: state.blogs,
+        language: state.language,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // logout: (id) => {
+        //     dispatch(logout(id));
+        // }
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Blog);
