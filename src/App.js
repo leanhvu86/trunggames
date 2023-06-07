@@ -1,25 +1,25 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'jquery/dist/jquery.min.js';
 import React from 'react';
-import { Translation } from 'react-i18next';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
+import {Translation} from 'react-i18next';
+import {FormattedMessage} from 'react-intl';
+import {connect} from 'react-redux';
 import 'react-slideshow-image/dist/styles.css';
 import './App.css';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
-import CustomerService from './components/customer-service/CustomerService';
 import MobilePopular from './components/mobile-polular/MobilePopular';
 import NewGame from './components/new-game/NewGame';
 import NewPackage from './components/new-package/NewPackage';
 import ParallaxImage from './components/parallax/ParallaxImage';
-import {FormattedMessage} from 'react-intl';
 import configData from "./config.json";
 import {ParallaxCards} from "./components/customer-service/ParallaxCards";
-import {addToCart, rawData} from "./constants/cartActions";
+import {rawData} from "./constants/cartActions";
+import NavBar from "./components/ui-common/NavBar";
+import LoadingSpinner from "./components/ui-common/LoadingSpinner";
+import ScrollButton from "./components/ui-common/ScrollButton";
+import TopMenu from "./components/ui-common/TopMenu";
 
 const mapStateToProps = (state) => {
     return {...state.quiz,
