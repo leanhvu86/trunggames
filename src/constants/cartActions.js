@@ -6,7 +6,7 @@ import {
     ADD_QUANTITY,
     SELECT_ALL,
     DESELECT_ALL,
-    DESELECT, SELECT, FILTER_GAME
+    DESELECT, SELECT, FILTER_GAME, VIEW_GAME
 } from './action-types/cart-actions'
 
 //load data
@@ -16,10 +16,17 @@ export const rawData = (data) => {
         data
     }
 }
-//load data
+//filter game
 export const filterGame = (data) => {
     return {
         type: FILTER_GAME,
+        data
+    }
+}
+//viewGame
+export const viewGame = (data) => {
+    return {
+        type: VIEW_GAME,
         data
     }
 }

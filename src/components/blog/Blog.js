@@ -149,7 +149,7 @@ class Blog extends React.Component {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
-        })
+        });
     }
 
     returnBlog() {

@@ -5,3 +5,5 @@ build.zip
 .idea/.name
 .prettierignore
 .prettierrc
+package-lock.json
+.idea/misc.xml

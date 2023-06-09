@@ -123,7 +123,7 @@ class PackageDetail extends React.Component {
                 <div className="col-4" style={{textAlign: 'center'}}>
 
 
-                    <img src={this.state.package.imageId} alt={this.state.package.name}
+                    <img src={this.state.package.previewUrl} alt={this.state.package.name}
                          style={{width: '300px', height: 'auto'}}
                          onLoad={() => setTimeout(() => this.onChange(true), 1000)}
                     />
@@ -216,7 +216,7 @@ class PackageDetail extends React.Component {
                     <div className="col-3" style={{textAlign: 'center'}}>
 
 
-                        <img src={this.state.package.imageId} alt={this.state.package.name}
+                        <img src={this.state.package.previewUrl} alt={this.state.package.name}
                              style={{width: '100%', height: 'auto'}}
                              onLoad={() => setTimeout(() => this.onChange(true), 1000)}
                         />

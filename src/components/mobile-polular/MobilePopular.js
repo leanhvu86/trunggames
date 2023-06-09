@@ -4,6 +4,7 @@ import spring from 'react-motion/lib/spring';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {connect} from "react-redux";
+import {rawData, viewGame} from "../../constants/cartActions";
 
 const mapStateToProps = (state) => {
     return {
@@ -12,9 +13,14 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    // onAnswer: payload => dispatch({ type: ActionTypes.QuizAnswer, payload })
-});
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        viewGame: (data) => {
+            dispatch(viewGame(data))
+        }
+    }
+}
 
 class MobilePopular extends React.Component {
     constructor(props) {
@@ -22,11 +28,17 @@ class MobilePopular extends React.Component {
 
         this.handleHover = this.handleHover.bind(this);
         this.getSpringProps = this.getSpringProps.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleHover(active) {
         this.setState({isHover: active});
     }
+
+    handleClick(game) {
+        this.props.viewGame(game);
+    }
+
 
     getSpringProps() {
         return {
@@ -55,9 +67,11 @@ class MobilePopular extends React.Component {
                             <div className="image-footer px-2 py-1 py-md-3 h-auto">
                                 <span className="game-name">{each.name}</span>
                                 <br/>
-                                <span className="shop-now">
-                <FormattedMessage id="shop now"/>
-              </span>
+                                <span className="shop-now" onClick={() => this.handleClick(each)}>
+                                    <Link to="/game-detail" className="product-nav-links p-0">
+                                        <FormattedMessage id="shop now"/>
+                                    </Link>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -99,7 +113,7 @@ class MobilePopular extends React.Component {
                         <div className="img-block w-100">
                             <span/>
                             <Link to="/game-detail" className="product-nav-links p-0">
-                                <img src={each.previewUrl} alt="Dragon Nest"/>
+                                <img src={each.previewUrl} alt="Dragon Nest" onClick={() => this.handleClick(each)}/>
                             </Link>
                         </div>
                     </div>

@@ -3,6 +3,8 @@ import './game-detail.css';
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Tippy from "@tippyjs/react";
+import {viewGame} from "../../../constants/cartActions";
+import {connect} from "react-redux";
 
 class SubNavGame extends React.Component {
 
@@ -28,7 +30,7 @@ class SubNavGame extends React.Component {
                     <div className="game-cover">
                         <div className="cover">
                             <Tippy placement="right" content={<span>{this.props.game.name}</span>}>
-                                <img src={this.props.game.thumbnail} alt=""
+                                <img src={this.props.game.imageUrl} alt=""
                                      onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
                                 />
                             </Tippy>
@@ -63,7 +65,7 @@ class SubNavGame extends React.Component {
                     <br/>
                     <div className="game-cover">
                         <div className="cover">
-                            <img src={this.props.game.thumbnail} alt=""
+                            <img src={this.props.game.imageUrl} alt=""
                                  onLoad={() => setTimeout(()=>this.onLoaded(true), 1000)}
                             />
                         </div>
@@ -100,7 +102,7 @@ class SubNavGame extends React.Component {
                                 <CKEditor
                                     editor={ ClassicEditor }
                                     disabled
-                                    data={this.props.game.description}
+                                    data={this.props.language==='en'?this.props.game.descriptionEn:this.props.game.description}
                                     onReady={ editor => {
                                         // You can store the "editor" and use when it is needed.
                                         // console.log( 'Editor is ready to use!', editor );
@@ -136,5 +138,19 @@ class SubNavGame extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        language: state.language
+    }
+}
 
-export default (SubNavGame);
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        // viewGame: (data) => {
+        //     dispatch(viewGame(data))
+        // }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SubNavGame);
+
