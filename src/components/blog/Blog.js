@@ -174,8 +174,9 @@ class Blog extends React.Component {
                                     <br/>
                                     <span className="blog-info">{bl.postDate} | {bl.author}</span>
                                     <br/>
+                                    <br/>
 
-                                    <div className="blog-content">{bl.contentVI}</div>
+                                    {/*<div className="blog-content">{bl.contentVI}</div>*/}
 
                                 </div>
 
