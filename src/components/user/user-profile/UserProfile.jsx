@@ -9,6 +9,7 @@ import ScrollButton from '../../ui-common/ScrollButton';
 import UserInformationForm from './UserInformationForm';
 import ChangePasswordForm from './ChangePasswordForm';
 import './user-profile.css';
+import { useSelector } from 'react-redux';
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState(0);

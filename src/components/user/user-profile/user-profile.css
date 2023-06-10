@@ -43,3 +43,8 @@
   color: rgb(197, 203, 208);
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #d2d2d7;
+}
+

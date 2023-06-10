@@ -19,6 +19,7 @@ import './index.scss';
 import LocalesProvider from './provider/Locales';
 import cartReducer from './reducers/cartReducer';
 import registerServiceWorker from './registerServiceWorker';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const persistConfig = {
   key: 'root',
@@ -26,7 +27,7 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, cartReducer);
-let store = createStore(persistedReducer);
+let store = createStore(persistedReducer, composeWithDevTools());
 
 let persist = persistStore(store);
 
