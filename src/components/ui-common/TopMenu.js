@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../../constants/userActions';
 import LocaleOptions from './Locale';
 import { FormattedMessage } from 'react-intl';
+import configData from "../../config.json";
 
 
 class TopMenu extends React.Component {
@@ -72,7 +73,7 @@ class TopMenu extends React.Component {
                   {this.props.user.fullName}
                 </p>
                 <p className="m-0 p-0 font-weight-lighter" style={{ fontSize: '0.875rem' }}>
-                  Premium
+                  Version: {configData.VERSION}
                 </p>
               </div>
               <hr className="mx-1 my-1" />
