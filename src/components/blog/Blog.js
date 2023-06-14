@@ -165,7 +165,7 @@ class Blog extends React.Component {
         <div className="row">
           {this.props.blogs.map((bl) => {
             return (
-              <div className={window.innerWidth < 1000 ? 'container' : 'col-4'} key={bl.id}>
+              <div className="col-lg-4 col-md-6 col-12" key={bl.id}>
                 <div className="content-blog" onClick={() => this.viewContent(bl)}>
                   <img style={{ width: '100%', height: '200px' }} className="art lazy" alt="" src={bl.imageUrl} />
                   <br />
