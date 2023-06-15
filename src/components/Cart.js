@@ -94,7 +94,7 @@ class Cart extends React.Component {
                                             <input type="checkbox" checked={item.checkout}
                                                    onChange={() => this.handleCheckout(this, item.packageId)}/>
                                             <div className="crop" style={{paddingLeft: '5px'}}>
-                                                <img src={item.imageId} alt={item.name}/>
+                                                <img src={item.previewUrl} alt={item.name}/>
                                             </div>
                                         </div>
                                         <div className="col-9">
