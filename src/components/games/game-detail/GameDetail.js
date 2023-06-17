@@ -21,10 +21,18 @@ class GameDetail extends React.Component {
       package: 0,
       packageView: undefined
     };
-    parent.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    if(this.props.package!==0){
+      console.log(this.props.package)
+      this.onViewPackage(this.props.package);
+    }
+  }
 
   onChange(value) {
     // parent class change handler is always called with field name and value
@@ -76,7 +84,8 @@ class GameDetail extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    game: state.game
+    game: state.game,
+    package: state.package
   };
 };
 const mapDispatchToProps = (dispatch) => {

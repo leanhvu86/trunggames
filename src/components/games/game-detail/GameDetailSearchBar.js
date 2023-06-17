@@ -222,9 +222,9 @@ class GameDetailSearchBar extends React.Component {
     let itemList = this.state.packages.map((item) => {
       return (
         <div className="pack-content" key={item.id}>
-          <div className="row">
+          <div className="row service-title" onClick={this.onViewPackage.bind(this, item.id)} style={{cursor:'pointer'}}>
             <div className="col">
-              <div className="row">
+              <div className="row"  >
                 <div className="col-3">
                   <div className="crop">
                     <img src={item.previewUrl} alt={item.name} />
@@ -388,7 +388,7 @@ class GameDetailSearchBar extends React.Component {
     return (
       <div className="container ">
         <div className="row ">
-          <div className="col-4"></div>
+          <div className="col-4"/>
           <div className="col-8">
             <div
               style={{

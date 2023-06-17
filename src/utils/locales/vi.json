@@ -82,6 +82,7 @@
   "Buy Package": "Mua gói",
   "Số lượng đã bán": "Quantity sold",
   "account-info": "Thông tin tài khoản",
-  "change-password": "Đổi mật khẩu"
+  "change-password": "Đổi mật khẩu",
+  "toast.message.success": "Lưu thành công!"
 }
 

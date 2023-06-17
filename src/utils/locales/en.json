@@ -81,6 +81,7 @@
   "Buy Package": "Buy a package",
   "nickname": "Nickname",
   "account-info": "Account information",
-  "change-password": "Change password"
+  "change-password": "Change password",
+  "toast.message.success": "Save successfully!"
 }
 
