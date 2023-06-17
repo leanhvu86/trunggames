@@ -61,7 +61,9 @@ class AuthenticateForm extends React.Component {
           if (json.status === 200) {
             toast.success('Login successfully!');
             this.props.login(json.data);
-            window.location.href = '/';
+            setTimeout(() => {
+              window.location.href = '/';
+            }, 300);
             localStorage.setItem('servicesToken', json.data.token);
           } else this.setState({ error: 'Wrong username or Password' });
         });

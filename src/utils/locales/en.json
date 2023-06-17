@@ -81,6 +81,10 @@
   "Buy Package": "Buy a package",
   "nickname": "Nickname",
   "account-info": "Account information",
-  "change-password": "Change password"
+  "change-password": "Change password",
+  "Trường này không được để trống": "Please enter this field",
+  "passwords must match": "Password must match",
+  "password must be at least 6 characters": "Password must be at least 6 characters",
+  "password must be at most 32 characters": "Password must be at most 32 characters"
 }
 
