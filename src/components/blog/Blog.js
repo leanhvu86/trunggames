@@ -202,6 +202,7 @@ class Blog extends React.Component {
             <div className="mt-4">
               <CKEditor
                 editor={ClassicEditor}
+                disabled
                 data={this.state.blogView.contentVI}
                 onReady={(editor) => {
                   // You can store the "editor" and use when it is needed.
@@ -225,7 +226,7 @@ class Blog extends React.Component {
           </div>
           <div className="col-lg-5">
             <div className="row">
-              {blogs.map((blog) => {
+              {this.props.blogs.map((blog) => {
                 return (
                   <div className="col-md-6 col-lg-12 col-12 p-2" key={blog.id}>
                     <div className="content-blog" onClick={() => this.viewContent(blog)}>

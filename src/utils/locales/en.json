@@ -66,6 +66,9 @@
   "address": "Address",
   "profile": "Profile",
   "logout": "Logout",
-  "blog-game": "Blog game - Sharing the knowledge about game"
+  "blog-game": "Blog game - Sharing the knowledge about game",
+  "nickname": "Nickname",
+  "account-info": "Account information",
+  "change-password": "Change password"
 }
 

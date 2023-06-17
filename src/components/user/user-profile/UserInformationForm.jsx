@@ -10,13 +10,13 @@ const initialValues = {
   token: '',
   type: '',
   id: null,
-  username: '',
+  nickname: '',
   email: '',
   fullName: '',
   address: '',
   phoneNumber: '',
-  roles: [],
-  nickname: 'tt'
+  roles: []
+
 };
 
 const UserInformationForm = () => {
@@ -33,6 +33,7 @@ const UserInformationForm = () => {
         .post('/user/update', body)
         .then((res) => {
           handleEnableEdit();
+          alert("Lưu thông tin thành công!")
           toast.success(formatMessage({ id: 'toast.message.success' }));
         })
         .finally(() => {
@@ -69,21 +70,21 @@ const UserInformationForm = () => {
         </div>
         <hr className="border-top border-light" />
         <div className="d-flex flex-column">
-          <div className="row mt-2">
-            <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
-              <FormattedMessage id="username" />
-            </label>
+          {/*<div className="row mt-2">*/}
+          {/*  <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">*/}
+          {/*    <FormattedMessage id="username" />*/}
+          {/*  </label>*/}
 
-            <input
-              type="text"
-              placeholder={formatMessage({ id: 'username' })}
-              className="form-control form-control-sm col-lg-5 col-md-8"
-              disabled
-              value={values.username}
-              name="username"
-              onChange={handleChange}
-            />
-          </div>
+          {/*  <input*/}
+          {/*    type="text"*/}
+          {/*    placeholder={formatMessage({ id: 'username' })}*/}
+          {/*    className="form-control form-control-sm col-lg-5 col-md-8"*/}
+          {/*    disabled*/}
+          {/*    value={values.username}*/}
+          {/*    name="username"*/}
+          {/*    onChange={handleChange}*/}
+          {/*  />*/}
+          {/*</div>*/}
           <div className="row mt-2">
             <label htmlFor="" className="col-lg-3 col-xl-3 col-md-4 p-0">
               <FormattedMessage id="nickname" />
