@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../constants/userActions';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import moment from 'moment';
 
 const blogs = [
   {
@@ -202,8 +203,8 @@ class Blog extends React.Component {
             <div className="mt-4">
               <CKEditor
                 editor={ClassicEditor}
+                data={this.state.blogView[this.props.language === 'vi' ? 'contentVI' : 'contentEN']}
                 disabled
-                data={this.state.blogView.contentVI}
                 onReady={(editor) => {
                   // You can store the "editor" and use when it is needed.
                   // console.log( 'Editor is ready to use!', editor );

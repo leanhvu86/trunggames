@@ -7,6 +7,7 @@ import { login } from '../../constants/userActions';
 import { Link } from 'react-router-dom';
 import LocaleOptions from '../ui-common/Locale';
 import { FormattedMessage } from 'react-intl';
+import { toast } from 'react-toastify';
 
 class AuthenticateForm extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class AuthenticateForm extends React.Component {
           // this.setState({root: root});
           console.log(json);
           if (json.status === 200) {
-            alert('Login successfully!');
+            toast.success('Login successfully!');
             this.props.login(json.data);
             window.location.href = '/';
             localStorage.setItem('servicesToken', json.data.token);
@@ -86,7 +87,7 @@ class AuthenticateForm extends React.Component {
           .then(
             (json) => {
               // this.props.login(json.data);
-              alert('Register successfully!');
+              toast.success('Register successfully!');
               this.changeForm();
             },
             (error) => {
@@ -272,7 +273,8 @@ class AuthenticateForm extends React.Component {
                 style={{
                   fontSize: '15px',
                   cursor: 'pointer',
-                  padding: ' 8px 20px'
+                  padding: ' 8px 20px',
+                  color: '#888888'
                 }}
                 onClick={this.changeFormForget}
               >
@@ -286,7 +288,8 @@ class AuthenticateForm extends React.Component {
                 style={{
                   fontSize: '15px',
                   cursor: 'pointer',
-                  padding: ' 8px 20px'
+                  padding: ' 8px 20px',
+                  color: '#888888'
                 }}
                 onClick={this.changeForm}
               >
