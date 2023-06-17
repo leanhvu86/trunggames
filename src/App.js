@@ -2,9 +2,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'jquery/dist/jquery.min.js';
 import React from 'react';
-import {Translation} from 'react-i18next';
-import {FormattedMessage} from 'react-intl';
-import {connect} from 'react-redux';
+import { Translation } from 'react-i18next';
+import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import 'react-slideshow-image/dist/styles.css';
 import './App.css';
 import Banner from './components/Banner';
@@ -14,11 +14,12 @@ import NewGame from './components/new-game/NewGame';
 import NewPackage from './components/new-package/NewPackage';
 import ParallaxImage from './components/parallax/ParallaxImage';
 import configData from './config.json';
-import {ParallaxCards} from './components/customer-service/ParallaxCards';
-import {rawData} from './constants/cartActions';
+import { ParallaxCards } from './components/customer-service/ParallaxCards';
+import { rawData } from './constants/cartActions';
 import NavBar from './components/ui-common/NavBar';
 import ScrollButton from './components/ui-common/ScrollButton';
 import TopMenu from './components/ui-common/TopMenu';
+import { toast } from 'react-toastify';
 
 const mapStateToProps = (state) => {
   return { ...state.quiz, newPackage: state.newPackage, topSale: state.topSale, bestSale: state.bestSale };

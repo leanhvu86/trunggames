@@ -20,6 +20,8 @@ import LocalesProvider from './provider/Locales';
 import cartReducer from './reducers/cartReducer';
 import registerServiceWorker from './registerServiceWorker';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const persistConfig = {
   key: 'root',
@@ -48,6 +50,7 @@ ReactDOM.render(
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<UserProfile />} />
           </Routes>
+          <ToastContainer />
         </BrowserRouter>
       </LocalesProvider>
     </PersistGate>

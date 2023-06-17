@@ -66,6 +66,18 @@
   "address": "Address",
   "profile": "Profile",
   "logout": "Logout",
-  "blog-game": "Blog game - Sharing the knowledge about game"
+  "blog-game": "Blog game - Sharing the knowledge about game",
+
+  "Hot": "Hot",
+  "New": "New",
+  "Price": "Price",
+  "Rating": "Ranking",
+  "Kho": "Stable",
+  "Find product": "Find products",
+  "Server": "Server",
+  "Category": "Type",
+  "Máy chủ": "Server",
+  "User Guide": "User Guide",
+  "Buy Package": "Buy a package"
 }
 
