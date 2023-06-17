@@ -6,13 +6,20 @@ import {
     ADD_QUANTITY,
     SELECT_ALL,
     DESELECT_ALL,
-    DESELECT, SELECT, FILTER_GAME, VIEW_GAME
+    DESELECT, SELECT, FILTER_GAME, VIEW_GAME, CHECK_LOAD_DATA
 } from './action-types/cart-actions'
 
 //load data
 export const rawData = (data) => {
     return {
         type: LOAD_DATA,
+        data
+    }
+}
+//check load data
+export const checkLoadData = (data) => {
+    return {
+        type: CHECK_LOAD_DATA,
         data
     }
 }

@@ -273,7 +273,8 @@ class AuthenticateForm extends React.Component {
                 style={{
                   fontSize: '15px',
                   cursor: 'pointer',
-                  padding: ' 8px 20px'
+                  padding: ' 8px 20px',
+                  color: '#888888'
                 }}
                 onClick={this.changeFormForget}
               >
@@ -287,7 +288,8 @@ class AuthenticateForm extends React.Component {
                 style={{
                   fontSize: '15px',
                   cursor: 'pointer',
-                  padding: ' 8px 20px'
+                  padding: ' 8px 20px',
+                  color: '#888888'
                 }}
                 onClick={this.changeForm}
               >

@@ -9,24 +9,26 @@ import 'react-slideshow-image/dist/styles.css';
 import './App.css';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
+import { ParallaxCards } from './components/customer-service/ParallaxCards';
 import MobilePopular from './components/mobile-polular/MobilePopular';
 import NewGame from './components/new-game/NewGame';
 import NewPackage from './components/new-package/NewPackage';
 import ParallaxImage from './components/parallax/ParallaxImage';
-import configData from './config.json';
-import { ParallaxCards } from './components/customer-service/ParallaxCards';
-import { rawData } from './constants/cartActions';
 import NavBar from './components/ui-common/NavBar';
 import ScrollButton from './components/ui-common/ScrollButton';
 import TopMenu from './components/ui-common/TopMenu';
-import { toast } from 'react-toastify';
+import configData from './config.json';
+import { checkLoadData, rawData } from './constants/cartActions';
 
 const mapStateToProps = (state) => {
-  return { ...state.quiz, newPackage: state.newPackage, topSale: state.topSale, bestSale: state.bestSale };
+  return { ...state.quiz, newPackage: state.newPackage, topSale: state.topSale, bestSale: state.bestSale, reloadCache: state.reloadCache };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    checkLoadData: (id) => {
+      dispatch(checkLoadData(id));
+    },
     rawData: (id) => {
       dispatch(rawData(id));
     }
@@ -45,7 +47,11 @@ class App extends React.Component {
     // document.addEventListener('contextmenu', (e) => {
     //     e.preventDefault();
     // });
-    this.loadData();
+
+    this.props.checkLoadData(0);
+    if (this.props.reloadCache === true) {
+      this.loadData();
+    }
   }
 
   loadData() {
