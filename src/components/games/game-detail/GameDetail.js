@@ -67,7 +67,9 @@ class GameDetail extends React.Component {
                 <SubNavGame game={this.props.game} onChange={this.onChange.bind(this)}/>
                 {this.state.package === 0 ? (
                     <div className="item-content-card">
-                        <GameDetailSearchBar packages={this.props.packages} server={this.props.server}
+                        <GameDetailSearchBar packages={this.props.packages}
+                                             topSale={false}
+                                             server={this.props.server}
                                              onChange={this.onChange.bind(this)}
                                              onViewPackage={this.onViewPackage.bind(this)}/>
                     </div>
