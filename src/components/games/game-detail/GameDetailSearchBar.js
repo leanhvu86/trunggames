@@ -497,7 +497,7 @@ class GameDetailSearchBar extends React.Component {
                     </div>
                 </div>
                 <br/>
-                {this.state.viewType ? this.renderListPackage() : <GameContent game={this.props.game}/>}
+                {this.state.viewType ? this.renderListPackage() : <GameContent/>}
             </div>
         );
     }

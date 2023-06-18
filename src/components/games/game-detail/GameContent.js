@@ -2,6 +2,8 @@ import React from 'react';
 import './game-detail.css';
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {addToCart} from "../../../constants/cartActions";
+import {connect} from "react-redux";
 
 
 class GameContent extends React.Component {
@@ -15,6 +17,7 @@ class GameContent extends React.Component {
     }
 
     componentDidMount() {
+
     }
 
     render() {
@@ -25,7 +28,7 @@ class GameContent extends React.Component {
                     <CKEditor
                         editor={ClassicEditor}
                         disabled
-                        data={this.props.game.contentEn}
+                        data={this.props.language==='en'?this.props.game.contentEn:this.props.game.contentVi}
                         onReady={editor => {
                             // You can store the "editor" and use when it is needed.
                             // console.log( 'Editor is ready to use!', editor );
@@ -48,5 +51,19 @@ class GameContent extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        language: state.language,
+        game: state.game
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // addToCart: (id) => {
+        //     dispatch(addToCart(id));
+        // }
+    };
+};
 
-export default GameContent
+export default connect(mapStateToProps, mapDispatchToProps)(GameContent);
+

@@ -32,9 +32,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        checkLoadData: (id) => {
-            dispatch(checkLoadData(id));
-        },
         rawData: (id) => {
             dispatch(rawData(id));
         },
@@ -65,7 +62,6 @@ class App extends React.Component {
         //     e.preventDefault();
         // });
 
-        this.props.checkLoadData(0);
         if (this.props.reloadCache === true) {
             this.loadData();
         }
@@ -81,7 +77,7 @@ class App extends React.Component {
                 // const decoded = Buffer.from(json.data, 'base64').toString('utf8');
 
                 // console.log('Decoded text: ' + decoded);
-                this.setState({loaded: true});
+                // this.setState({loaded: true});
             })
             .catch((error) => {
                 console.log(error);
