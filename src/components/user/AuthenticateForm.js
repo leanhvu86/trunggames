@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import LocaleOptions from '../ui-common/Locale';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
+import {checkLoadData} from "../../constants/cartActions";
 
 class AuthenticateForm extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class AuthenticateForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault(event);
+    this.props.checkLoadData(0);
     if (this.state.loginForm) {
       this.setState({ error: '' });
       fetch(configData.SERVER_URL + '/auth/signin', {
@@ -341,6 +343,9 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
+    checkLoadData: (id) => {
+      dispatch(checkLoadData(id));
+    },
     login: (user) => {
       dispatch(login(user));
     }

@@ -9,6 +9,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { Hint } from 'react-autocomplete-hint';
 import { toast } from 'react-toastify';
 import {Link} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
 
 class PackageDetail extends React.Component {
   constructor(props) {
@@ -438,6 +439,8 @@ class PackageDetail extends React.Component {
         <br />
         <div className="container pack-content" key={this.state.package.id}>
           <br />
+          <br />
+          <h5 style={{paddingLeft:'50px'}}><FormattedMessage id="Package detail"/></h5>
           <br />
           {window.innerWidth < 1000 ? this.renderMobile() : this.renderWebsite()}
 

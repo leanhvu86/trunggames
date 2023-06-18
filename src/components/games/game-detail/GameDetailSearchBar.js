@@ -25,9 +25,12 @@ class GameDetailSearchBar extends React.Component {
             attCheck: '',
             textSearch: ''
         };
+
     }
 
     componentDidMount() {
+        console.log(this.props.packages)
+
         if (this.props.packages) {
             this.setState({packages: this.props.packages});
             let attList = [];
@@ -457,6 +460,22 @@ class GameDetailSearchBar extends React.Component {
         this.setState({setIsModalVisible: !this.state.isModalVisible});
     }
 
+    renderDetail() {
+        return (
+            <div>
+                {this.state.viewType ? (
+                    <span onClick={this.onClickChangeContent.bind(this)} className="view-type-button">
+                  <FormattedMessage id="User Guide"/>
+                </span>
+                ) : (
+                    <span onClick={this.onClickChangeContent.bind(this)} className="view-type-button">
+                  <FormattedMessage id="Buy Package"/>
+                </span>
+                )}
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="container ">
@@ -472,20 +491,13 @@ class GameDetailSearchBar extends React.Component {
                                 color: 'white'
                             }}
                         >
-                            {this.state.viewType ? (
-                                <span onClick={this.onClickChangeContent.bind(this)} className="view-type-button">
-                  <FormattedMessage id="User Guide"/>
-                </span>
-                            ) : (
-                                <span onClick={this.onClickChangeContent.bind(this)} className="view-type-button">
-                  <FormattedMessage id="Buy Package"/>
-                </span>
-                            )}
+                            {this.props.topSale? null : this.renderDetail()}
+
                         </div>
                     </div>
                 </div>
                 <br/>
-                {this.state.viewType ? this.renderListPackage() : <GameContent game={this.props.game}/>}
+                {this.state.viewType ? this.renderListPackage() : <GameContent/>}
             </div>
         );
     }

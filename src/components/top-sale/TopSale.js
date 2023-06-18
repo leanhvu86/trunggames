@@ -38,12 +38,15 @@ class TopSale extends React.Component {
   onViewPackageTop(value) {
     this.setState({ package: value });
 
-    let packageView = this.props.game.gamePackages.filter((pack) => pack.id === value);
-    packageView.gameName = this.props.game.name;
-    packageView.categoryName = this.props.game.categoryName;
-    packageView.gameId = this.props.game.id;
-    this.setState({ packageView: packageView });
-    console.log('View packages', packageView);
+    this.props.gameList.forEach((game)=>{
+      let packageView = game.gamePackages.filter((pack) => pack.id === value);
+      if(packageView!==undefined){
+        packageView.gameName = game.name;
+        packageView.categoryName = game.categoryName;
+        packageView.gameId = game.id;
+        this.setState({ packageView: packageView });
+      }
+    })
   }
   render() {
     const imgStyle = {
@@ -58,8 +61,8 @@ class TopSale extends React.Component {
         <h3 style={{ marginLeft: '15%', color: 'white' }}>TOP SALE</h3>
         {this.state.package === 0 ? (
           <div className="item-content-card">
-            <GameDetailSearchBar
-              game={this.props.game}
+            <GameDetailSearchBar topSale={true}
+                packages={this.props.topSale}
               onChange={this.onChange.bind(this)}
               onViewPackage={this.onViewPackageTop.bind(this)}
             />
@@ -77,7 +80,8 @@ class TopSale extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    game: state.game
+    topSale: state.topSale,
+    gameList:state.gameList
   };
 };
 const mapDispatchToProps = (dispatch) => {
