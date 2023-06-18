@@ -10,7 +10,7 @@ import {
     DESELECT,
     LOAD_DATA,
     FILTER_GAME,
-    VIEW_GAME, CHECK_LOAD_DATA
+    VIEW_GAME, CHECK_LOAD_DATA, SET_PACKAGE_VIEW, REMOVE_PACKAGE_VIEW
 } from '../constants/action-types/cart-actions';
 import {LOGIN_SUCCESS, LOG_OUT, UPDATE_USER} from '../constants/action-types/user-actions';
 
@@ -18,7 +18,7 @@ const initState = {
     packages: [],
     addedItems: [],
     total: 0,
-    package: {},
+    package: 0,
     packageCount: 0,
     checkoutAll: false,
     user: {
@@ -127,6 +127,20 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             game: game
+        };
+    }
+    if (action.type === SET_PACKAGE_VIEW) {
+        let packageId = action.data;
+        console.log(packageId);
+        return {
+            ...state,
+            package: packageId
+        };
+    }
+    if (action.type === REMOVE_PACKAGE_VIEW) {
+        return {
+            ...state,
+            package: 0
         };
     }
     if (action.type === REMOVE_ITEM) {

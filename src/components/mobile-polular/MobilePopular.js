@@ -1,15 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './MobilePopular.css';
 import spring from 'react-motion/lib/spring';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {connect} from "react-redux";
-import {rawData, viewGame} from "../../constants/cartActions";
+import {setPackageView, viewGame} from "../../constants/cartActions";
 
 const mapStateToProps = (state) => {
     return {
         topGames: state.topGames,
         bestSale: state.bestSale,
+        listGame: state.listGame
     }
 }
 
@@ -18,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         viewGame: (data) => {
             dispatch(viewGame(data))
+        },
+        setPackageView: (data) => {
+            dispatch(setPackageView(data))
         }
     }
 }
@@ -35,8 +39,17 @@ class MobilePopular extends React.Component {
         this.setState({isHover: active});
     }
 
-    handleClick(game) {
-        this.props.viewGame(game);
+    handleClick(item, type) {
+        console.log(item);
+        this.props.listGame.forEach((game) => {
+            if (game.id === item.gameId) {
+                if (type === 0)
+                    this.props.setPackageView(0);
+                else
+                    this.props.setPackageView(item.id);
+                this.props.viewGame(game);
+            }
+        })
     }
 
 
@@ -67,7 +80,7 @@ class MobilePopular extends React.Component {
                             <div className="image-footer px-2 py-1 py-md-3 h-auto">
                                 <span className="game-name">{each.name}</span>
                                 <br/>
-                                <span className="shop-now" onClick={() => this.handleClick(each)}>
+                                <span className="shop-now" onClick={() => this.handleClick(each, 0)}>
                                     <Link to="/game-detail" className="product-nav-links p-0">
                                         <FormattedMessage id="shop now"/>
                                     </Link>
@@ -105,15 +118,17 @@ class MobilePopular extends React.Component {
         );
     }
 
-    renderPCGame() {
+    renderBestSale() {
         return (
             <div className="row service-container1">
                 {this.props.bestSale.map((each, index) => (
                     <div className="image-content col-4" key={index}>
                         <div className="img-block w-100">
                             <span/>
-                            <Link to="/game-detail" className="product-nav-links p-0">
-                                <img src={each.previewUrl} alt="Dragon Nest" onClick={() => this.handleClick(each)}/>
+                            <Link
+                                to="/game-detail"
+                                className="product-nav-links p-0">
+                                <img src={each.previewUrl} alt="Dragon Nest" onClick={() => this.handleClick(each, 1)}/>
                             </Link>
                         </div>
                     </div>
@@ -157,7 +172,7 @@ class MobilePopular extends React.Component {
                     <div className="underline-span"/>
                 </div>
 
-                {this.renderPCGame()}
+                {this.renderBestSale()}
             </div>
         );
     }

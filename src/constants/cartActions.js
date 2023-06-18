@@ -6,7 +6,7 @@ import {
     ADD_QUANTITY,
     SELECT_ALL,
     DESELECT_ALL,
-    DESELECT, SELECT, FILTER_GAME, VIEW_GAME, CHECK_LOAD_DATA
+    DESELECT, SELECT, FILTER_GAME, VIEW_GAME, CHECK_LOAD_DATA, SET_PACKAGE_VIEW, REMOVE_PACKAGE_VIEW
 } from './action-types/cart-actions'
 
 //load data
@@ -34,6 +34,20 @@ export const filterGame = (data) => {
 export const viewGame = (data) => {
     return {
         type: VIEW_GAME,
+        data
+    }
+}
+// set package view
+export const setPackageView = (data) => {
+    return {
+        type: SET_PACKAGE_VIEW,
+        data
+    }
+}
+// remove package view
+export const removePackageView = (data) => {
+    return {
+        type: REMOVE_PACKAGE_VIEW,
         data
     }
 }

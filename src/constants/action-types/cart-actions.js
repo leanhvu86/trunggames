@@ -3,6 +3,8 @@
 export const LOAD_DATA = 'LOAD_DATA';
 export const CHECK_LOAD_DATA = 'CHECK_LOAD_DATA';
 export const VIEW_GAME = 'VIEW_GAME';
+export const SET_PACKAGE_VIEW = 'SET_PACKAGE_VIEW';
+export const REMOVE_PACKAGE_VIEW = 'REMOVE_PACKAGE_VIEW';
 export const FILTER_GAME = 'FILTER_GAME';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_ITEM = 'REMOVE_ITEM';

@@ -13,7 +13,7 @@ import 'swiper/swiper.min.css';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {connect} from "react-redux";
-import {viewGame} from "../../constants/cartActions";
+import {setPackageView, viewGame} from "../../constants/cartActions";
 
 SwiperCore.use([EffectCoverflow, Pagination]);
 
@@ -28,6 +28,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         viewGame: (data) => {
             dispatch(viewGame(data))
+        },
+        setPackageView: (data) => {
+            dispatch(setPackageView(data))
         }
     }
 }

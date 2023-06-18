@@ -10,7 +10,7 @@ const initialValues = {
   token: '',
   type: '',
   id: null,
-  nickname: '',
+  nickName: '',
   email: '',
   fullName: '',
   address: '',
@@ -26,8 +26,8 @@ const UserInformationForm = () => {
   const formikProps = useFormik({
     initialValues: Object.assign(initialValues, user ?? {}),
     onSubmit: (values, { setSubmitting }) => {
-      const { address, fullName, id, nickname, phoneNumber } = values;
-      const body = { address, fullName, id, nickname, phoneNumber };
+      const { address, fullName, id, nickName, phoneNumber } = values;
+      const body = { address, fullName, id, nickName, phoneNumber };
       setSubmitting(true);
       axiosServices
         .post('/user/update', body)
@@ -94,8 +94,8 @@ const UserInformationForm = () => {
               type="text"
               placeholder={formatMessage({ id: 'nickname' })}
               className="form-control form-control-sm col-lg-5 col-md-8"
-              value={values.nickname}
-              name="nickname"
+              value={values.nickName}
+              name="nickName"
               onChange={handleChange}
               disabled={!enableEdit}
             />

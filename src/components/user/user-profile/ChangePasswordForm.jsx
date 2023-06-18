@@ -5,10 +5,13 @@ import PasswordInput from './InputTypePassword';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axiosServices from '../../../services';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const ChangePasswordForm = () => {
   const { formatMessage } = useIntl();
   const [enableEdit, setEnableEdit] = useState(false);
+  const user = useSelector((state) => state.user);
 
   const formikProps = useFormik({
     initialValues: {
@@ -37,10 +40,15 @@ const ChangePasswordForm = () => {
         .max(32, formatMessage({ id: 'password must be at most 32 characters' }))
     }),
     onSubmit: (values, { setSubmitting }) => {
-      axiosServices.post('/api/auth/changePassword', {
-        password: values.password,
-        newPassword: values.newPassword
-      });
+      if (user) {
+        axiosServices.post('/api/auth/changePassword', {
+          username: user?.email,
+          password: values.password,
+          newPassword: values.newPassword
+        });
+      } else {
+        toast.error('Cannot provide user information, please login first.');
+      }
     }
   });
   const { handleSubmit, handleChange, values, errors, touched } = formikProps;
