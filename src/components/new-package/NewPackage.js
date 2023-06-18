@@ -52,8 +52,8 @@ class NewPackage extends React.Component {
     }
 
     handleClick(item) {
-        console.log(item);
-        this.props.listGame.forEach((game) => {
+        let temp = this.props.listGame;
+        temp.forEach((game) => {
             if (game.id === item.gameId) {
                 this.props.setPackageView(item.id);
                 this.props.viewGame(game);

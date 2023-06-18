@@ -42,12 +42,14 @@ class MobilePopular extends React.Component {
     handleClick(item, type) {
         console.log(item);
         this.props.listGame.forEach((game) => {
-            if (game.id === item.gameId) {
-                if (type === 0)
-                    this.props.setPackageView(0);
-                else
-                    this.props.setPackageView(item.id);
+            if (type === 0 && game.id === item.id) {
+                this.props.setPackageView(0);
                 this.props.viewGame(game);
+            } else {
+                if (game.id === item.gameId) {
+                    this.props.setPackageView(item.id);
+                    this.props.viewGame(game);
+                }
             }
         })
     }
@@ -77,14 +79,16 @@ class MobilePopular extends React.Component {
                     <div className="col-4 p-2" key={index}>
                         <div className="img-hover-zoom position-relative h-auto w-100">
                             <img src={each.imageUrl} alt="Batman" className="w-100 h-auto"/>
-                            <div className="image-footer px-2 py-1 py-md-3 h-auto">
-                                <span className="game-name">{each.name}</span>
-                                <br/>
-                                <span className="shop-now" onClick={() => this.handleClick(each, 0)}>
-                                    <Link to="/game-detail" className="product-nav-links p-0">
+
+                            <div className="image-footer px-2 py-1 py-md-3 h-auto"
+                                 onClick={() => this.handleClick(each, 0)}>
+                                <Link to="/game-detail" className="product-nav-links p-0">
+                                    <span className="game-name">{each.name}</span>
+                                    <br/>
+                                    <span className="shop-now">
                                         <FormattedMessage id="shop now"/>
-                                    </Link>
-                                </span>
+                                    </span>
+                                </Link>
                             </div>
                         </div>
                     </div>

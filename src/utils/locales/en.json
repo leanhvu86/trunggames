@@ -72,7 +72,7 @@
   "New": "New",
   "Price": "Price",
   "Rating": "Ranking",
-  "Kho": "Stable",
+  "Kho": "Available",
   "Find product": "Find products",
   "Server": "Server",
   "Category": "Type",
@@ -82,6 +82,7 @@
   "nickname": "Nickname",
   "account-info": "Account information",
   "change-password": "Change password",
-  "toast.message.success": "Save successfully!"
+  "toast.message.success": "Save successfully!",
+  "sold": "Sold"
 }
 

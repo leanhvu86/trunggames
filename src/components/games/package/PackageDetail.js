@@ -8,6 +8,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { Hint } from 'react-autocomplete-hint';
 import { toast } from 'react-toastify';
+import {Link} from "react-router-dom";
 
 class PackageDetail extends React.Component {
   constructor(props) {
@@ -404,6 +405,12 @@ class PackageDetail extends React.Component {
         <button onClick={this.onReturn.bind(this)} className="btn btn-outline-warning float-right">
           Return
         </button>
+        <Link to="/cart"
+              >
+          <button className="btn btn-primary float-right" >
+            Show cart
+          </button>
+        </Link>
       </div>
     );
   }

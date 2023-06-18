@@ -42,7 +42,8 @@ const initState = {
     token: '',
     currency: 'VND',
     language: 'en',
-    game: {}
+    game: {},
+    server:[]
 };
 
 const cartReducer = (state = initState, action) => {
@@ -126,7 +127,9 @@ const cartReducer = (state = initState, action) => {
         console.log(game);
         return {
             ...state,
-            game: game
+            game: game,
+            packages: game.gamePackages,
+            server: game.server
         };
     }
     if (action.type === SET_PACKAGE_VIEW) {
@@ -175,7 +178,8 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             user: action['user'],
-            token: action['user'].token
+            token: action['user'].token,
+            reloadCache:true
         };
     }
     if (action.type === LOG_OUT) {
