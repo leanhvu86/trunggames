@@ -62,7 +62,7 @@ class App extends React.Component {
         //     e.preventDefault();
         // });
 
-        if (this.props.reloadCache === true) {
+        if (this.props.reloadCache === true||this.props.banner===undefined) {
             this.loadData();
         }
         this.props.removePackageView(0);
@@ -73,11 +73,6 @@ class App extends React.Component {
             .then((res) => res.json())
             .then((json) => {
                 this.props.rawData(json.data);
-
-                // const decoded = Buffer.from(json.data, 'base64').toString('utf8');
-
-                // console.log('Decoded text: ' + decoded);
-                // this.setState({loaded: true});
             })
             .catch((error) => {
                 console.log(error);

@@ -53,7 +53,7 @@ class TopMenu extends React.Component {
           >
             <span>Nguyen Van A</span>
           </Link> */}
-                    {this.props.user !== null ?
+                    {this.props.token !== null&&this.props.token!=="" ?
                         <div className="dropdown ml-3">
                             <div
                                 className="dropdown-toggle d-flex align-items-center justify-content-end"
@@ -117,7 +117,8 @@ const mapStateToProps = (state) => {
         currency: state.currency,
         language: state.language,
         packageCount: state.packageCount,
-        user: state.user
+        user: state.user,
+        token:state.token
     };
 };
 const mapDispatchToProps = (dispatch) => {

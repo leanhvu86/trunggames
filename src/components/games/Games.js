@@ -13,7 +13,7 @@ import LoadingSpinner from "../ui-common/LoadingSpinner";
 import Tippy from "@tippyjs/react";
 import configData from '../../config.json';
 import {connect} from "react-redux";
-import {filterGame, removePackageView} from "../../constants/cartActions";
+import {filterGame, rawData, removePackageView} from "../../constants/cartActions";
 
 
 const mapStateToProps = (state) => {
@@ -31,7 +31,10 @@ const mapDispatchToProps = dispatch => {
         },
         removePackageView: (id) => {
             dispatch(removePackageView(id));
-        }
+        },
+        rawData: (id) => {
+            dispatch(rawData(id));
+        },
     }
 };
 
@@ -65,6 +68,14 @@ class Games extends React.Component {
                 this.onTreeEvent("openAll", undefined, undefined);
             });
         this.props.removePackageView(0);
+        fetch(configData.SERVER_URL + '/games/load-data')
+            .then((res) => res.json())
+            .then((json) => {
+                this.props.rawData(json.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     buildTree(categories, parentId) {

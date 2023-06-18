@@ -21,13 +21,7 @@ const initState = {
     package: 0,
     packageCount: 0,
     checkoutAll: false,
-    user: {
-        id: 1,
-        name: 'Ace Racer',
-        email: 'efpyi@example.com',
-        password: '123456',
-        phone: '0987654321'
-    },
+    user: {},
     gameList: [],
     listGame: [],
     topGames: [],
