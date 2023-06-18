@@ -41,11 +41,13 @@ const ChangePasswordForm = () => {
     }),
     onSubmit: (values, { setSubmitting }) => {
       if (user) {
-        axiosServices.post('/api/auth/changePassword', {
-          username: user?.email,
-          password: values.password,
-          newPassword: values.newPassword
-        });
+        axiosServices
+          .post('/api/auth/changePassword', {
+            username: user?.email,
+            password: values.password,
+            newPassword: values.newPassword
+          })
+          .catch((err) => {});
       } else {
         toast.error('Cannot provide user information, please login first.');
       }

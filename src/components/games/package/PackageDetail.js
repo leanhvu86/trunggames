@@ -8,6 +8,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { Hint } from 'react-autocomplete-hint';
 import { toast } from 'react-toastify';
+import {Link} from "react-router-dom";
 
 class PackageDetail extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class PackageDetail extends React.Component {
       quantity: 0,
       amount: 0,
       loginType: '',
+      loginCode: '',
       packageId: props.package[0].id,
       name: props.package[0].name,
       previewUrl: props.package[0].previewUrl,
@@ -98,6 +100,7 @@ class PackageDetail extends React.Component {
       quantity: parseInt(this.state.quantity),
       amount: this.state.amount,
       loginType: this.state.loginType,
+      loginCode: this.state.loginCode,
       packageId: this.state.packageId,
       name: this.state.name,
       previewUrl: this.state.previewUrl,
@@ -319,6 +322,19 @@ class PackageDetail extends React.Component {
               onChange={this.handleChange}
             />
           </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="loginCode"
+              required
+              disabled={this.state.disable}
+              className="form-control"
+              aria-describedby="accountHelp 1"
+              placeholder="Enter Login Code"
+              value={this.state.loginCode}
+              onChange={this.handleChange}
+            />
+          </div>
           <br />
           <div className="form-group">
             <input
@@ -404,6 +420,12 @@ class PackageDetail extends React.Component {
         <button onClick={this.onReturn.bind(this)} className="btn btn-outline-warning float-right">
           Return
         </button>
+        <Link to="/cart"
+              >
+          <button className="btn btn-primary float-right" >
+            Show cart
+          </button>
+        </Link>
       </div>
     );
   }

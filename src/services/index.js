@@ -43,7 +43,7 @@ const handleRequestError = (error) => {
   if (error.response?.data) {
     return toast.error(error.response.data?.message);
   }
-  return;
+  return toast.error('Unknown error');
 };
 
 axiosServices.interceptors.request.use(
@@ -62,9 +62,9 @@ axiosServices.interceptors.request.use(
 
 axiosServices.interceptors.response.use(
   (res) => res,
-  async (error) => {
+  (error) => {
     handleRequestError(error);
-    console.error(error);
+    return Promise.reject(error);
   }
 );
 

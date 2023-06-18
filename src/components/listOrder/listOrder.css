@@ -1,0 +1,62 @@
+.order-item,
+.order-item-search {
+  border: solid 1px;
+  border-color: grey;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.order-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.order-item label {
+  margin: 0;
+  display: block;
+}
+
+.order-item-search input {
+  font-size: 12px;
+  padding: 0px 0.5em;
+  height: 24px;
+  width: 100%;
+}
+
+.order-item-search select {
+  font-size: 12px;
+  padding: 0px 0.5em;
+  height: 24px;
+  width: 100%;
+}
+
+.view-detail {
+  display: flex;
+  justify-content: center;
+}
+
+.order-code {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.order-time {
+  font-size: 0.875rem;
+}
+
+.order-amount {
+  font-weight: 600;
+  color: #ff8000;
+}
+hr {
+  width: 100%;
+  border-color: rgba(240, 248, 255, 0.394);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.order-view-detail {
+  color: inherit;
+}
+

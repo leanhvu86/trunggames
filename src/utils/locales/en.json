@@ -72,7 +72,7 @@
   "New": "New",
   "Price": "Price",
   "Rating": "Ranking",
-  "Kho": "Stable",
+  "Kho": "Available",
   "Find product": "Find products",
   "Server": "Server",
   "Category": "Type",
@@ -86,6 +86,17 @@
   "passwords must match": "Password must match",
   "password must be at least 6 characters": "Password must be at least 6 characters",
   "password must be at most 32 characters": "Password must be at most 32 characters",
-  "toast.message.success": "Save successfully!"
+  "toast.message.success": "Save successfully!",
+  "sold": "Sold",
+  "list order": "List orders",
+  "pending": "Pending",
+  "done": "Finished",
+  "cancelled": "Cancelled",
+  "search": "Search",
+  "status": "Status",
+  "order-code": "Order code",
+  "amount": "Amount",
+  "view-detail": "View details",
+  "all": "All"
 }
 

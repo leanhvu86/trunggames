@@ -91,6 +91,14 @@ class TopMenu extends React.Component {
                   >
                     <FormattedMessage id="profile" />
                   </li>
+                  <li
+                    className="dropdown-item"
+                    onClick={() => {
+                      window.location.href = '/my-order';
+                    }}
+                  >
+                    <FormattedMessage id="list order" />
+                  </li>
                   <li onClick={this.handleLogOut} className="dropdown-item">
                     <FormattedMessage id="logout" />
                   </li>

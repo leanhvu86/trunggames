@@ -22,6 +22,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ListOrder from './components/listOrder/ListOrder';
 
 const persistConfig = {
   key: 'root',
@@ -29,7 +30,7 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, cartReducer);
-let store = createStore(persistedReducer, composeWithDevTools());
+export const store = createStore(persistedReducer, composeWithDevTools());
 
 let persist = persistStore(store);
 
@@ -49,6 +50,7 @@ ReactDOM.render(
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<UserProfile />} />
+            <Route path="/my-order" element={<ListOrder />} />
           </Routes>
           <ToastContainer />
         </BrowserRouter>
