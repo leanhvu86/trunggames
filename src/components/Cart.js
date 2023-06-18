@@ -16,6 +16,8 @@ import Footer from "./Footer";
 import ScrollButton from "./ui-common/ScrollButton";
 import ParallaxImage from "./parallax/ParallaxImage";
 import * as CurrencyFormat from "react-currency-format";
+import configData from "../config.json";
+import {toast} from "react-toastify";
 
 class Cart extends React.Component {
 
@@ -27,12 +29,14 @@ class Cart extends React.Component {
             listCheckout: []
         }
         this.props.deselectAll(1);
+        parent.scrollTo(0, 0);
     }
 
     //to remove the item completely
     handleRemove = (id) => {
         this.props.removeItem(id);
         this.scanCheckoutInfo();
+        this.props.deselectAll(1);
     }
     //to add the quantity
     handleAddQuantity = (id) => {
@@ -66,7 +70,7 @@ class Cart extends React.Component {
         console.log("h")
         this.setState({listCheckout: lstCheckout});
         this.setState({total: totalPrice});
-        this.setState({selected:lstCheckout.length})
+        this.setState({selected: lstCheckout.length})
     }
 
     handleCheckout = (event, id) => {
@@ -78,6 +82,48 @@ class Cart extends React.Component {
             this.props.select(id);
         }
         this.scanCheckoutInfo();
+    }
+
+    onCheckout() {
+        console.log(this.state.listCheckout);
+        console.log(this.props.items);
+        fetch(configData.SERVER_URL + '/orders/create', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': 'Bearer ' + this.props.token
+            },
+            body: JSON.stringify({
+                items: this.state.listCheckout
+            })
+        })
+            .then((res) => res.json())
+            .then(
+                (json) => {
+                    console.log(json.data);
+                    if(json.status===200){
+                        this.setState({selected:0});
+                        this.state.listCheckout.forEach(item=>{
+                            this.props.removeItem(item.packageId);
+                        });
+
+                        toast.success('Ordered successfully!');
+                    }else if( json.status===401){
+                        toast.warn('End session. Please log in again!');
+                    }else{
+                        toast.warn('Create order fail!');
+                    }
+                    this.props.deselectAll(1);
+                    this.scanCheckoutInfo();
+                },
+                (error) => {
+                    if (error) {
+                        toast.error('Order fail!');
+
+                    }
+                }
+            );
     }
 
     render() {
@@ -199,7 +245,8 @@ class Cart extends React.Component {
                             <span>{this.state.selected}&nbsp;&nbsp;item(s)&nbsp;selected</span>
                         </div>
                         <div className="col">
-                            <button className="btn btn-primary float-right" disabled={this.state.selected <= 0}>
+                            <button className="btn btn-primary float-right" onClick={() => this.onCheckout(this)}
+                                    disabled={this.state.selected <= 0}>
                                 Checkout
                             </button>
                             <div className="float-right" style={{fontSize: '20px', paddingRight: '10px'}}>
@@ -267,7 +314,8 @@ const mapStateToProps = (state) => {
         items: state.addedItems,
         currency: state.currency,
         total: state.total,
-        checkoutAll: state.checkoutAll
+        checkoutAll: state.checkoutAll,
+        token: state.token
     }
 }
 const mapDispatchToProps = (dispatch) => {

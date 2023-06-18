@@ -23,6 +23,7 @@ class PackageDetail extends React.Component {
       quantity: 0,
       amount: 0,
       loginType: '',
+      loginCode: '',
       packageId: props.package[0].id,
       name: props.package[0].name,
       previewUrl: props.package[0].previewUrl,
@@ -99,6 +100,7 @@ class PackageDetail extends React.Component {
       quantity: parseInt(this.state.quantity),
       amount: this.state.amount,
       loginType: this.state.loginType,
+      loginCode: this.state.loginCode,
       packageId: this.state.packageId,
       name: this.state.name,
       previewUrl: this.state.previewUrl,
@@ -317,6 +319,19 @@ class PackageDetail extends React.Component {
               aria-describedby="accountHelp"
               placeholder="Enter ID, Email, Phone"
               value={this.state.account}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="loginCode"
+              required
+              disabled={this.state.disable}
+              className="form-control"
+              aria-describedby="accountHelp 1"
+              placeholder="Enter Login Code"
+              value={this.state.loginCode}
               onChange={this.handleChange}
             />
           </div>
