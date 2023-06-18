@@ -1,7 +1,8 @@
 import { IconEye, IconEyeClosed } from '@tabler/icons-react';
 import React, { useState } from 'react';
 
-const PasswordInput = (props) => {
+const PasswordInput = ({ error, errorMessage, ...props }) => {
+  console.log(error, errorMessage);
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -9,11 +10,23 @@ const PasswordInput = (props) => {
   };
 
   return (
-    <div className="input-password-container position-relative">
-      <input type={showPassword ? 'text' : 'password'} {...props} />
-      <div className="inputEndAdornment" onClick={togglePasswordVisibility}>
-        {showPassword ? <IconEye size={18} /> : <IconEyeClosed size={18} />}
+    <div>
+      <div className="input-password-container position-relative">
+        <input type={showPassword ? 'text' : 'password'} {...props} />
+        <div className="inputEndAdornment" onClick={togglePasswordVisibility}>
+          {showPassword ? <IconEye size={18} /> : <IconEyeClosed size={18} />}
+        </div>
       </div>
+      {error && (
+        <span
+          className="text-danger"
+          style={{
+            fontSize: '11px'
+          }}
+        >
+          {errorMessage}
+        </span>
+      )}
     </div>
   );
 };

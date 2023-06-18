@@ -2,13 +2,65 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import PasswordInput from './InputTypePassword';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axiosServices from '../../../services';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const ChangePasswordForm = () => {
   const { formatMessage } = useIntl();
   const [enableEdit, setEnableEdit] = useState(false);
+  const user = useSelector((state) => state.user);
+
+  const formikProps = useFormik({
+    initialValues: {
+      username: 'leanhvu86@gmail.com',
+      password: '123111456',
+      newPassword: '123456768',
+      confirmPassword: ''
+    },
+    validationSchema: Yup.object().shape({
+      password: Yup.string()
+        .nullable()
+        .trim()
+        .required(formatMessage({ id: 'Trường này không được để trống' }))
+        .min(6)
+        .max(32, formatMessage({ id: 'password must be at most 32 characters' })),
+      newPassword: Yup.string()
+        .nullable()
+        .trim()
+        .required(formatMessage({ id: 'Trường này không được để trống' })),
+      confirmPassword: Yup.string()
+        .nullable()
+        .trim()
+        .required(formatMessage({ id: 'Trường này không được để trống' }))
+        .oneOf([Yup.ref('newPassword'), null], formatMessage({ id: 'password must match' }))
+        .min(6, formatMessage({ id: 'password must be at least 6 characters' }))
+        .max(32, formatMessage({ id: 'password must be at most 32 characters' }))
+    }),
+    onSubmit: (values, { setSubmitting }) => {
+      if (user) {
+        axiosServices
+          .post('/api/auth/changePassword', {
+            username: user?.email,
+            password: values.password,
+            newPassword: values.newPassword
+          })
+          .catch((err) => {});
+      } else {
+        toast.error('Cannot provide user information, please login first.');
+      }
+    }
+  });
+  const { handleSubmit, handleChange, values, errors, touched } = formikProps;
 
   const handleEnableEdit = () => {
-    setEnableEdit((prev) => !prev);
+    if (enableEdit) {
+      handleSubmit();
+    } else {
+      setEnableEdit((prev) => !prev);
+    }
   };
 
   return (
@@ -33,6 +85,10 @@ const ChangePasswordForm = () => {
               placeholder={formatMessage({ id: 'current password' })}
               className="form-control form-control-sm"
               disabled={!enableEdit}
+              name="password"
+              onChange={handleChange}
+              error={Boolean(errors.password, touched.password)}
+              errorMessage={errors.password}
             />
           </div>
         </div>
@@ -45,6 +101,10 @@ const ChangePasswordForm = () => {
               placeholder={formatMessage({ id: 'new password' })}
               className="form-control form-control-sm"
               disabled={!enableEdit}
+              onChange={handleChange}
+              name="newPassword"
+              error={Boolean(errors.newPassword, touched.newPassword)}
+              errorMessage={errors.newPassword}
             />
           </div>
         </div>
@@ -56,7 +116,11 @@ const ChangePasswordForm = () => {
             <PasswordInput
               placeholder={formatMessage({ id: 'confirm password' })}
               className="form-control form-control-sm"
+              onChange={handleChange}
               disabled={!enableEdit}
+              name="confirmPassword"
+              error={Boolean(errors.confirmPassword, touched.confirmPassword)}
+              errorMessage={errors.confirmPassword}
             />
           </div>
         </div>

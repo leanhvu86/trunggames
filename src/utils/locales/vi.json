@@ -83,7 +83,21 @@
   "sold": "Đã bán",
   "account-info": "Thông tin tài khoản",
   "change-password": "Đổi mật khẩu",
+  "Trường này không được để trống": "Trường này không được để trống",
+  "passwords must match": "mật khẩu phải trùng khớp",
+  "password must be at least 6 characters": "Mật khẩu phải có ít nhất 6 ký tự",
+  "password must be at most 32 characters": "Mật khẩu phải có tối đa 32 ký tự",
   "toast.message.success": "Lưu thành công!",
+  "list order": "Danh sách đơn hàng",
+  "pending": "Chưa giải quyết",
+  "done": "Xong",
+  "cancelled": "Đã hủy",
+  "search": "Tìm kiếm",
+  "status": "Trạng thái",
+  "order-code": "Mã giao dịch",
+  "amount": "Số tiền",
+  "view-detail": "Xem chi tiết",
+  "all": "Tất cả",
   "Package detail": "Chi tiết gói"
 }
 

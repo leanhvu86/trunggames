@@ -82,8 +82,22 @@
   "nickname": "Nickname",
   "account-info": "Account information",
   "change-password": "Change password",
+  "Trường này không được để trống": "Please enter this field",
+  "passwords must match": "Password must match",
+  "password must be at least 6 characters": "Password must be at least 6 characters",
+  "password must be at most 32 characters": "Password must be at most 32 characters",
   "toast.message.success": "Save successfully!",
   "sold": "Sold",
+  "list order": "List orders",
+  "pending": "Pending",
+  "done": "Finished",
+  "cancelled": "Cancelled",
+  "search": "Search",
+  "status": "Status",
+  "order-code": "Order code",
+  "amount": "Amount",
+  "view-detail": "View details",
+  "all": "All",
   "Package detail": "Package detail"
 }
 

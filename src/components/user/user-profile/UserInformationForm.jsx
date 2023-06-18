@@ -16,7 +16,6 @@ const initialValues = {
   address: '',
   phoneNumber: '',
   roles: []
-
 };
 
 const UserInformationForm = () => {
@@ -32,9 +31,12 @@ const UserInformationForm = () => {
       axiosServices
         .post('/user/update', body)
         .then((res) => {
+          console.log(res);
           handleEnableEdit();
-          alert("Lưu thông tin thành công!")
           toast.success(formatMessage({ id: 'toast.message.success' }));
+        })
+        .catch((err) => {
+          console.log(err);
         })
         .finally(() => {
           setSubmitting(false);
