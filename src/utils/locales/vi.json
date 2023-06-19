@@ -98,6 +98,14 @@
   "amount": "Số tiền",
   "view-detail": "Xem chi tiết",
   "all": "Tất cả",
-  "Package detail": "Chi tiết gói"
+  "Package detail": "Chi tiết gói",
+  "package name": "Gói game",
+  "game name": "Tên game",
+  "price": "Đơn giá",
+  "Quantity": "Số lượng",
+  "Amount": "Số Tiền",
+  "orderer": "Người đặt hàng",
+  "order detail": "Chi tiết đơn hàng",
+  "My orders": "Đơn đặt hàng"
 }
 

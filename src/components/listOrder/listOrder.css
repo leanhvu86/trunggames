@@ -60,3 +60,23 @@ hr {
   color: inherit;
 }
 
+.list-order-title {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.breadcrumbs {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  overflow: hidden;
+}
+
+.breadcrumbs > * {
+  line-height: 0px;
+  display: block;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
