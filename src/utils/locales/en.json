@@ -98,6 +98,21 @@
   "amount": "Amount",
   "view-detail": "View details",
   "all": "All",
-  "Package detail": "Package detail"
+  "Package detail": "Package detail",
+  "category.list": "Category",
+  "contact": "Contact",
+  "cart": "Cart",
+  "footer-message": "There are many variations of passages of form humour or randomised",
+  "item": "Item",
+  "price_package": "Price/Package",
+  "quantity": "Quantity",
+  "checkout": "Checkout",
+  "total_price": "Total Price",
+  "item_selected": "item(s) selected",
+  "select_all": "Select all",
+  "add_to_cart": "Add to Cart",
+  "return": "Return",
+  "character_name": "Character Name"
+
 }
 

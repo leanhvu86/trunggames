@@ -14,6 +14,7 @@ import Tippy from "@tippyjs/react";
 import configData from '../../config.json';
 import {connect} from "react-redux";
 import {filterGame, rawData, removePackageView} from "../../constants/cartActions";
+import {FormattedMessage} from "react-intl";
 
 
 const mapStateToProps = (state) => {
@@ -295,7 +296,9 @@ class Games extends React.Component {
                     <div className="col-3">
 
                         <Tippy placement="right" content={<span>Click to open or close category!</span>}>
-                            <h3 className="category-title" onClick={() => this.handleOpenCategory(this)}>Category </h3>
+                            <h3 className="category-title" onClick={() => this.handleOpenCategory(this)}>
+                                <FormattedMessage id="category.list"/>
+                                 </h3>
                         </Tippy>
                     </div>
                     <div className="col-8 category-title">
