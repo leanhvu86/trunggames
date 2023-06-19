@@ -68,14 +68,6 @@ class Games extends React.Component {
                 this.onTreeEvent("openAll", undefined, undefined);
             });
         this.props.removePackageView(0);
-        fetch(configData.SERVER_URL + '/games/load-data')
-            .then((res) => res.json())
-            .then((json) => {
-                this.props.rawData(json.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
     }
 
     buildTree(categories, parentId) {
