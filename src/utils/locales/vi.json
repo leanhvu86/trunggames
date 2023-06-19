@@ -106,6 +106,20 @@
   "Amount": "Số Tiền",
   "orderer": "Người đặt hàng",
   "order detail": "Chi tiết đơn hàng",
-  "My orders": "Đơn đặt hàng"
+  "My orders": "Đơn đặt hàng",
+  "category.list": "Danh mục",
+  "contact": "Liên hệ",
+  "cart": "Giỏ hàng",
+  "footer-message": "Có nhiều biến thể của các đoạn văn hài hước hoặc ngẫu nhiên",
+  "item": "Gói",
+  "price_package": "Giá/Gói",
+  "quantity": "Số lượng",
+  "checkout": "Đặt hàng",
+  "total_price": "Tổng tiền",
+  "item_selected": "gói đã chọn",
+  "select_all": "Chọn tất cả",
+  "add_to_cart": "Thêm vào giỏ",
+  "return": "Trở lại",
+  "character_name": "Nhập tên nhân vật"
 }
 

@@ -42,7 +42,6 @@ class AuthenticateForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault(event);
-    this.props.checkLoadData(0);
     if (this.state.loginForm) {
       this.setState({ error: '' });
       fetch(configData.SERVER_URL + '/auth/signin', {
@@ -61,6 +60,7 @@ class AuthenticateForm extends React.Component {
           // this.setState({root: root});
           console.log(json);
           if (json.status === 200) {
+            this.props.checkLoadData(0);
             toast.success('Login successfully!');
             this.props.login(json.data);
             window.location.href = '/';
