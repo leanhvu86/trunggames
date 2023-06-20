@@ -102,7 +102,7 @@ class TopMenu extends React.Component {
                             </div>
                         </div>
                         : <Link to="/login" className="cart-icon">
-                            Login
+                            <FormattedMessage id="login"/>
                         </Link>
                     }
                 </div>

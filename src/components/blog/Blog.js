@@ -25,6 +25,7 @@ class Blog extends React.Component {
         this.returnBlog = this.returnBlog.bind(this);
         this.viewContent = this.viewContent.bind(this);
         this.props.removePackageView(0);
+
     }
 
     viewContent(blog) {
@@ -39,6 +40,10 @@ class Blog extends React.Component {
 
     returnBlog() {
         this.setState({viewType: !this.state.viewType});
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
 
     renderList() {
@@ -49,12 +54,12 @@ class Blog extends React.Component {
                 <div className="row">
                     {this.props.blogs.map((bl) => {
                         return (
-                            <div className="col-lg-4 col-md-6 col-12" key={bl.id}>
+                            <div className="col-lg-4 col-md-6 col-12 " key={bl.id} style={{cursor: 'pointer'}}>
                                 <div className="content-blog" onClick={() => this.viewContent(bl)}>
                                     <img style={{width: '100%', height: '200px'}} className="art lazy" alt=""
                                          src={bl.imageUrl}/>
                                     <br/>
-                                    <div className="blog-title">{bl.title}</div>
+                                    <div className="blog-title hover-blog">{bl.title}</div>
                                     <br/>
                                     <span className="blog-info">
                     {bl.postDate} | {bl.author}
@@ -84,6 +89,8 @@ class Blog extends React.Component {
               {this.state.blogView.postDate} | {this.state.blogView.author}
             </span>
                         <br/>
+                        <img style={{width: '100%', height: 'auto'}} className="art lazy" alt=""
+                             src={this.state.blogView.imageUrl}/>
                         <div className="mt-4">
                             <CKEditor
                                 editor={ClassicEditor}
@@ -105,22 +112,23 @@ class Blog extends React.Component {
                                 }}
                             />
                         </div>
-                        {/*<img style={{width: '100%', height: 'auto'}}*/}
-                        {/*     className="art lazy" alt=""*/}
-                        {/*     src={this.state.blogView.imageUrl}/>*/}
+                        {this.state.blogView.link !== '' ? <a href={this.state.blogView.link}>Link: {this.state.blogView.link}</a> : null}
+                        <br/>
+                        <span style={{float:'right',cursor:'pointer'}} onClick={()=>this.returnBlog()}><FormattedMessage id="return"/></span>
                     </div>
                     <div className="col-lg-5">
                         <div className="row">
                             {this.props.blogs.map((blog) => {
                                 return (
-                                    <div className="col-md-6 col-lg-12 col-12 p-2" key={blog.id}>
+                                    <div className="col-md-6 col-lg-12 col-12 p-2 " key={blog.id}
+                                         style={{cursor: 'pointer'}}>
                                         <div className="content-blog" onClick={() => this.viewContent(blog)}>
                                             <img style={{width: '100%', height: '200px'}} className="art lazy" alt=""
                                                  src={blog.imageUrl}/>
                                             <br/>
-                                            <div className="p-2">
+                                            <div className="p-2 ">
                                                 <div>
-                                                    <div className="blog-title ellipsis-text">{blog.title}</div>
+                                                    <div className="blog-title ellipsis-text hover-blog">{blog.title}</div>
                                                 </div>
                                                 <span className="blog-info">
                           {blog.postDate} | {blog.author}
@@ -156,7 +164,7 @@ class Blog extends React.Component {
             {' '}
               <FormattedMessage id="home"/>{' '}
           </Link>{' '}
-                    &nbsp;>&nbsp;<a onClick={() => this.returnBlog()}>Blog</a>
+                    &nbsp;>&nbsp;<a onClick={() => this.returnBlog()} style={{cursor: 'pointer'}}>Blog</a>
         </span>
                 {this.state.viewType ? this.renderList() : this.renderDetail()}
                 <br/>
