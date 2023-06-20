@@ -11,9 +11,18 @@ import axiosServices from '../../services';
 import { IconArrowRight } from '@tabler/icons-react';
 import moment from 'moment/moment';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 const ListOrder = () => {
+  const navigate = useNavigate();
   const { formatMessage } = useIntl();
+  const [filter, setFilter] = useState({
+    pageSize: 10,
+    pageNumber: 0,
+    orderBy: 'createdAt',
+    orderType: 'desc'
+  });
+  const [enableLoadMore, setEnableLoadMore] = useState(true);
   const [listOrder, setListOrder] = useState([]);
 
   const orderStatus = {
@@ -25,7 +34,9 @@ const ListOrder = () => {
 
   useEffect(() => {
     axiosServices
-      .get('/orders?orderBy=createdAt&orderType=desc&pageSize=10&pageNumber=0')
+      .get('/orders', {
+        params: filter
+      })
       .then((res) => {
         setListOrder(res.data);
       })
@@ -68,10 +79,10 @@ const ListOrder = () => {
             </div>
             <hr />
             <div className="order-amount col-6 p-0">
-              {formatMessage({ id: 'amount' })}: {order.totalAmount}
+              {formatMessage({ id: 'amount' })}: {order.totalAmount.toLocaleString()} VND
             </div>
             <div className="col-6 p-0 d-flex justify-content-end">
-              <a href="#" className="d-flex align-items-center order-view-detail">
+              <a href={`/my-order/${order.id}`} className="d-flex align-items-center order-view-detail">
                 {formatMessage({ id: 'view-detail' })}
                 <IconArrowRight size={16} style={{ marginLeft: '0.5em' }} />
               </a>

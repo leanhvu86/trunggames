@@ -99,6 +99,14 @@
   "view-detail": "Xem chi tiết",
   "all": "Tất cả",
   "Package detail": "Chi tiết gói",
+  "package name": "Gói game",
+  "game name": "Tên game",
+  "price": "Đơn giá",
+  "Quantity": "Số lượng",
+  "Amount": "Số Tiền",
+  "orderer": "Người đặt hàng",
+  "order detail": "Chi tiết đơn hàng",
+  "My orders": "Đơn đặt hàng",
   "category.list": "Danh mục",
   "contact": "Liên hệ",
   "cart": "Giỏ hàng",
@@ -113,7 +121,5 @@
   "add_to_cart": "Thêm vào giỏ",
   "return": "Trở lại",
   "character_name": "Nhập tên nhân vật"
-
-
 }
 

@@ -99,6 +99,14 @@
   "view-detail": "View details",
   "all": "All",
   "Package detail": "Package detail",
+  "package name": "package name",
+  "game name": "game name",
+  "price": "price",
+  "Quantity": "Quantity",
+  "Amount": "Amount",
+  "orderer": "Orderer",
+  "order detail": "Order details",
+  "My orders": "My orders",
   "category.list": "Category",
   "contact": "Contact",
   "cart": "Cart",
@@ -113,6 +121,5 @@
   "add_to_cart": "Add to Cart",
   "return": "Return",
   "character_name": "Character Name"
-
 }
 

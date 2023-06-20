@@ -23,6 +23,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ListOrder from './components/listOrder/ListOrder';
+import { OrderDetail } from './components/listOrder/OrderDetail';
 
 const persistConfig = {
   key: 'root',
@@ -51,6 +52,7 @@ ReactDOM.render(
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/my-order" element={<ListOrder />} />
+            <Route path="/my-order/:id" element={<OrderDetail />} />
           </Routes>
           <ToastContainer />
         </BrowserRouter>
