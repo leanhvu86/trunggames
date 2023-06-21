@@ -36,6 +36,7 @@ const UserInformationForm = () => {
           toast.success(formatMessage({ id: 'toast.message.success' }));
         })
         .catch((err) => {
+          toast.success(formatMessage({ id: 'phone.duplicate' }));
           console.log(err);
         })
         .finally(() => {

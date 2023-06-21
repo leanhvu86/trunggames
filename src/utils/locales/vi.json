@@ -121,6 +121,7 @@
   "add_to_cart": "Thêm vào giỏ",
   "return": "Trở lại",
   "character_name": "Nhập tên nhân vật",
-  "password must match": "Mật khẩu phải khớp"
+  "password must match": "Mật khẩu phải khớp",
+  "phone.duplicate": "Số điện thoại không được trùng"
 }
 

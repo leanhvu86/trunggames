@@ -1,5 +1,5 @@
 {
-  "SERVER_URL": "https://trunggames.com/trunggame-0.0.1/api",
+  "SERVER_URL": "http://localhost:8888/api",
   "THEME_COLORS": {
     "PRIMARY": "#007bff",
     "SECONDARY": "#fc3"

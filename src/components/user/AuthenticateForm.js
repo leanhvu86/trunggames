@@ -35,6 +35,7 @@ class AuthenticateForm extends React.Component {
             pendingRequest: false
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleOutFocus = this.handleOutFocus.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeForm = this.changeForm.bind(this);
         this.changeFormForget = this.changeFormForget.bind(this);
@@ -50,11 +51,54 @@ class AuthenticateForm extends React.Component {
         });
     }
 
+    handleOutFocus(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        if (name === 'phoneNumber') this.validateEmailPhone(value, '');
+        if (name === 'email') this.validateEmailPhone('', value);
+    }
+
+    validateEmailPhone(phoneNumber, email) {
+        fetch(configData.SERVER_URL + '/auth/validate-phone-email', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify({
+                email: email,
+                phoneNumber: phoneNumber,
+            })
+        })
+            .then((res) => res.json())
+            .then(
+                (json) => {
+                    if (json.status === 200) {
+                        this.setState({
+                            error: this.props.language === 'en' ? json.data : json.data
+                        });
+                    } else {
+                        // this.setState({
+                        //     error: this.props.language === 'en' ? 'Account is exist!' : "Tài khoản đã tồn tại!"
+                        // });
+                    }
+                },
+                (error) => {
+                    if (error) {
+                        this.setState({
+                            error: this.props.language === 'en' ? 'Can not sign up. Please contact to administrator!' : "Đã có lỗi xảy ra. Vui lòng liên hệ admin!"
+                        });
+                    }
+                }
+            );
+    }
+
     handleSubmit(event) {
         event.preventDefault(event);
-        if (this.state.loginForm) {
-            this.setState({error: '', bgcolor: testData[0].bgcolor, completed: 10, pendingRequest: true});
-
+        this.setState({error: '', pendingRequest: true});
+        if (this.state.loginForm && !this.state.forgetForm) {
             fetch(configData.SERVER_URL + '/auth/signin', {
                 method: 'post',
                 headers: {
@@ -72,7 +116,7 @@ class AuthenticateForm extends React.Component {
                     console.log(json);
 
                     if (json.status === 200) {
-                        this.setState({bgcolor: testData[2].bgcolor, completed: 0, pendingRequest: false});
+                        this.setState({pendingRequest: false});
 
                         this.props.checkLoadData(0);
                         toast.success(this.props.language === 'en' ? 'Login successfully!' : "Đăng nhập thành công!");
@@ -80,14 +124,11 @@ class AuthenticateForm extends React.Component {
                         window.location.href = '/';
                         localStorage.setItem('servicesToken', json.data.token);
                     } else {
-                        this.setState({bgcolor: testData[2].bgcolor, completed: 100, pendingRequest: false});
-
+                        this.setState({pendingRequest: false});
                         this.setState({error: 'Wrong username or Password'});
-                        this.setState({bgcolor: testData[2].bgcolor, completed: 0});
-
                     }
                 });
-        } else {
+        } else if (!this.state.forgetForm && !this.state.loginForm) {
             if (validator.isEmail(this.state.email)) {
                 fetch(configData.SERVER_URL + '/auth/signup', {
                     method: 'post',
@@ -108,16 +149,21 @@ class AuthenticateForm extends React.Component {
                     .then((res) => res.json())
                     .then(
                         (json) => {
-                            // this.props.login(json.data);
-                            this.setState({bgcolor: testData[2].bgcolor, completed: 50, pendingRequest: false});
-                            toast.success(this.props.language === 'en' ? 'Register successfully!' : "Đăng ký thành công!");
-                            this.changeForm();
-
+                            if (json.status === 200) {
+                                // this.props.login(json.data);
+                                this.setState({bgcolor: testData[2].bgcolor, completed: 50, pendingRequest: false});
+                                toast.success(this.props.language === 'en' ? 'Register successfully!' : "Đăng ký thành công!");
+                                this.changeForm();
+                            } else {
+                                this.setState({
+                                    error: this.props.language === 'en' ? 'Information is exist!' : "Thông tin đã đã tồn tại!"
+                                });
+                            }
                         },
                         (error) => {
                             if (error) {
                                 this.setState({
-                                    error: 'Can not sign up. Please contact to administrator!'
+                                    error: this.props.language === 'en' ? 'Can not sign up. Please contact to administrator!' : "Đã có lỗi xảy ra. Vui lòng liên hệ admin!"
                                 });
                             }
                         }
@@ -125,6 +171,36 @@ class AuthenticateForm extends React.Component {
             } else {
                 this.setState({error: 'Invalid email'});
             }
+        } else if (this.state.forgetForm) {
+            toast.success(this.props.language === 'en' ? 'Request send successful! Please wait for checking account!' : "Yêu cầu đã được gửi đi! Vui lòng đợi chúng tôi kiểm tra tài khoản!");
+            fetch(configData.SERVER_URL + '/auth/forget-password', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify({
+                    username: this.state.username,
+                    password: this.state.password
+                })
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    // this.setState({root: root});
+                    console.log(json);
+
+                    if (json.status === 200) {
+                        if (json.data === false) {
+                            this.setState({pendingRequest: false});
+                            toast.success(this.props.language === 'en' ? 'Username not found!' : "Tài khoản đăng nhập không tồn tại!");
+                        } else
+                            this.setState({pendingRequest: false,forgetForm:false,loginForm:true});
+                        toast.success(this.props.language === 'en' ? 'Your new password have sent successfully!' : "Mật khẩu mới gửi về email thành công!");
+                    } else {
+                        this.setState({pendingRequest: false});
+                        this.setState({error: 'There is someproblem, please contact admin'});
+                    }
+                });
         }
     }
 
@@ -213,6 +289,7 @@ class AuthenticateForm extends React.Component {
                                         placeholder={this.props.language === 'en' ? "Enter email" : "Nhập email"}
                                         value={this.state.email}
                                         onChange={this.handleChange}
+                                        onBlur={this.handleOutFocus}
                                     />
                                 </div>
                                 <div className="row">
@@ -239,7 +316,7 @@ class AuthenticateForm extends React.Component {
                                                 aria-describedby="emailHelp"
                                                 required
                                                 placeholder={this.props.language === 'en' ? "Enter Phone" : "Nhập số điện thoại"}
-
+                                                onBlur={this.handleOutFocus}
                                                 value={this.state.phoneNumber}
                                                 onChange={this.handleChange}
                                             />
@@ -256,7 +333,7 @@ class AuthenticateForm extends React.Component {
                                     className="form-control"
                                     id="exampleInputusername1"
                                     required
-                                    placeholder={this.props.language === 'en' ? "Enter Email" : "Nhập email"}
+                                    placeholder={this.props.language === 'en' ? "Enter Registered Email" : "Nhập email đã đăng ký"}
                                     value={this.state.username}
                                     onChange={this.handleChange}
                                 />
