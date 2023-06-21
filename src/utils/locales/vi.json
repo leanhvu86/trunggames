@@ -120,6 +120,8 @@
   "select_all": "Chọn tất cả",
   "add_to_cart": "Thêm vào giỏ",
   "return": "Trở lại",
-  "character_name": "Nhập tên nhân vật"
+  "character_name": "Nhập tên nhân vật",
+  "list orders": "Đơn hàng",
+  "processing": "Đang xử lý"
 }
 

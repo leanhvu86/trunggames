@@ -120,6 +120,8 @@
   "select_all": "Select all",
   "add_to_cart": "Add to Cart",
   "return": "Return",
-  "character_name": "Character Name"
+  "character_name": "Character Name",
+  "list orders": "List Orders",
+  "processing": "Processing"
 }
 
