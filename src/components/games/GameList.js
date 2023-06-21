@@ -17,7 +17,7 @@ class GameList extends React.Component {
         super(props);
         this.state = {loaded: false};
         this.handleClick = this.handleClick.bind(this);
-
+        console.log("hi")
     }
 
     handleClick(game) {

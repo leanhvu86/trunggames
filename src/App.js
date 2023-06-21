@@ -99,9 +99,9 @@ class App extends React.Component {
                 <Banner onChange={this.onChange.bind(this)}/>
 
                 {/*<CustomerService/>*/}
-                <div className=" service-container">
-                    <ParallaxCards/>
-                </div>
+                {/*<div className=" service-container">*/}
+                {/*    <ParallaxCards/>*/}
+                {/*</div>*/}
                 <MobilePopular/>
                 <NewGame/>
                 <div className="center-title">

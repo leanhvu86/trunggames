@@ -121,8 +121,9 @@ class AuthenticateForm extends React.Component {
                         this.props.checkLoadData(0);
                         toast.success(this.props.language === 'en' ? 'Login successfully!' : "Đăng nhập thành công!");
                         this.props.login(json.data);
-                        window.location.href = '/';
+
                         localStorage.setItem('servicesToken', json.data.token);
+                        setTimeout(window.location.href = '/', 2000)
                     } else {
                         this.setState({pendingRequest: false});
                         this.setState({error: 'Wrong username or Password'});
@@ -192,10 +193,11 @@ class AuthenticateForm extends React.Component {
                     if (json.status === 200) {
                         if (json.data === false) {
                             this.setState({pendingRequest: false});
-                            toast.success(this.props.language === 'en' ? 'Username not found!' : "Tài khoản đăng nhập không tồn tại!");
-                        } else
-                            this.setState({pendingRequest: false,forgetForm:false,loginForm:true});
-                        toast.success(this.props.language === 'en' ? 'Your new password have sent successfully!' : "Mật khẩu mới gửi về email thành công!");
+                            toast.error(this.props.language === 'en' ? 'Username not found!' : "Tài khoản đăng nhập không tồn tại!");
+                        } else{
+                            this.setState({pendingRequest: false, forgetForm: false, loginForm: true});
+                            toast.success(this.props.language === 'en' ? 'Your new password have sent successfully!' : "Mật khẩu mới gửi về email thành công!");
+                        }
                     } else {
                         this.setState({pendingRequest: false});
                         this.setState({error: 'There is someproblem, please contact admin'});
