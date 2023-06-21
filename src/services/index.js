@@ -3,6 +3,7 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } f
 import qs from 'qs';
 import { toast } from 'react-toastify';
 import config from '../config.json';
+import {useNavigate} from "react-router-dom";
 const REACT_APP_BASE_URL = config.SERVER_URL;
 
 const axiosServices = axios.create({
@@ -32,7 +33,7 @@ const handleRequestError = (error) => {
     if (localStorage.getItem('servicesToken')) {
       localStorage.clear();
       setTimeout(() => {
-        window.location.reload();
+        // window.location.href('/login')
       }, 2000);
     }
     return;

@@ -69,7 +69,7 @@
 .seach-content {
   margin-top: 20px;
   border: 0.5px solid #c4c0c0;
-  padding: 20px 35px;
+  padding: 20px 15px;
   border-radius: 5px;
   font-size: 10px;
 }
@@ -208,4 +208,5 @@ select {
       'c c';
   }
 }
+
 

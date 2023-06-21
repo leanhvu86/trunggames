@@ -2,7 +2,6 @@ import { IconEye, IconEyeClosed } from '@tabler/icons-react';
 import React, { useState } from 'react';
 
 const PasswordInput = ({ error, errorMessage, ...props }) => {
-  console.log(error, errorMessage);
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {

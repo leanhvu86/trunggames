@@ -71,7 +71,7 @@
   "Hot": "Hot",
   "New": "New",
   "Price": "Price",
-  "Rating": "Ranking",
+  "Rating": "Rating",
   "Kho": "Available",
   "Find product": "Find products",
   "Server": "Server",
@@ -120,6 +120,7 @@
   "select_all": "Select all",
   "add_to_cart": "Add to Cart",
   "return": "Return",
-  "character_name": "Character Name"
+  "character_name": "Character Name",
+  "password must match": "Password must match"
 }
 

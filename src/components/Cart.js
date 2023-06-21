@@ -107,19 +107,18 @@ class Cart extends React.Component {
                         this.state.listCheckout.forEach((item) => {
                             this.props.removeItem(item.packageId);
                         });
-
-                        toast.success('Ordered successfully!');
+                        toast.success(this.props.language==='en'?'Ordered successfully!':"Đặt hàng thành công!");
                     } else if (json.status === 401) {
-                        toast.warn('End session. Please log in again!');
+                        toast.warn(this.props.language==='en'?'End session. Please log in again!':"Hết session. Vui lòng đăng nhập lại!");
                     } else {
-                        toast.warn('Create order fail!');
+                        toast.warn(this.props.language==='en'?'Create order fail, please contact with admin!':"Đặt hàng thất bại, vui lòng liên hệ với admin!");
                     }
                     this.props.deselectAll(1);
                     this.scanCheckoutInfo();
                 },
                 (error) => {
                     if (error) {
-                        toast.error('Order fail!');
+                        toast.error(this.props.language==='en'?'Create order fail, please contact with admin!':"Đặt hàng thất bại, vui lòng liên hệ với admin!");
                     }
                 }
             );
@@ -240,7 +239,7 @@ class Cart extends React.Component {
                 {/*{this.state.loaded ? null :<LoadingSpinner/>}*/}
                 <Translation>{(t) => <TopMenu t={t}/>}</Translation>
                 <NavBar/>
-                <h3 style={{color: 'white', paddingLeft: '10%'}}>Shopping cart</h3>
+                <h3 style={{color: 'white', paddingLeft: '10%'}}><FormattedMessage id="cart"/></h3>
                 <div className="container pack-content">
                     <br/>
                     <div className="row " style={{fontWeight: 'bolder'}}>
