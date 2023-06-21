@@ -79,7 +79,7 @@ class Footer extends React.Component {
                         <p className="footer-item">
                             <FormattedMessage id="footer-message"/>
 
-                            </p>
+                        </p>
 
                         <input
                             className="c-form__input"
@@ -91,10 +91,14 @@ class Footer extends React.Component {
                         <br/>
                         <br/>
                         <p className="footer-item" style={{alignItem: 'center'}}>
-                            <img src={require('./share-image/icons8-facebook-32.png')} alt=""/>
-                            <img src={require('./share-image/icons8-zalo-32.png')} alt=""/>
-                            <img src={require('./share-image/icons8-instagram-32.png')} alt=""/>
-                            <img src={require('./share-image/icons8-telegram-app-32.png')} alt=""/>
+                            <a href="https://www.facebook.com/TrungGames" target="_blank"><img
+                                src={require('./share-image/icons8-facebook-32.png')} alt=""/></a>
+                            <a href="https://zalo.me/0787652222" target="_blank"><img
+                                src={require('./share-image/icons8-zalo-32.png')} alt=""/></a>
+                            <a href="https://www.instagram.com/trung_games/" target="_blank"><img
+                                src={require('./share-image/icons8-instagram-32.png')} alt=""/></a>
+                            <a href="https://t.me/TrungGames" target="_blank"><img
+                                src={require('./share-image/icons8-telegram-app-32.png')} alt=""/></a>
                         </p>
                     </div>
                 </div>

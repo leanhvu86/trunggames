@@ -73,6 +73,7 @@ class PackageDetail extends React.Component {
             this.state.options.forEach((item) => {
                 if (item.toUpperCase().startsWith(value)) {
                     this.setState({loginType: item});
+                    console.log(item);
                 }
             });
         }
@@ -114,7 +115,7 @@ class PackageDetail extends React.Component {
         };
         this.setState({disable: true});
         this.props.addToCart(item);
-        toast.success('Product add to cart successfully!');
+        toast.success(this.props.language==='en'?'Product add to cart successfully!':"Thêm gói vào giỏ hàng thành công!");
     }
 
     renderWebsite() {
@@ -294,7 +295,7 @@ class PackageDetail extends React.Component {
                       onKeyDown={() => this.onReturn.bind(this)}>
                     <br/>
                     {this.state.checkDuplicate ?
-                        <span style={{fontSize: '20px', color: 'red'}}> You have this package on cart now!</span> : ''}
+                        <span style={{fontSize: '20px', color: 'red'}}>{this.props.language==='en'?" You have this package on cart now!":"Gói đã có trong giỏ hàng của bạn!"}</span> : ''}
                     <br/>
                     <br/>
                     <div className="form-group">
@@ -306,7 +307,7 @@ class PackageDetail extends React.Component {
                                 disabled={this.state.disable}
                                 className="form-control"
                                 aria-describedby="emailHelp"
-                                placeholder="Enter login type"
+                                placeholder={this.props.language==='en'?"Enter login type":"Nhập loại đăng nhập"}
                                 value={this.state.loginType}
                                 onChange={this.handleChange}
                                 onKeyDown={this.onKeyDown}
@@ -322,7 +323,7 @@ class PackageDetail extends React.Component {
                             disabled={this.state.disable}
                             className="form-control"
                             aria-describedby="accountHelp"
-                            placeholder="Enter ID, Email, Phone"
+                            placeholder={this.props.language==='en'?"Enter ID, Email, Phone":"Nhập Id, email, số điện thoại"}
                             value={this.state.account}
                             onChange={this.handleChange}
                         />
@@ -336,7 +337,7 @@ class PackageDetail extends React.Component {
                             id="exampleInputPassword1"
                             required
                             disabled={this.state.disable}
-                            placeholder="Password"
+                            placeholder={this.props.language==='en'?"Enter Password":"Nhập mật khẩu"}
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
@@ -350,7 +351,7 @@ class PackageDetail extends React.Component {
                             disabled={this.state.disable}
                             className="form-control"
                             aria-describedby="accountHelp 1"
-                            placeholder="Enter Login Code"
+                            placeholder={this.props.language==='en'?"Enter Login Code":"Nhập mã đăng nhập"}
                             value={this.state.loginCode}
                             onChange={this.handleChange}
                         />
@@ -366,7 +367,7 @@ class PackageDetail extends React.Component {
                                 aria-describedby="server"
                                 required
                                 disabled={this.state.disable}
-                                placeholder="Enter server"
+                                placeholder={this.props.language==='en'?"Enter server":"Nhập máy chủ"}
                                 value={this.state.server}
                                 onChange={this.handleChange}
                             />
@@ -381,7 +382,7 @@ class PackageDetail extends React.Component {
                             aria-describedby="characterName"
                             required
                             disabled={this.state.disable}
-                            placeholder="Enter character name"
+                            placeholder= {this.props.language==='en'?"Enter character name":"Nhập tên nhân vật"}
                             value={this.state.characterName}
                             onChange={this.handleChange}
                         />
@@ -396,7 +397,7 @@ class PackageDetail extends React.Component {
                             aria-describedby="quantity"
                             required
                             disabled={this.state.disable}
-                            placeholder="Enter quantity"
+                            placeholder= {this.props.language==='en'?"Enter quantity":"Nhập số lượng"}
                             value={this.state.quantity}
                             onChange={this.handleChange}
                         />
@@ -462,7 +463,8 @@ const mapStateToProps = (state) => {
     return {
         game: state.game,
         currency: state.currency,
-        addedItems: state.addedItems
+        addedItems: state.addedItems,
+        language: state.language
     };
 };
 const mapDispatchToProps = (dispatch) => {

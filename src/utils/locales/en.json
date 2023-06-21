@@ -71,7 +71,7 @@
   "Hot": "Hot",
   "New": "New",
   "Price": "Price",
-  "Rating": "Ranking",
+  "Rating": "Rating",
   "Kho": "Available",
   "Find product": "Find products",
   "Server": "Server",
@@ -122,6 +122,8 @@
   "return": "Return",
   "character_name": "Character Name",
   "list orders": "List Orders",
-  "processing": "Processing"
+  "processing": "Processing",
+  "password must match": "Password must match",
+  "phone.duplicate": "Phone duplicate not allow"
 }
 

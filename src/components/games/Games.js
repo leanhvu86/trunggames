@@ -128,6 +128,7 @@ class Games extends React.Component {
             }
         });
         this.props.filterGame(listTemp);
+        listTemp.length === 0 ? this.setState({loaded: true}) : null;
     }
 
     onUpdateData(root) {
@@ -298,7 +299,7 @@ class Games extends React.Component {
                         <Tippy placement="right" content={<span>Click to open or close category!</span>}>
                             <h3 className="category-title" onClick={() => this.handleOpenCategory(this)}>
                                 <FormattedMessage id="category.list"/>
-                                 </h3>
+                            </h3>
                         </Tippy>
                     </div>
                     <div className="col-8 category-title">
