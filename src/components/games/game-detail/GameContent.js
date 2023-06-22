@@ -45,6 +45,12 @@ class GameContent extends React.Component {
                             // console.log( 'Focus.', editor );
                         }}
                     />
+                    <iframe src={"https://www.youtube.com/embed/"+this.props.game.youtubeLink}
+                            frameBorder='0'
+                            allow='autoplay; encrypted-media'
+                            allowFullScreen
+                            title='video'
+                    />
                 </div>
 
             </div>

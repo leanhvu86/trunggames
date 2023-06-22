@@ -178,7 +178,7 @@ class PackageDetail extends React.Component {
                         <CKEditor
                             editor={ClassicEditor}
                             disabled
-                            data={this.state.package.descriptionEn}
+                            data={this.props.language==='en'?this.state.package.descriptionEn:this.state.package.descriptionVi}
                             onReady={(editor) => {
                                 // You can store the "editor" and use when it is needed.
                                 // console.log( 'Editor is ready to use!', editor );
@@ -263,7 +263,7 @@ class PackageDetail extends React.Component {
                             <CKEditor
                                 editor={ClassicEditor}
                                 disabled
-                                data={this.state.package.descriptionEn}
+                                data={this.props.language==='en'?this.state.package.descriptionEn:this.state.package.descriptionVi}
                                 onReady={(editor) => {
                                     // You can store the "editor" and use when it is needed.
                                     // console.log( 'Editor is ready to use!', editor );
