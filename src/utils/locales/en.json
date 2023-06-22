@@ -121,6 +121,8 @@
   "add_to_cart": "Add to Cart",
   "return": "Return",
   "character_name": "Character Name",
+  "list orders": "List Orders",
+  "processing": "Processing",
   "password must match": "Password must match",
   "phone.duplicate": "Phone duplicate not allow"
 }

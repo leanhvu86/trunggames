@@ -1,17 +1,17 @@
+import { IconChevronRight, IconHome } from '@tabler/icons-react';
+import classNames from 'classnames';
+import moment from 'moment/moment';
 import React, { useEffect, useState } from 'react';
 import { Translation } from 'react-i18next';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { useParams } from 'react-router-dom';
+import axiosServices from '../../services';
 import Footer from '../Footer';
 import ParallaxImage from '../parallax/ParallaxImage';
 import NavBar from '../ui-common/NavBar';
 import ScrollButton from '../ui-common/ScrollButton';
 import TopMenu from '../ui-common/TopMenu';
 import './listOrder.css';
-import { FormattedMessage, useIntl } from 'react-intl';
-import axiosServices from '../../services';
-import { IconArrowRight, IconChevronRight, IconHome } from '@tabler/icons-react';
-import moment from 'moment/moment';
-import classNames from 'classnames';
-import { useParams } from 'react-router-dom';
 
 export const OrderDetail = () => {
   const { formatMessage } = useIntl();

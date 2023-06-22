@@ -6,7 +6,7 @@ import NavBar from '../ui-common/NavBar';
 import ScrollButton from '../ui-common/ScrollButton';
 import TopMenu from '../ui-common/TopMenu';
 import './listOrder.css';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import axiosServices from '../../services';
 import { IconArrowRight } from '@tabler/icons-react';
 import moment from 'moment/moment';
@@ -22,14 +22,26 @@ const ListOrder = () => {
     orderBy: 'createdAt',
     orderType: 'desc'
   });
-  const [enableLoadMore, setEnableLoadMore] = useState(true);
+  const [enableLoadMore, setEnableLoadMore] = useState(false);
   const [listOrder, setListOrder] = useState([]);
 
   const orderStatus = {
     '-1': formatMessage({ id: 'all' }),
-    0: formatMessage({ id: 'pending' }),
-    1: formatMessage({ id: 'done' }),
-    2: formatMessage({ id: 'cancelled' })
+    1: formatMessage({ id: 'pending' }),
+    2: formatMessage({ id: 'processing' }),
+    3: formatMessage({ id: 'done' }),
+    4: formatMessage({ id: 'cancelled' })
+  };
+
+  const orderStatusColors = {
+    1: 'text-warning',
+    2: 'text-warning',
+    3: 'text-success',
+    4: 'text-danger'
+  };
+
+  const handleChangeFilter = (key, value) => {
+    setFilter((prev) => ({ ...prev, key: value }));
   };
 
   useEffect(() => {
@@ -38,10 +50,16 @@ const ListOrder = () => {
         params: filter
       })
       .then((res) => {
-        setListOrder(res.data);
+        const newOrders = res.data.filter((order) => !listOrder.some((item) => item.id === order.id)).concat(listOrder);
+        setListOrder(newOrders);
+        if (res.data?.length < filter.pageSize) {
+          setEnableLoadMore(false);
+        } else {
+          setEnableLoadMore(true);
+        }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [filter]);
   return (
     <div>
       <Translation>{(t) => <TopMenu t={t} />}</Translation>
@@ -59,9 +77,10 @@ const ListOrder = () => {
             <label htmlFor="ee">{formatMessage({ id: 'status' })}</label>
             <select>
               <option value="-1">{orderStatus['-1']}</option>
-              <option value="0">{orderStatus['0']}</option>
               <option value="1">{orderStatus['1']}</option>
               <option value="2">{orderStatus['2']}</option>
+              <option value="3">{orderStatus['3']}</option>
+              <option value="4">{orderStatus['4']}</option>
             </select>
           </div>
         </div>
@@ -73,9 +92,7 @@ const ListOrder = () => {
             </div>
             <div className="col-md-4 col-12 p-0">
               <b>{formatMessage({ id: 'status' })}:</b>&nbsp;
-              <span className={classNames('order-status', { 'text-success': order.status == '1' }, { 'text-danger': order.status == '0' })}>
-                {orderStatus[order.status]}
-              </span>
+              <span className={classNames('order-status', orderStatusColors[order.status])}>{orderStatus[order.status]}</span>
             </div>
             <hr />
             <div className="order-amount col-6 p-0">
@@ -89,6 +106,17 @@ const ListOrder = () => {
             </div>
           </div>
         ))}
+        {enableLoadMore && (
+          <div className="d-flex justify-content-center">
+            <div
+              onClick={() => {
+                handleChangeFilter('pageNumber', filter.pageNumber + 1);
+              }}
+            >
+              <FormattedMessage id="view more" />
+            </div>
+          </div>
+        )}
       </div>
       <ParallaxImage />
       <Footer />
