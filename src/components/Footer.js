@@ -23,7 +23,7 @@ class Footer extends React.Component {
                             </p>
                             <p className="footer-item">
                                 <i className="fa fa-envelope " aria-hidden="true"/>
-                                &nbsp;&nbsp;trunggame2512@gmail.com
+                                &nbsp;&nbsp;trungbet2512@gmail.com
                             </p>
                         </div>
                     </div>
@@ -41,22 +41,13 @@ class Footer extends React.Component {
                                     <FormattedMessage id="about_us"/>
                                 </Link>
                             </p>
-                            <p className="footer-item">
-                                <Link to="/blog" className="footer-item">
-                                    Blog
-                                </Link>
-                            </p>
+
                         </div>
                     </div>
-                    <div className="col col-lg-2 col-md-6 col-sm-6 d-none d-sm-block">
+                    <div className="col col-lg-3 col-md-6 col-sm-6 d-none d-sm-block">
                         <div>
                             <p className="footer-title">
                                 <FormattedMessage id="extras"/>
-                            </p>
-                            <p className="footer-item">
-                                <Link to="/cart" className="footer-item">
-                                    <FormattedMessage id="cart"/>
-                                </Link>
                             </p>
                             <p className="footer-item">
                                 <Link to="/top-sale" className="footer-item">
@@ -65,29 +56,29 @@ class Footer extends React.Component {
                                 </Link>
                             </p>
                             <p className="footer-item">
-                                <Link to="/user-profile" className="footer-item">
-                                    <FormattedMessage id="profile"/>
-
+                                <Link to="/blog" className="footer-item">
+                                    Blog
                                 </Link>
                             </p>
                         </div>
                     </div>
-                    <div className="col col-lg-4 col-md-6 col-sm-6">
+                    <div className="col col-lg-3 col-md-6 col-sm-6">
                         <p className="footer-title">
-                            <FormattedMessage id="our newsletter"/>
+                            <FormattedMessage id="member"/>
                         </p>
+
                         <p className="footer-item">
-                            <FormattedMessage id="footer-message"/>
-
+                            <Link to="/cart" className="footer-item">
+                                <FormattedMessage id="cart"/>
+                            </Link>
                         </p>
 
-                        <input
-                            className="c-form__input"
-                            placeholder="E-mail"
-                            type="email"
-                            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-                            required
-                        />
+                        <p className="footer-item">
+                            <Link to="/user-profile" className="footer-item">
+                                <FormattedMessage id="profile"/>
+
+                            </Link>
+                        </p>
                         <br/>
                         <br/>
                         <p className="footer-item" style={{alignItem: 'center'}}>
