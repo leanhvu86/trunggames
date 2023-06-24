@@ -49,12 +49,30 @@ a {
     transform: rotate(360deg);
   }
 }
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .loading-spinner {
-  /*animation: spinner 1.5s linear infinite;*/
-  background-size: 100%;
-  width: 400px;
-  height: 400px;
-  background: url(../public/image/logo2.gif) 50% 50% no-repeat #1e1327;
+  animation: fade 3s linear infinite;
+  width: 200px;
+  height: 200px;
+  background: url(../public/image/logo.png);
+  background-size: 100px auto;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .spinner-container {

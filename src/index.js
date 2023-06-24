@@ -8,7 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import App from './App';
 import Cart from './components/Cart';
-import AboutUs from './components/about-us/AboutUs';
+import AboutUs from './components/about-us';
 import Blog from './components/blog/Blog';
 import Games from './components/games/Games';
 import GameDetail from './components/games/game-detail/GameDetail';
