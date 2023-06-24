@@ -5,6 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import axiosServices from '../../../services';
 import { toast } from 'react-toastify';
+import {useNavigate} from "react-router-dom";
 
 const initialValues = {
   token: '',
@@ -20,8 +21,12 @@ const initialValues = {
 
 const UserInformationForm = () => {
   const { user } = useSelector((state) => state);
-
+  const navigate = useNavigate();
   const { formatMessage } = useIntl();
+  const navigateToContacts = () => {
+    // 👇️ navigate to /contacts
+    navigate('/login');
+  };
   const formikProps = useFormik({
     initialValues: Object.assign(initialValues, user ?? {}),
     onSubmit: (values, { setSubmitting }) => {
@@ -32,8 +37,13 @@ const UserInformationForm = () => {
         .post('/user/update', body)
         .then((res) => {
           console.log(res);
-          handleEnableEdit();
-          toast.success(formatMessage({ id: 'toast.message.success' }));
+          if(res.data.status ===200){
+            handleEnableEdit();
+            toast.success(formatMessage({ id: 'toast.message.success' }));
+          }else{
+            navigateToContacts();
+          }
+
         })
         .catch((err) => {
           toast.success(formatMessage({ id: 'phone.duplicate' }));

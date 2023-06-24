@@ -96,7 +96,7 @@ const ListOrder = () => {
             </div>
             <hr />
             <div className="order-amount col-6 p-0">
-              {formatMessage({ id: 'amount' })}: {order.totalAmount.toLocaleString()} VND
+              {formatMessage({ id: 'amount' })}: {order.totalAmount?.toLocaleString()} VND
             </div>
             <div className="col-6 p-0 d-flex justify-content-end">
               <a href={`/my-order/${order.id}`} className="d-flex align-items-center order-view-detail">

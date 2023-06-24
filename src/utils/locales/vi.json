@@ -125,6 +125,7 @@
   "processing": "Đang xử lý",
   "password must match": "Mật khẩu phải khớp",
   "phone.duplicate": "Số điện thoại không được trùng",
-  "member": "Thành viên"
+  "member": "Thành viên",
+  "forgot password": "Quên mật khẩu"
 }
 
