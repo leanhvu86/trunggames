@@ -153,7 +153,7 @@ class Cart extends React.Component {
                                         </div>
                                     </div> :
                                     <div className="row">
-                                        <div className="row" style={{width:'100%'}}>
+                                        <div className="row" style={{width: '100%'}}>
                                             <input type="checkbox" checked={item.checkout}
                                                    onChange={() => this.handleCheckout(this, item.packageId)}/>
                                             <div className="crop" style={{paddingLeft: '5px'}}>
@@ -163,7 +163,7 @@ class Cart extends React.Component {
                                         <br/>
                                         <br/>
                                         <br/>
-                                        <span className="package-name " style={{width:'100%'}}>{item.name}</span>
+                                        <span className="package-name " style={{width: '100%'}}>{item.name}</span>
                                     </div>
                                 }
                             </div>
@@ -210,16 +210,12 @@ class Cart extends React.Component {
                                             </b>
                                         </p>
                                         <div className="float-right">
-
                                             <span>
-                            <i
-                                className="fa fa-trash-o fa-2x cart-icon"
-                                onClick={() => {
-                                    this.handleRemove(item.packageId);
-                                }}
-                                aria-hidden="true"
-                            />
-                          </span>
+                            <i className="fa fa-trash-o fa-2x cart-icon"
+                               onClick={() => {
+                                   this.handleRemove(item.packageId);
+                               }} aria-hidden="true"/>
+                                             </span>
                                         </div>
                                     </div>
                                 </div>
