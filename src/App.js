@@ -20,6 +20,7 @@ import TopMenu from './components/ui-common/TopMenu';
 import configData from './config.json';
 import { checkLoadData, rawData, removePackageView } from './constants/cartActions';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import LoadingSpinner from './components/ui-common/LoadingSpinner';
 
 const mapStateToProps = (state) => {
   return {
@@ -118,7 +119,7 @@ class App extends React.Component {
           </h1>
           <div className="underline-span" />
         </div>
-        <MessengerCustomerChat pageId="102847239527887" appId="1580904679106469" htmlRef="www.facebook.com/groups/1138590896242233/" />
+        <MessengerCustomerChat pageId="102992487744381" appId="647062935805565" htmlRef="www.facebook.com/groups/1138590896242233/" />
         <NewPackage slideImage={this.props.topSale} />
         <Footer />
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
