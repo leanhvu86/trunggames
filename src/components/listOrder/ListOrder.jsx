@@ -19,8 +19,8 @@ const ListOrder = () => {
   const [filter, setFilter] = useState({
     pageSize: 10,
     pageNumber: 0,
-    orderBy: 'createdAt',
-    orderType: 'desc'
+    orderBy: 'status',
+    orderType: 'asc'
   });
   const [enableLoadMore, setEnableLoadMore] = useState(false);
   const [listOrder, setListOrder] = useState([]);
