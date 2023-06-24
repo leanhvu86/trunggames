@@ -6,8 +6,10 @@ import NavBar from '../ui-common/NavBar';
 import ParallaxImage from '../parallax/ParallaxImage';
 import Footer from '../Footer';
 import ScrollButton from '../ui-common/ScrollButton';
+import aboutUSImg from '../../assets/images/about-us.svg';
+import servicesImg from '../../assets/images/services.png';
 
-class AboutUs extends React.Component {
+class AboutUsVi extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loaded: false };
@@ -32,12 +34,7 @@ class AboutUs extends React.Component {
             data-aos-duration="500"
           >
             <div className="col-12 col-lg-4 d-flex justify-content-center">
-              <img
-                data-original="https://kaleoz-media.seagmcdn.com/art/art_whatiskaleoz.png?x-oss-process=image/format,png"
-                className="art lazy"
-                alt=""
-                src="https://kaleoz-media.seagmcdn.com/art/art_whatiskaleoz.png?x-oss-process=image/format,webp"
-              />
+              <img data-original={aboutUSImg} className="art lazy" alt="" src={aboutUSImg} />
             </div>
             <div className="col-12 col-lg-8 pl-4">
               <div className="d-flex align-items-center h-100">
@@ -61,7 +58,7 @@ class AboutUs extends React.Component {
             data-aos-duration="500"
             data-aos-offset="-200"
           >
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-7">
               <article>
                 <h2 className="mb-3">Dịch vụ chúng tôi cung cấp</h2>
                 <div>
@@ -83,13 +80,10 @@ class AboutUs extends React.Component {
                 </div>
               </article>
             </div>
-            <div className="col-12 col-lg-4 d-flex justify-content-center">
-              <img
-                data-original="https://kaleoz-media.seagmcdn.com/art/art_provide.png?x-oss-process=image/format,png"
-                className="art lazy"
-                alt=""
-                src="https://kaleoz-media.seagmcdn.com/art/art_provide.png?x-oss-process=image/format,webp"
-              />
+            <div className="col-12 col-lg-5 d-flex justify-content-center">
+              <div className="pt-4">
+                <img data-original={servicesImg} className="art lazy" alt="" src={servicesImg} />
+              </div>
             </div>
           </div>
           <div
@@ -126,5 +120,5 @@ class AboutUs extends React.Component {
   }
 }
 
-export default AboutUs;
+export default AboutUsVi;
 
