@@ -52,7 +52,7 @@ class TopMenu extends React.Component {
             <span>Nguyen Van A</span>
           </Link> */}
           {this.props.token !== null && this.props.token !== '' ? (
-            <div className="dropdown ml-3">
+            <div className="dropdown ml-3" style={{cursor:'pointer'}}>
               <div
                 className="dropdown-toggle d-flex align-items-center justify-content-end"
                 id="dropdownMenuButton"
