@@ -3,7 +3,7 @@ import './login.css';
 import validator from 'validator';
 import configData from '../../config.json';
 import {connect} from 'react-redux';
-import {login} from '../../constants/userActions';
+import {login, logout} from '../../constants/userActions';
 import {Link} from 'react-router-dom';
 import LocaleOptions from '../ui-common/Locale';
 import {FormattedMessage} from 'react-intl';
@@ -39,6 +39,7 @@ class AuthenticateForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeForm = this.changeForm.bind(this);
         this.changeFormForget = this.changeFormForget.bind(this);
+        this.props.logout(0);
     }
 
     handleChange(event) {
@@ -77,8 +78,10 @@ class AuthenticateForm extends React.Component {
                 (json) => {
                     if (json.status === 200) {
                         this.setState({
-                            error: this.props.language === 'en' ? json.data : json.data
+                            error: this.props.language === 'en' ? json.data : json.data,
+                            pendingRequest: json.data !== ''
                         });
+
                     } else {
                         // this.setState({
                         //     error: this.props.language === 'en' ? 'Account is exist!' : "Tài khoản đã tồn tại!"
@@ -456,6 +459,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         login: (user) => {
             dispatch(login(user));
+        },
+        logout: (id) => {
+            dispatch(logout(id));
         }
     };
 };

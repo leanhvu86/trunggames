@@ -69,7 +69,7 @@ const ChangePasswordForm = () => {
                         (json) => {
                             console.log(json);
                             toast.success('Change password success!Please login again');
-                            this.props.logout(1);
+                            // this.props.logout(1);
                             setTimeout(navigateToContacts(), 3000);
 
                         },

@@ -27,7 +27,7 @@ export const refreshAccessToken = async () => {
   }
 };
 
-const handleRequestError = (error) => {
+export const handleRequestError = (error) => {
   if (error.response?.status === 401 && window.location.pathname !== '/login') {
     toast.error('Phiên đăng nhập đã hết hạn');
     if (localStorage.getItem('servicesToken')) {

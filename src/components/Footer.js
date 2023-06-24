@@ -1,11 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
+import {checkLoadData} from "../constants/cartActions";
+import {login, logout} from "../constants/userActions";
+import {connect} from "react-redux";
 
 class Footer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {loaded: false};
+        this.onHandleClick = this.onHandleClick.bind(this);
+    }
+
+    onHandleClick() {
+        window.location.href('/login');
+        console.log('login')
     }
 
     render() {
@@ -74,10 +83,13 @@ class Footer extends React.Component {
                         </p>
 
                         <p className="footer-item">
-                            <Link to="/user-profile" className="footer-item">
-                                <FormattedMessage id="profile"/>
+                            {this.props.token !== '' ?
+                                <Link to="/user-profile" className="footer-item">
+                                    <FormattedMessage id="profile"/>
 
-                            </Link>
+                                </Link> :
+                                <a href="/login"><FormattedMessage id="profile"/></a>
+                            }
                         </p>
                         <br/>
                         <br/>
@@ -100,4 +112,19 @@ class Footer extends React.Component {
     }
 }
 
-export default Footer;
+const mapStateToProps = (state) => {
+    return {
+        token: state.token,
+        language: state.language
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // logout: (id) => {
+        //     dispatch(logout(id));
+        // }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+

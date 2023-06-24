@@ -26,6 +26,7 @@ class Cart extends React.Component {
         this.state = {
             total: 0,
             selected: 0,
+            processSending: false,
             listCheckout: []
         };
         this.props.deselectAll(1);
@@ -87,6 +88,7 @@ class Cart extends React.Component {
     onCheckout() {
         console.log(this.state.listCheckout);
         console.log(this.props.items);
+        this.setState({processSending: true})
         fetch(configData.SERVER_URL + '/orders/create', {
             method: 'post',
             headers: {
@@ -103,26 +105,29 @@ class Cart extends React.Component {
                 (json) => {
                     console.log(json.data);
                     if (json.status === 200) {
-                        this.setState({selected: 0});
+                        this.setState({selected: 0, processSending: false});
                         this.state.listCheckout.forEach((item) => {
                             this.props.removeItem(item.packageId);
                         });
-                        toast.success(this.props.language==='en'?'Ordered successfully!':"Đặt hàng thành công!");
+                        toast.success(this.props.language === 'en' ? 'Ordered successfully!' : "Đặt hàng thành công!");
                     } else if (json.status === 401) {
-                        toast.warn(this.props.language==='en'?'End session. Please log in again!':"Hết session. Vui lòng đăng nhập lại!");
+                        toast.warn(this.props.language === 'en' ? 'End session. Please log in again!' : "Hết session. Vui lòng đăng nhập lại!");
+                        return;
                     } else {
-                        toast.warn(this.props.language==='en'?'Create order fail, please contact with admin!':"Đặt hàng thất bại, vui lòng liên hệ với admin!");
+                        this.setState({processSending: false});
+                        toast.warn(this.props.language === 'en' ? 'Create order fail, please contact with admin!' : "Đặt hàng thất bại, vui lòng liên hệ với admin!");
                     }
                     this.props.deselectAll(1);
                     this.scanCheckoutInfo();
                 },
                 (error) => {
                     if (error) {
-                        toast.error(this.props.language==='en'?'Create order fail, please contact with admin!':"Đặt hàng thất bại, vui lòng liên hệ với admin!");
+                        toast.error(this.props.language === 'en' ? 'Create order fail, please contact with admin!' : "Đặt hàng thất bại, vui lòng liên hệ với admin!");
                     }
                 }
             );
     }
+
 
     render() {
         let addedItems = this.props.items.length ? (
@@ -131,21 +136,35 @@ class Cart extends React.Component {
                     <div className="container pack-content" key={item.packageId}>
                         <div className="row">
                             <div className="col">
-                                <div className="row">
-                                    <div className="col-3" style={{display: 'flex'}}>
-                                        <input type="checkbox" checked={item.checkout}
-                                               onChange={() => this.handleCheckout(this, item.packageId)}/>
-                                        <div className="crop" style={{paddingLeft: '5px'}}>
-                                            <img src={item.previewUrl} alt={item.name}/>
+                                {window.innerWidth > 1000 ?
+                                    <div className="row">
+                                        <div className="col-3" style={{display: 'flex'}}>
+                                            <input type="checkbox" checked={item.checkout}
+                                                   onChange={() => this.handleCheckout(this, item.packageId)}/>
+                                            <div className="crop" style={{paddingLeft: '5px'}}>
+                                                <img src={item.previewUrl} alt={item.name}/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-9">
-                                        <span className="package-name ">{item.name}</span>
+                                        <div className="col-8">
+                                            <span className="package-name ">{item.name}</span>
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                    </div> :
+                                    <div className="row">
+                                        <div className="row" style={{width:'100%'}}>
+                                            <input type="checkbox" checked={item.checkout}
+                                                   onChange={() => this.handleCheckout(this, item.packageId)}/>
+                                            <div className="crop" style={{paddingLeft: '5px'}}>
+                                                <img src={item.previewUrl} alt={item.name}/>
+                                            </div>
+                                        </div>
                                         <br/>
                                         <br/>
-                                        <span>Order information </span>
+                                        <br/>
+                                        <span className="package-name " style={{width:'100%'}}>{item.name}</span>
                                     </div>
-                                </div>
+                                }
                             </div>
                             <div className="col">
                                 <div className="row">
@@ -157,42 +176,41 @@ class Cart extends React.Component {
                                             </b>
                                             &nbsp;/&nbsp;
                                             <span className="unit-package">{item.unit}</span>
+                                            <br/>
+                                            <br/>
+                                            <span>
+                                              <i
+                                                  className="fa fa-minus cart-icon"
+                                                  aria-hidden="true"
+                                                  onClick={() => {
+                                                      this.handleSubtractQuantity(item.packageId);
+                                                  }}
+                                              />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <i
+                                                    className="fa fa-plus cart-icon"
+                                                    aria-hidden="true"
+                                                    onClick={() => {
+                                                        this.handleAddQuantity(item.packageId);
+                                                    }}
+                                                />
+                                            </span>
                                         </p>
                                     </div>
                                     <div className="col">
-                                        <div className="row">
-                                            <div className="col">
-                        <span>
-                          <i
-                              className="fa fa-minus cart-icon"
-                              aria-hidden="true"
-                              onClick={() => {
-                                  this.handleSubtractQuantity(item.packageId);
-                              }}
-                          />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i
-                                className="fa fa-plus cart-icon"
-                                aria-hidden="true"
-                                onClick={() => {
-                                    this.handleAddQuantity(item.packageId);
-                                }}
-                            />
-                        </span>
-                                            </div>
-                                            <div className="col">
-                                                <div className="float-right">
-                                                    <p>
-                                                        <b className="currency">
-                                                            <CurrencyFormat
-                                                                displayType={'text'}
-                                                                value={item.amount}
-                                                                thousandSeparator={true}
-                                                                prefix={this.props.currency}
-                                                            />
-                                                        </b>
-                                                    </p>
-                                                    <span>
+                                        <p style={{textAlign: 'center'}}>
+                                            <b className="currency">
+                                                <CurrencyFormat
+                                                    displayType={'text'}
+                                                    value={item.amount}
+                                                    thousandSeparator={true}
+                                                    prefix={this.props.currency}
+                                                />
+                                            </b>
+                                        </p>
+                                        <div className="float-right">
+
+                                            <span>
                             <i
                                 className="fa fa-trash-o fa-2x cart-icon"
                                 onClick={() => {
@@ -201,8 +219,6 @@ class Cart extends React.Component {
                                 aria-hidden="true"
                             />
                           </span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -245,13 +261,14 @@ class Cart extends React.Component {
                     <div className="row " style={{fontWeight: 'bolder'}}>
                         <div className="col">
                             <input type="checkbox" onChange={() => this.handleCheckoutAll(this)}
-                                   checked={this.props.checkoutAll}/> &nbsp;&nbsp;<FormattedMessage id="select_all"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   checked={this.props.checkoutAll}/> &nbsp;&nbsp;<FormattedMessage
+                            id="select_all"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <span>{this.state.selected}&nbsp;&nbsp;<FormattedMessage id="item_selected"/></span>
                         </div>
                         <div className="col">
                             <button className="btn btn-primary float-right" onClick={() => this.onCheckout(this)}
-                                    disabled={this.state.selected <= 0}>
-                                 <FormattedMessage id="checkout"/>
+                                    disabled={this.state.selected <= 0 || this.state.processSending}>
+                                <FormattedMessage id="checkout"/>
                             </button>
                             <div className="float-right" style={{fontSize: '20px', paddingRight: '10px'}}>
                                 <p>
