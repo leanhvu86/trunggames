@@ -39,18 +39,12 @@ class TopMenu extends React.Component {
     return (
       <div className="row navbar" style={styleTop}>
         <div className="row w-100 justify-content-end text-white" style={{ gap: '1em', color: '#88888 !important' }}>
+
           <LocaleOptions />
           <Link to="/cart" className="cart-icon" style={{ width: '30px', height: '30px', position: 'relative' }}>
             <i className="fa fa-shopping-cart fa-lg" aria-hidden="true" />
             <span className="total-count">{this.props.packageCount}</span>
           </Link>
-          {/* <Link
-            to="/profile"
-            className="d-flex align-items-center text-decoration-none font-weight-bold text-white"
-            style={{ fontFamily: 'inherit' }}
-          >
-            <span>Nguyen Van A</span>
-          </Link> */}
           {this.props.token !== null && this.props.token !== '' ? (
             <div className="dropdown ml-3" style={{cursor:'pointer'}}>
               <div

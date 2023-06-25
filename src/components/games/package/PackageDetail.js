@@ -39,11 +39,11 @@ class PackageDetail extends React.Component {
             disable: false,
             checkDuplicate: false,
             options: ['google', 'facebook', 'icloud', 'account'],
-            serverOptions: ['Euro', 'Asia', 'Vietnam', 'Hanoi']
+            serverOptions: ['Euro', 'Asia', 'Vietnam', 'Hanoi', 'Global', 'South east Asia']
         };
         this.handleChange = this.handleChange.bind(this);
-        this.onKeyDown = this.onKeyDown.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
         parent.scrollTo(0, 0);
     }
 
@@ -69,19 +69,33 @@ class PackageDetail extends React.Component {
     onKeyDown(event) {
         const target = event.target;
         let value = target.value;
+        const name = target.name;
         if ((event.charCode || event.keyCode) === 13) {
-            this.state.options.forEach((item) => {
-                if (item.toUpperCase().startsWith(value)) {
-                    this.setState({loginType: item});
-                    console.log(item);
+            if (name === 'loginType') {
+                for (let item in this.state.options) {
+                    if (this.state.options[item].toUpperCase().startsWith(value.toUpperCase())) {
+                        value = this.state.options[item];
+                        this.setState({
+                            [name]: value
+                        });
+                    }
                 }
-            });
+            } else {
+                for (let item in this.state.serverOptions) {
+                    if (this.state.serverOptions[item].toUpperCase().startsWith(value.toUpperCase())) {
+                        value = this.state.serverOptions[item];
+                        this.setState({
+                            [name]: value
+                        });
+                    }
+                }
+            }
         }
     }
 
     handleChange(event) {
         const target = event.target;
-        const value = target.value;
+        let value = target.value;
         const name = target.name;
 
         if (name === 'quantity') {
@@ -115,7 +129,7 @@ class PackageDetail extends React.Component {
         };
         this.setState({disable: true});
         this.props.addToCart(item);
-        toast.success(this.props.language==='en'?'Product add to cart successfully!':"Thêm gói vào giỏ hàng thành công!");
+        toast.success(this.props.language === 'en' ? 'Product add to cart successfully!' : "Thêm gói vào giỏ hàng thành công!");
     }
 
     renderWebsite() {
@@ -178,7 +192,7 @@ class PackageDetail extends React.Component {
                         <CKEditor
                             editor={ClassicEditor}
                             disabled
-                            data={this.props.language==='en'?this.state.package.descriptionEn:this.state.package.descriptionVi}
+                            data={this.props.language === 'en' ? this.state.package.descriptionEn : this.state.package.descriptionVi}
                             onReady={(editor) => {
                                 // You can store the "editor" and use when it is needed.
                                 // console.log( 'Editor is ready to use!', editor );
@@ -263,7 +277,7 @@ class PackageDetail extends React.Component {
                             <CKEditor
                                 editor={ClassicEditor}
                                 disabled
-                                data={this.props.language==='en'?this.state.package.descriptionEn:this.state.package.descriptionVi}
+                                data={this.props.language === 'en' ? this.state.package.descriptionEn : this.state.package.descriptionVi}
                                 onReady={(editor) => {
                                     // You can store the "editor" and use when it is needed.
                                     // console.log( 'Editor is ready to use!', editor );
@@ -295,7 +309,10 @@ class PackageDetail extends React.Component {
                       onKeyDown={() => this.onReturn.bind(this)}>
                     <br/>
                     {this.state.checkDuplicate ?
-                        <span style={{fontSize: '20px', color: 'red'}}>{this.props.language==='en'?" You have this package on cart now!":"Gói đã có trong giỏ hàng của bạn!"}</span> : ''}
+                        <span style={{
+                            fontSize: '20px',
+                            color: 'red'
+                        }}>{this.props.language === 'en' ? " You have this package on cart now!" : "Gói đã có trong giỏ hàng của bạn!"}</span> : ''}
                     <br/>
                     <br/>
                     <div className="form-group">
@@ -307,7 +324,7 @@ class PackageDetail extends React.Component {
                                 disabled={this.state.disable}
                                 className="form-control"
                                 aria-describedby="emailHelp"
-                                placeholder={this.props.language==='en'?"Enter login type":"Nhập loại đăng nhập"}
+                                placeholder={this.props.language === 'en' ? "Enter login type" : "Nhập loại đăng nhập"}
                                 value={this.state.loginType}
                                 onChange={this.handleChange}
                                 onKeyDown={this.onKeyDown}
@@ -323,7 +340,7 @@ class PackageDetail extends React.Component {
                             disabled={this.state.disable}
                             className="form-control"
                             aria-describedby="accountHelp"
-                            placeholder={this.props.language==='en'?"Enter ID, Email, Phone":"Nhập Id, email, số điện thoại"}
+                            placeholder={this.props.language === 'en' ? "Enter ID, Email, Phone" : "Nhập Id, email, số điện thoại"}
                             value={this.state.account}
                             onChange={this.handleChange}
                         />
@@ -337,7 +354,7 @@ class PackageDetail extends React.Component {
                             id="exampleInputPassword1"
                             required
                             disabled={this.state.disable}
-                            placeholder={this.props.language==='en'?"Enter Password":"Nhập mật khẩu"}
+                            placeholder={this.props.language === 'en' ? "Enter Password" : "Nhập mật khẩu"}
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
@@ -351,7 +368,7 @@ class PackageDetail extends React.Component {
                             disabled={this.state.disable}
                             className="form-control"
                             aria-describedby="accountHelp 1"
-                            placeholder={this.props.language==='en'?"Enter Login Code":"Nhập mã đăng nhập"}
+                            placeholder={this.props.language === 'en' ? "Enter Login Code" : "Nhập mã đăng nhập"}
                             value={this.state.loginCode}
                             onChange={this.handleChange}
                         />
@@ -367,9 +384,10 @@ class PackageDetail extends React.Component {
                                 aria-describedby="server"
                                 required
                                 disabled={this.state.disable}
-                                placeholder={this.props.language==='en'?"Enter server":"Nhập máy chủ"}
+                                placeholder={this.props.language === 'en' ? "Enter server" : "Nhập máy chủ"}
                                 value={this.state.server}
                                 onChange={this.handleChange}
+                                onKeyDown={this.onKeyDown}
                             />
                         </Hint>
                     </div>
@@ -382,7 +400,7 @@ class PackageDetail extends React.Component {
                             aria-describedby="characterName"
                             required
                             disabled={this.state.disable}
-                            placeholder= {this.props.language==='en'?"Enter character name":"Nhập tên nhân vật"}
+                            placeholder={this.props.language === 'en' ? "Enter character name" : "Nhập tên nhân vật"}
                             value={this.state.characterName}
                             onChange={this.handleChange}
                         />
@@ -397,7 +415,7 @@ class PackageDetail extends React.Component {
                             aria-describedby="quantity"
                             required
                             disabled={this.state.disable}
-                            placeholder= {this.props.language==='en'?"Enter quantity":"Nhập số lượng"}
+                            placeholder={this.props.language === 'en' ? "Enter quantity" : "Nhập số lượng"}
                             value={this.state.quantity}
                             onChange={this.handleChange}
                         />
