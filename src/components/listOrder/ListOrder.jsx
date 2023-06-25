@@ -46,7 +46,7 @@ const ListOrder = () => {
 
   useEffect(() => {
     axiosServices
-      .get('/orders', {
+      .get('/orders/filter', {
         params: filter
       })
       .then((res) => {
