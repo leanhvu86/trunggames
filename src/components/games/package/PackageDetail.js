@@ -108,6 +108,10 @@ class PackageDetail extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault(event);
+        if (this.state.loginType === '' || this.state.account === '' || this.state.quantity === 0) {
+            toast.error(this.props.language === 'en' ? 'You have to add infomation of pack!' : "Bạn phải điền thông tin của gói!");
+            return;
+        }
         const item = {
             account: this.state.account,
             password: this.state.password,
@@ -438,21 +442,31 @@ class PackageDetail extends React.Component {
                         <span className="error-text"> {this.state.error}</span>
                     </div>
 
-                    <button type="submit" className="btn btn-primary float-right" disabled={this.state.disable}>
-                        <FormattedMessage id="add_to_cart"/>
-                    </button>
+
                     <br/>
                     <br/>
                     <br/>
                 </form>
-                <button onClick={this.onReturn.bind(this)} className="btn btn-outline-warning float-right">
-                    <FormattedMessage id="return"/>
-                </button>
-                <Link to="/cart">
-                    <button className="btn btn-primary float-right">
-                        <FormattedMessage id="cart"/>
-                    </button>
-                </Link>
+                <div className="row">
+                    <div className="col">
+                        <Link to="/cart">
+                            <button className="btn btn-outline-primary float-right">
+                                <FormattedMessage id="cart"/>
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="col">
+                        <button onClick={this.onReturn.bind(this)} className="btn btn-outline-warning float-right">
+                            <FormattedMessage id="return"/>
+                        </button>
+                    </div>
+                    <div className="col">
+                        <button type="submit" onClick={() => this.handleSubmit(event)}
+                                className="btn btn-outline-primary float-right" disabled={this.state.disable}>
+                            <FormattedMessage id="add_to_cart"/>
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -48,12 +48,14 @@ class Cart extends React.Component {
     handleSubtractQuantity = (id) => {
         this.props.subtractQuantity(id);
         this.scanCheckoutInfo();
+        this.props.deselectAll(1);
     };
 
     handleCheckoutAll = (event) => {
         if (this.props.checkoutAll === true) {
             this.props.deselectAll(1);
         } else {
+
             this.props.selectAll(1);
         }
         this.scanCheckoutInfo();
@@ -62,13 +64,14 @@ class Cart extends React.Component {
     scanCheckoutInfo() {
         let lstCheckout = [];
         let totalPrice = 0;
-        this.props.items.forEach((item) => {
-            if (item.checkout) {
-                totalPrice += item.amount;
-                lstCheckout.push(item);
-            }
-        });
-        console.log('h');
+        if(this.props.items.length>0)
+            this.props.items.forEach((item) => {
+                if (item.checkout) {
+                    totalPrice += item.amount;
+                    lstCheckout.push(item);
+                }
+            });
+
         this.setState({listCheckout: lstCheckout});
         this.setState({total: totalPrice});
         this.setState({selected: lstCheckout.length});
@@ -263,7 +266,7 @@ class Cart extends React.Component {
                             <span>{this.state.selected}&nbsp;&nbsp;<FormattedMessage id="item_selected"/></span>
                         </div>
                         <div className="col">
-                            <button className="btn btn-primary float-right" onClick={() => this.onCheckout(this)}
+                            <button className="btn btn-outline-primary float-right" onClick={() => this.onCheckout(this)}
                                     disabled={this.state.selected <= 0 || this.state.processSending}>
                                 <FormattedMessage id="checkout"/>
                             </button>

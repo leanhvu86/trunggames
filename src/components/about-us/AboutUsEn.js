@@ -6,7 +6,7 @@ import NavBar from '../ui-common/NavBar';
 import ParallaxImage from '../parallax/ParallaxImage';
 import Footer from '../Footer';
 import ScrollButton from '../ui-common/ScrollButton';
-import aboutUSImg from '../../assets/images/about-us.svg';
+import aboutUSImg from '../../assets/images/about-us.png';
 import servicesImg from '../../assets/images/services.png';
 
 class AboutUsEn extends React.Component {

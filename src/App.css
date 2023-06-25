@@ -201,6 +201,15 @@
   margin-right: auto;
   margin-left: auto;
 }
+.btn-outline-primary{
+  color: #ff8000 !important;
+  border: #ff8000 1px solid;
+}
+.btn-outline-primary:hover{
+  background: #ff8000;
+  color: #ffffff ;
+
+}
 .search-box {
   width: fit-content;
   height: fit-content;
