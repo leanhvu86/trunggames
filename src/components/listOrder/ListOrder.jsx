@@ -22,6 +22,10 @@ const ListOrder = () => {
     orderBy: 'status',
     orderType: 'asc'
   });
+  const [searchValue, setSearchValue] = useState({
+    name: '',
+    status: '-1'
+  });
   const [enableLoadMore, setEnableLoadMore] = useState(false);
   const [listOrder, setListOrder] = useState([]);
 
@@ -60,6 +64,15 @@ const ListOrder = () => {
       })
       .catch((err) => console.log(err));
   }, [filter]);
+
+  const handleFilter = (orders) => {
+    return orders.filter((order) => {
+      const conditions = [true];
+      conditions.push(order.code?.includes(searchValue.name));
+      conditions.push(order.status === searchValue.status || searchValue.status === '-1');
+      return conditions.every((condition) => condition);
+    });
+  };
   return (
     <div>
       <Translation>{(t) => <TopMenu t={t} />}</Translation>
@@ -71,11 +84,21 @@ const ListOrder = () => {
         <div className="order-item-search row px-4 py-2">
           <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-0 pr-2">
             <label htmlFor="ee">{formatMessage({ id: 'search' })}</label>
-            <input type="text" placeholder={formatMessage({ id: 'search' })} />
+            <input
+              type="text"
+              placeholder={formatMessage({ id: 'search' })}
+              onChange={(e) => {
+                setSearchValue((prev) => ({ ...prev, name: e.target.value }));
+              }}
+            />
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-0 pr-2">
             <label htmlFor="ee">{formatMessage({ id: 'status' })}</label>
-            <select>
+            <select
+              onChange={(e) => {
+                setSearchValue((prev) => ({ ...prev, status: e.target.value }));
+              }}
+            >
               <option value="-1">{orderStatus['-1']}</option>
               <option value="1">{orderStatus['1']}</option>
               <option value="2">{orderStatus['2']}</option>
@@ -84,7 +107,7 @@ const ListOrder = () => {
             </select>
           </div>
         </div>
-        {listOrder.map((order) => (
+        {handleFilter(listOrder).map((order) => (
           <div key={order.code} className="order-item row px-4 py-2">
             <div className="col-12 p-0 order-time pb-2">{moment(order.createdAt).format('LLL')}</div>
             <div className="order-code col-md-8 col-12 p-0">
