@@ -396,7 +396,7 @@ class GameDetailSearchBar extends React.Component {
                     <hr/>
                 </div>
                 <br/>
-                {this.state.packageView !== undefined && window.innerWidth > 1000 ? (
+                {this.state.packageView ? (
                     <div className="box">{itemList}</div>
                 ) : (
                     <div className="row box">
