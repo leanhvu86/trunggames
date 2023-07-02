@@ -125,6 +125,8 @@
   "processing": "Processing",
   "password must match": "Password must match",
   "phone.duplicate": "Phone duplicate not allow",
-  "member": "Member"
+  "member": "Member",
+  "open-search": "Open search",
+  "close-search": "Close"
 }
 

@@ -9,7 +9,6 @@ import 'react-slideshow-image/dist/styles.css';
 import './App.css';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
-import {ParallaxCards} from './components/customer-service/ParallaxCards';
 import MobilePopular from './components/mobile-polular/MobilePopular';
 import NewGame from './components/new-game/NewGame';
 import NewPackage from './components/new-package/NewPackage';
@@ -18,9 +17,8 @@ import NavBar from './components/ui-common/NavBar';
 import ScrollButton from './components/ui-common/ScrollButton';
 import TopMenu from './components/ui-common/TopMenu';
 import configData from './config.json';
-import {checkLoadData, rawData, removePackageView} from './constants/cartActions';
+import {checkLoadData, rawData, removePackageView, setPackage} from './constants/cartActions';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-import LoadingSpinner from './components/ui-common/LoadingSpinner';
 
 const mapStateToProps = (state) => {
     return {
@@ -40,8 +38,8 @@ const mapDispatchToProps = (dispatch) => {
         rawData: (id) => {
             dispatch(rawData(id));
         },
-        removePackageView: (id) => {
-            dispatch(removePackageView(id));
+        setPackage: (id) => {
+            dispatch(setPackage(id));
         }
     };
 };
@@ -68,16 +66,15 @@ class App extends React.Component {
         // });
         this.props.checkLoadData(0);
         this.loadData();
-        this.props.removePackageView(0);
+        this.props.setPackage({});
     }
 
     loadData() {
         fetch(configData.SERVER_URL + '/games/load-data')
             .then((res) => res.json())
             .then((json) => {
+                // this.props.rawData(JSON.parse(atob(json.data)));
                 this.props.rawData(json.data);
-                console.log('appjss');
-                // const decoded = Buffer.from(json.data, 'base64').toString('utf8');
                 this.props.removePackageView(0);
             })
             .catch((error) => {

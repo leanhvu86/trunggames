@@ -37,8 +37,8 @@ class TopSale extends React.Component {
 
   onViewPackageTop(value) {
     this.setState({ package: value });
-
-    this.props.gameList.forEach((game)=>{
+    console.log(value)
+    this.props.listGame.forEach((game)=>{
       let packageView = game.gamePackages.filter((pack) => pack.id === value);
       if(packageView!==undefined){
         packageView.gameName = game.name;
@@ -81,7 +81,7 @@ class TopSale extends React.Component {
 const mapStateToProps = (state) => {
   return {
     topSale: state.topSale,
-    gameList:state.gameList
+    listGame:state.listGame
   };
 };
 const mapDispatchToProps = (dispatch) => {

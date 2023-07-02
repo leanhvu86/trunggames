@@ -13,15 +13,18 @@ import {
     VIEW_GAME,
     CHECK_LOAD_DATA,
     SET_PACKAGE_VIEW,
-    REMOVE_PACKAGE_VIEW
+    REMOVE_PACKAGE_VIEW, FILTER_PACKAGE, SET_PACKAGE
 } from '../constants/action-types/cart-actions';
 import {LOGIN_SUCCESS, LOG_OUT, UPDATE_USER} from '../constants/action-types/user-actions';
 
 const initState = {
     packages: [],
+    filterPackages: [],
+    allPackages: [],
     addedItems: [],
     total: 0,
     package: 0,
+    packageView: {},
     packageCount: 0,
     checkoutAll: false,
     user: {},
@@ -49,7 +52,7 @@ const cartReducer = (state = initState, action) => {
     if (action.type === ADD_TO_CART) {
         let addedItem = action.id;
 
-        console.log(addedItem);
+        // console.log(addedItem);
         //calculating the total
         let newTotal = state.total + addedItem.amount;
         let newPackageCount = state.packageCount + 1;
@@ -68,7 +71,7 @@ const cartReducer = (state = initState, action) => {
         let diffDays = Math.floor(diffMs / 86400000); // days
         let diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
         let diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
-        console.log(diffDays + ' days, ' + diffHrs + ' hours, ' + diffMins + ' minutes until Christmas =)');
+        // console.log(diffDays + ' days, ' + diffHrs + ' hours, ' + diffMins + ' minutes until Christmas =)');
 
         if (diffDays > 0 || diffHrs > 0 || diffMins > 30) {
             return {
@@ -90,6 +93,7 @@ const cartReducer = (state = initState, action) => {
         let currDate = new Date();
         let topGames = [];
         let count = 0;
+        console.log(addedItem)
         addedItem.listGame.forEach((game) => {
             if (game.gamePriority === '2' && count !== 5) {
                 topGames.push(game);
@@ -107,6 +111,7 @@ const cartReducer = (state = initState, action) => {
             topSale: addedItem.topSale,
             blogs: addedItem.posts,
             bestSale: addedItem.bestSale,
+            allPackages:addedItem.packages,
             topGames: topGames,
             loadData: currDate,
             reloadCache: false
@@ -114,19 +119,28 @@ const cartReducer = (state = initState, action) => {
     }
     if (action.type === FILTER_GAME) {
         let list = action.data;
-        console.log(list);
+        // console.log(list);
         return {
             ...state,
             gameList: list
         };
     }
+    if (action.type === FILTER_PACKAGE) {
+        let list = action.data;
+        // console.log(list);
+        return {
+            ...state,
+            filterPackages: list
+        };
+    }
     if (action.type === VIEW_GAME) {
         let game = action.data;
-        console.log(game);
+        // console.log(game);
         return {
             ...state,
             game: game,
             packages: game.gamePackages,
+            filterPackages: game.gamePackages,
             server: game.server
         };
     }
@@ -138,6 +152,14 @@ const cartReducer = (state = initState, action) => {
             package: packageId
         };
     }
+    if (action.type === SET_PACKAGE) {
+        let packageView = action.data;
+        // console.log(packageId);
+        return {
+            ...state,
+            packageView: packageView
+        };
+    }
     if (action.type === REMOVE_PACKAGE_VIEW) {
         return {
             ...state,
@@ -147,11 +169,11 @@ const cartReducer = (state = initState, action) => {
     if (action.type === REMOVE_ITEM) {
         let itemToRemove = state.addedItems.find((item) => action.id === item.packageId);
         let new_items = state.addedItems.filter((item) => action.id !== item.packageId);
-        console.log('remove_item', action.id);
+        // console.log('remove_item', action.id);
         //calculating the total
         let newTotal = state.total - itemToRemove.amount;
         let newPackageCount = state.packageCount - 1;
-        console.log(itemToRemove);
+        // console.log(itemToRemove);
         return {
             ...state,
             addedItems: new_items,
@@ -161,7 +183,7 @@ const cartReducer = (state = initState, action) => {
     }
     //INSIDE CART COMPONENT
     if (action.type === ADD_QUANTITY) {
-        console.log('ADD_QUANTITY', action.id);
+        // console.log('ADD_QUANTITY', action.id);
 
         let addedItem = state.addedItems.find((item) => item.packageId === action.id);
         addedItem.quantity += 1;
@@ -192,7 +214,7 @@ const cartReducer = (state = initState, action) => {
     if (action.type === SELECT_ALL) {
         let newItem = state.addedItems;
         newItem.forEach((item) => (item.checkout = true));
-        console.log(newItem);
+        // console.log(newItem);
         return {
             ...state,
             addedItems: newItem,
@@ -235,7 +257,7 @@ const cartReducer = (state = initState, action) => {
     if (action.type === DESELECT_ALL) {
         let newItem = state.addedItems;
         newItem.forEach((item) => (item.checkout = false));
-        console.log(newItem);
+        // console.log(newItem);
         return {
             ...state,
             addedItems: newItem,
@@ -243,7 +265,7 @@ const cartReducer = (state = initState, action) => {
         };
     }
     if (action.type === SUB_QUANTITY) {
-        console.log('SUB_QUANTITY', action.id);
+        // console.log('SUB_QUANTITY', action.id);
 
         let addedItem = state.addedItems.find((item) => item.packageId === action.id);
         //if the qt == 0 then it should be removed

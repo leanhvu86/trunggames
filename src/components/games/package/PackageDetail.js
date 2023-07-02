@@ -10,13 +10,22 @@ import {Hint} from 'react-autocomplete-hint';
 import {toast} from 'react-toastify';
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
+import {Translation} from "react-i18next";
+import TopMenu from "../../ui-common/TopMenu";
+import NavBar from "../../ui-common/NavBar";
+import SubNavGame from "../game-detail/SubNavGame";
+import GameDetailSearchBar from "../game-detail/GameDetailSearchBar";
+import ParallaxImage from "../../parallax/ParallaxImage";
+import Footer from "../../Footer";
+import ScrollButton from "../../ui-common/ScrollButton";
 
 class PackageDetail extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        console.log(props)
+        ;this.state = {
             loaded: false,
-            package: props.package[0],
+            package: this.props.packageView,
             account: '',
             password: '',
             server: '',
@@ -25,14 +34,14 @@ class PackageDetail extends React.Component {
             amount: 0,
             loginType: '',
             loginCode: '',
-            packageId: props.package[0].id,
-            name: props.package[0].name,
-            previewUrl: props.package[0].previewUrl,
-            price: props.package[0].price,
-            unit: props.package[0].unit,
-            gameId: props.package.gameId,
-            gameName: props.package.gameName,
-            categoryName: props.package.categoryName,
+            packageId: this.props.packageView.id,
+            name: this.props.packageView.name,
+            previewUrl: this.props.packageView.previewUrl,
+            price: this.props.packageView.price,
+            unit: this.props.packageView.unit,
+            gameId: this.props.packageView.gameId,
+            gameName: this.props.packageView.gameName,
+            categoryName: this.props.packageView.categoryName,
             error: '',
             loginForm: true,
             forgetForm: false,
@@ -51,19 +60,16 @@ class PackageDetail extends React.Component {
         // document.addEventListener('contextmenu', (e) => {
         //     e.preventDefault();
         // });
-        const existItem = this.props.addedItems.find((item) => item.packageId === this.state.packageId);
+        const existItem = this.props.addedItems.find((item) => item.packageId === this.props.package);
         console.log(existItem);
         if (existItem) {
             this.setState({checkDuplicate: true});
         }
+
     }
 
     onChange(value) {
         this.setState({loaded: true});
-    }
-
-    onReturn() {
-        this.props.onReturn('return', true);
     }
 
     onKeyDown(event) {
@@ -99,7 +105,7 @@ class PackageDetail extends React.Component {
         const name = target.name;
 
         if (name === 'quantity') {
-            this.setState({amount: parseInt(value) * this.state.package.price});
+            this.setState({amount: parseInt(value) * this.props.packageView.price});
         }
         this.setState({
             [name]: value
@@ -121,14 +127,14 @@ class PackageDetail extends React.Component {
             amount: this.state.amount,
             loginType: this.state.loginType,
             loginCode: this.state.loginCode,
-            packageId: this.state.packageId,
-            name: this.state.name,
-            previewUrl: this.state.previewUrl,
+            packageId: this.props.packageView.id,
+            name: this.props.packageView.name,
+            previewUrl: this.props.packageView.previewUrl,
             price: this.state.price,
             unit: this.state.unit,
-            gameId: this.state.gameId,
-            gameName: this.state.gameName,
-            categoryName: this.state.categoryName,
+            gameId: this.props.packageView.gameId,
+            gameName: this.props.packageView.gameName,
+            categoryName: this.props.packageView.categoryName,
             checkout: false
         };
         this.setState({disable: true});
@@ -141,8 +147,8 @@ class PackageDetail extends React.Component {
             <div className="row">
                 <div className="col-4" style={{textAlign: 'center'}}>
                     <img
-                        src={this.state.package.previewUrl}
-                        alt={this.state.package.name}
+                        src={this.props.packageView.previewUrl}
+                        alt={this.props.packageView.name}
                         style={{width: '300px', height: 'auto'}}
                         onLoad={() => setTimeout(() => this.onChange(true), 1000)}
                     />
@@ -152,11 +158,11 @@ class PackageDetail extends React.Component {
 
                     <br/>
 
-                    <StarsRating style={{color: '#ff8000'}} value={this.state.package.rating} disabled={true}/>
+                    <StarsRating style={{color: '#ff8000'}} value={this.props.packageView.rating} disabled={true}/>
                 </div>
                 <div className="col-8" style={{textAlign: 'center'}}>
                     <div className="row">
-                        <h5 className="package-title">{this.state.package.name}</h5>
+                        <h5 className="package-title">{this.props.packageView.name}</h5>
                         <br/>
                         <br/>
                         <br/>
@@ -171,24 +177,29 @@ class PackageDetail extends React.Component {
                                 <b className="currency">
                                     <CurrencyFormat
                                         displayType={'text'}
-                                        value={this.state.package.price}
+                                        value={this.props.packageView.price}
                                         thousandSeparator={true}
                                         prefix={this.props.currency}
                                     />{' '}
                                 </b>
                                 &nbsp;/&nbsp;
-                                <span className="unit-package">{this.state.package.unit}</span>
+                                <span className="unit-package">{this.props.packageView.unit}</span>
+                                <br/>
+                                <span style={{textDecoration: 'line-through'}}><CurrencyFormat
+                                    displayType={'text'}
+                                    value={this.props.packageView.price + this.props.packageView.tradeCount}
+                                    thousandSeparator={true} prefix={this.props.currency}/></span>&nbsp;&nbsp;
                             </p>
                         </div>
                         <div className="col">
                             <span className="package-title"> <FormattedMessage id="Kho"/> </span>
                             <br/>
-                            <a className="currency">{this.state.package.warehouseQuantity}</a>
+                            <a className="currency">{this.props.packageView.warehouseQuantity}</a>
                         </div>
                         <div className="col">
                             <span className="package-title"> <FormattedMessage id="Category"/></span>
                             <br/>
-                            {this.state.package.attribute}
+                            {this.props.packageView.attribute}
                         </div>
                     </div>
 
@@ -196,7 +207,7 @@ class PackageDetail extends React.Component {
                         <CKEditor
                             editor={ClassicEditor}
                             disabled
-                            data={this.props.language === 'en' ? this.state.package.descriptionEn : this.state.package.descriptionVi}
+                            data={this.props.language === 'en' ? this.props.packageView.descriptionEn : this.props.packageView.descriptionVi}
                             onReady={(editor) => {
                                 // You can store the "editor" and use when it is needed.
                                 // console.log( 'Editor is ready to use!', editor );
@@ -227,8 +238,8 @@ class PackageDetail extends React.Component {
                 <div className="row">
                     <div className="col-3" style={{textAlign: 'center'}}>
                         <img
-                            src={this.state.package.previewUrl}
-                            alt={this.state.package.name}
+                            src={this.props.packageView.previewUrl}
+                            alt={this.props.packageView.name}
                             style={{width: '100%', height: 'auto'}}
                             onLoad={() => setTimeout(() => this.onChange(true), 1000)}
                         />
@@ -240,10 +251,10 @@ class PackageDetail extends React.Component {
                     </div>
                     <div className="col-8" style={{textAlign: 'center'}}>
                         <div className="row">
-                            <h5 className="package-title">{this.state.package.name}</h5>
+                            <h5 className="package-title">{this.props.packageView.name}</h5>
                             <br/>
                             <div style={{width: '50%', marginLeft: 'auto', marginRight: 'auto'}}>
-                                <StarsRating value={this.state.package.rating} disabled={true}/>
+                                <StarsRating value={this.props.packageView.rating} disabled={true}/>
                             </div>
 
                             <br/>
@@ -256,24 +267,29 @@ class PackageDetail extends React.Component {
                                     <b className="currency">
                                         <CurrencyFormat
                                             displayType={'text'}
-                                            value={this.state.package.price}
+                                            value={this.props.packageView.price}
                                             thousandSeparator={true}
                                             prefix={this.props.currency}
                                         />{' '}
                                     </b>
                                     &nbsp;/&nbsp;
-                                    <span className="unit-package">{this.state.package.unit}</span>
+                                    <span className="unit-package">{this.props.packageView.unit}</span>
+                                    <br/>
+                                    <span style={{textDecoration: 'line-through'}}><CurrencyFormat
+                                        displayType={'text'}
+                                        value={this.props.packageView.price + this.props.packageView.tradeCount}
+                                        thousandSeparator={true} prefix={this.props.currency}/></span>&nbsp;&nbsp;
                                 </p>
                             </div>
                             <div className="col">
                                 <span className="package-title">Warehouse</span>
                                 <br/>
-                                <a className="currency">{this.state.package.warehouseQuantity}</a>
+                                <a className="currency">{this.props.packageView.warehouseQuantity}</a>
                             </div>
                             <div className="col">
                                 <span className="package-title">Category</span>
                                 <br/>
-                                {this.state.package.attribute}
+                                {this.props.packageView.attribute}
                             </div>
                         </div>
 
@@ -281,7 +297,7 @@ class PackageDetail extends React.Component {
                             <CKEditor
                                 editor={ClassicEditor}
                                 disabled
-                                data={this.props.language === 'en' ? this.state.package.descriptionEn : this.state.package.descriptionVi}
+                                data={this.props.language === 'en' ? this.props.packageView.descriptionEn : this.props.packageView.descriptionVi}
                                 onReady={(editor) => {
                                     // You can store the "editor" and use when it is needed.
                                     // console.log( 'Editor is ready to use!', editor );
@@ -310,7 +326,7 @@ class PackageDetail extends React.Component {
         return (
             <div style={{width: '70%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <form className="needs-validation" onSubmit={this.handleSubmit}
-                      onKeyDown={() => this.onReturn.bind(this)}>
+                     >
                     <br/>
                     {this.state.checkDuplicate ?
                         <span style={{
@@ -456,9 +472,11 @@ class PackageDetail extends React.Component {
                         </Link>
                     </div>
                     <div className="col">
-                        <button onClick={this.onReturn.bind(this)} className="btn btn-outline-warning float-right">
-                            <FormattedMessage id="return"/>
-                        </button>
+                        <Link to="/game-detail">
+                            <button className="btn btn-outline-warning float-right">
+                                <FormattedMessage id="return"/>
+                            </button>
+                        </Link>
                     </div>
                     <div className="col">
                         <button type="submit" onClick={() => this.handleSubmit(event)}
@@ -475,9 +493,10 @@ class PackageDetail extends React.Component {
         return (
             <div>
                 {this.state.loaded ? null : <LoadingSpinner/>}
-                <br/>
-                <br/>
-                <div className="container pack-content" key={this.state.package.id}>
+                <Translation>{(t) => <TopMenu t={t}/>}</Translation>
+                <NavBar/>
+                <SubNavGame game={this.props.game} onChange={this.onChange.bind(this)}/>
+                <div className="container pack-content-detail" key={this.props.packageView.id}>
                     <br/>
                     <br/>
                     <h5 style={{paddingLeft: '50px'}}><FormattedMessage id="Package detail"/></h5>
@@ -486,6 +505,9 @@ class PackageDetail extends React.Component {
 
                     <br/>
                 </div>
+                <ParallaxImage/>
+                <Footer/>
+                <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
             </div>
         );
     }
@@ -496,7 +518,8 @@ const mapStateToProps = (state) => {
         game: state.game,
         currency: state.currency,
         addedItems: state.addedItems,
-        language: state.language
+        language: state.language,
+        packageView: state.packageView
     };
 };
 const mapDispatchToProps = (dispatch) => {

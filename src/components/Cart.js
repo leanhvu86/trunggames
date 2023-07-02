@@ -152,7 +152,7 @@ class Cart extends React.Component {
                                             <span className="package-name ">{item.name}</span>
                                             <br/>
                                             <br/>
-                                            <span>Order information </span>
+                                            {/*<span>Order information </span>*/}
                                         </div>
                                     </div> :
                                     <div className="row">

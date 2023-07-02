@@ -133,7 +133,20 @@ select {
   color: white;
 }
 
+.pack-content:hover {
+  color: #ff8000;
+}
 .pack-content {
+  margin: 20px auto;
+  border: 0.5px solid #c4c0c0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: #2e2039;
+  color: #ffffff;
+  width: 95%;
+}
+.pack-content-detail {
   margin: 20px auto;
   border: 0.5px solid #c4c0c0;
   padding: 10px 15px;
@@ -152,6 +165,10 @@ select {
 }
 .react-star-rate {
   font-size: 15px !important;
+}
+.pack-content-mobile:hover {
+  color: #ff8000;
+
 }
 .pack-content-mobile {
   margin: 4px auto;

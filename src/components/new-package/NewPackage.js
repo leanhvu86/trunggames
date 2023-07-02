@@ -7,7 +7,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import {Autoplay, Navigation, Pagination} from 'swiper';
-import {setPackageView, viewGame} from "../../constants/cartActions";
+import {setPackage, setPackageView, viewGame} from "../../constants/cartActions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch) => {
         viewGame: (data) => {
             dispatch(viewGame(data))
         },
-        setPackageView: (data) => {
-            dispatch(setPackageView(data))
+        setPackage: (data) => {
+            dispatch(setPackage(data))
         }
     }
 }
@@ -56,7 +56,7 @@ class NewPackage extends React.Component {
         console.log(item)
         temp.forEach((game) => {
             if (game.id === item.gameId) {
-                this.props.setPackageView(item.id);
+                this.props.setPackage(item);
                 this.props.viewGame(game);
             }
         })
@@ -86,7 +86,7 @@ class NewPackage extends React.Component {
                 {this.props.slideImage.map((img, i) => {
                     return (
                         <SwiperSlide key={i}>
-                            <Link to="/game-detail">
+                            <Link to="/package-detail">
 
                                 <img
                                     src={img.previewUrl}
@@ -133,7 +133,7 @@ class NewPackage extends React.Component {
                 {this.props.slideImage.map((img, i) => {
                     return (
                         <SwiperSlide key={i}>
-                            <Link to="/game-detail">
+                            <Link to="/package-detail">
 
                                 <img
                                     src={img.previewUrl}

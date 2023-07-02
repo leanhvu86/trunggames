@@ -62,7 +62,10 @@ const ListOrder = () => {
           setEnableLoadMore(true);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        navigate('/login');
+      });
   }, [filter]);
 
   const handleFilter = (orders) => {

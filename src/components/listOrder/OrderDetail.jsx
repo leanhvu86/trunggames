@@ -4,7 +4,7 @@ import moment from 'moment/moment';
 import React, { useEffect, useState } from 'react';
 import { Translation } from 'react-i18next';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import axiosServices from '../../services';
 import Footer from '../Footer';
 import ParallaxImage from '../parallax/ParallaxImage';
@@ -20,10 +20,19 @@ export const OrderDetail = () => {
 
   const orderStatus = {
     '-1': formatMessage({ id: 'all' }),
-    0: formatMessage({ id: 'pending' }),
-    1: formatMessage({ id: 'done' }),
-    2: formatMessage({ id: 'cancelled' })
+    1: formatMessage({ id: 'pending' }),
+    2: formatMessage({ id: 'processing' }),
+    3: formatMessage({ id: 'done' }),
+    4: formatMessage({ id: 'cancelled' })
   };
+
+  const orderStatusColors = {
+    1: 'text-warning',
+    2: 'text-warning',
+    3: 'text-success',
+    4: 'text-danger'
+  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosServices
@@ -33,8 +42,11 @@ export const OrderDetail = () => {
       })
       .catch((err) => {
         console.log(err);
+        navigate('/login');
       });
   }, []);
+  // 1 - cho xu ly, 2 - dang xu ly, 3 - thanh cong , 4 - Huỷ
+
   return (
     <div>
       <Translation>{(t) => <TopMenu t={t} />}</Translation>
@@ -42,7 +54,7 @@ export const OrderDetail = () => {
 
       <div className="container py-4">
         <div className="breadcrumbs">
-          <a href="#">
+          <a href="/">
             <IconHome size={18} />
           </a>
           <IconChevronRight size={14} />
@@ -80,7 +92,7 @@ export const OrderDetail = () => {
           </div>
           <div className="col-md-4 col-12 p-0">
             <b>{formatMessage({ id: 'status' })}:</b>&nbsp;
-            <span className={classNames('order-status', { 'text-success': order.status == '1' }, { 'text-danger': order.status == '0' })}>
+            <span className={classNames('order-status', { 'text-success': order.status === '3' }, { 'text-danger': order.status === '4' }, { 'text-warning': order.status !== '3' })}>
               {orderStatus[order.status]}
             </span>
           </div>

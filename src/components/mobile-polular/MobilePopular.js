@@ -4,7 +4,7 @@ import spring from 'react-motion/lib/spring';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {connect} from "react-redux";
-import {setPackageView, viewGame} from "../../constants/cartActions";
+import {setPackage, setPackageView, viewGame} from "../../constants/cartActions";
 
 const mapStateToProps = (state) => {
     return {
@@ -20,8 +20,8 @@ const mapDispatchToProps = (dispatch) => {
         viewGame: (data) => {
             dispatch(viewGame(data))
         },
-        setPackageView: (data) => {
-            dispatch(setPackageView(data))
+        setPackage: (data) => {
+            dispatch(setPackage(data))
         }
     }
 }
@@ -43,11 +43,11 @@ class MobilePopular extends React.Component {
         console.log(item);
         this.props.listGame.forEach((game) => {
             if (type === 0 && game.id === item.id) {
-                this.props.setPackageView(0);
+                this.props.setPackage({});
                 this.props.viewGame(game);
             } else {
                 if (game.id === item.gameId) {
-                    this.props.setPackageView(item.id);
+                    this.props.setPackage(item);
                     this.props.viewGame(game);
                 }
             }
@@ -83,7 +83,7 @@ class MobilePopular extends React.Component {
                             <div className="image-footer px-2 py-1 py-md-3 h-auto"
                                  onClick={() => this.handleClick(each, 0)}>
                                 <Link to="/game-detail" className="product-nav-links p-0">
-                                    <span className="game-name">{each.name}</span>
+                                    {window.innerWidth<1000?<span className="game-name" style={{fontSize:'10px'}}>{each.name}</span>:<span className="game-name">{each.name}</span>}
                                     <br/>
                                     <span className="shop-now">
                                         <FormattedMessage id="shop now"/>

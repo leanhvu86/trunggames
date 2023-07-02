@@ -24,6 +24,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ListOrder from './components/listOrder/ListOrder';
 import { OrderDetail } from './components/listOrder/OrderDetail';
+import PackageDetail from "./components/games/package/PackageDetail";
 
 const persistConfig = {
   key: 'root',
@@ -47,6 +48,7 @@ ReactDOM.render(
             <Route path="/blog" element={<Blog />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/game-detail" element={<GameDetail />} />
+            <Route path="/package-detail" element={<PackageDetail />} />
             <Route path="/login" element={<AuthenticateForm />} />
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/cart" element={<Cart />} />

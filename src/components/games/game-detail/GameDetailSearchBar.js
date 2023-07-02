@@ -4,7 +4,7 @@ import * as CurrencyFormat from 'react-currency-format';
 import StarsRating from 'react-star-rate';
 import GameContent from './GameContent';
 import {connect} from 'react-redux';
-import {addToCart, filterPackage} from '../../../constants/cartActions';
+import {addToCart, filterPackage, setPackage} from '../../../constants/cartActions';
 import {FormattedMessage} from 'react-intl';
 
 class GameDetailSearchBar extends React.Component {
@@ -13,6 +13,7 @@ class GameDetailSearchBar extends React.Component {
         this.state = {
             namePackage: '',
             attribute: [],
+            gameId: 0,
             type: '',
             viewType: true,
             packages: [],
@@ -29,10 +30,21 @@ class GameDetailSearchBar extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.packages)
+        this.loadPackageChangeGame();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    componentDidUpdate(prevProps) {
+        if(this.state.gameId!==this.props.game.id){
+            this.loadPackageChangeGame();
+        }
+    }
 
+    loadPackageChangeGame(){
         if (this.props.packages) {
-            this.setState({packages: this.props.packages});
+            this.setState({packages: this.props.packages, gameId: this.props.game.id});
             let attList = [];
             this.props.packages.forEach(pack => {
                 attList.push(pack.attribute);
@@ -49,11 +61,6 @@ class GameDetailSearchBar extends React.Component {
             temp = [...new Set(temp)];
             this.setState({server: temp});
         }
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     }
 
     onChangeFilter(e) {
@@ -192,8 +199,8 @@ class GameDetailSearchBar extends React.Component {
     }
 
     onViewPackage(event) {
-        this.props.onViewPackage(event);
-        console.log(event);
+        this.props.setPackage(event);
+        window.location.href = '/package-detail';
     }
 
     renderSearchWebsite() {
@@ -292,7 +299,7 @@ class GameDetailSearchBar extends React.Component {
         let itemList = this.state.packages.map((item) => {
             return (
                 <div className="pack-content" key={item.id}>
-                    <div className="row service-title" onClick={this.onViewPackage.bind(this, item.id)}
+                    <div className="row service-title" onClick={this.onViewPackage.bind(this, item)}
                          style={{cursor: 'pointer'}}>
                         <div className="col">
                             <div className="row">
@@ -303,7 +310,7 @@ class GameDetailSearchBar extends React.Component {
                                 </div>
                                 <div className="col-9">
                   <span className="package-name service-title">
-                    <a onClick={this.onViewPackage.bind(this, item.id)}> {item.name}</a>
+                    <a onClick={this.onViewPackage.bind(this, item)}> {item.name}</a>
                   </span>
                                     <br/>
                                     <br/>
@@ -324,11 +331,13 @@ class GameDetailSearchBar extends React.Component {
                                         </b>
                                         &nbsp;/&nbsp;
                                         <span className="unit-package">{item.unit}</span>
+                                        <br/>
+                                        <span style={{textDecoration: 'line-through'}}><CurrencyFormat
+                                            displayType={'text'} value={item.price + item.tradeCount}
+                                            thousandSeparator={true} prefix={this.props.currency}/></span>
                                     </p>
                                     <span>
-                    <FormattedMessage id="Kho"/>: {item.warehouseQuantity}&nbsp;&nbsp; <FormattedMessage
-                                        id="sold"/>:
-                                        {item.tradeCount}
+                    <FormattedMessage id="Kho"/>: {item.warehouseQuantity}&nbsp;&nbsp;
                   </span>
                                 </div>
                                 <div className="col">
@@ -412,7 +421,7 @@ class GameDetailSearchBar extends React.Component {
                                             </div>
                                             <div className="col-8">
                         <span className="package-name service-title">
-                          <a onClick={this.onViewPackage.bind(this, item.id)}>{item.name}</a>
+                          <a onClick={this.onViewPackage.bind(this, item)}>{item.name}</a>
                         </span>
                                                 <br/>
                                                 <br/>
@@ -428,6 +437,11 @@ class GameDetailSearchBar extends React.Component {
                                                         </b>
                                                         &nbsp;/&nbsp;
                                                         <span className="unit-package">{item.unit}</span>
+                                                        <br/>
+                                                        <span style={{textDecoration: 'line-through'}}><CurrencyFormat
+                                                            displayType={'text'} value={item.price + item.tradeCount}
+                                                            thousandSeparator={true}
+                                                            prefix={this.props.currency}/></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -491,7 +505,7 @@ class GameDetailSearchBar extends React.Component {
                                 color: 'white'
                             }}
                         >
-                            {this.props.topSale? null : this.renderDetail()}
+                            {this.props.topSale ? null : this.renderDetail()}
 
                         </div>
                     </div>
@@ -505,13 +519,18 @@ class GameDetailSearchBar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        currency: state.currency
+        currency: state.currency,
+        packages: state.packages,
+        game: state.game
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id) => {
             dispatch(addToCart(id));
+        },
+        setPackage: (id) => {
+            dispatch(setPackage(id));
         }
     };
 };

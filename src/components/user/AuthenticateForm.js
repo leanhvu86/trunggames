@@ -204,6 +204,8 @@ class AuthenticateForm extends React.Component {
                     } else {
                         this.setState({pendingRequest: false});
                         this.setState({error: 'There is someproblem, please contact admin'});
+                        toast.error(this.props.language === 'en' ? 'Username not found!' : "Tài khoản đăng nhập không tồn tại!");
+
                     }
                 });
         }

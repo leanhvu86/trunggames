@@ -41,7 +41,7 @@
   "your happiness is our business mission": "Hạnh phúc của bạn là sứ mệnh kinh doanh của chúng tôi",
   "top ten of best game charging in vietnam": "Top mười trò chơi hay nhất sạc ở Việt Nam",
   "best sale": "Bán chạy nhất",
-  "top sale": "Giá hàng đầu",
+  "top sale": "Top Sale",
   "address info": "Thông tin địa chỉ",
   "information": "Thông tin",
   "extras": "Bổ sung",
@@ -126,6 +126,8 @@
   "password must match": "Mật khẩu phải khớp",
   "phone.duplicate": "Số điện thoại không được trùng",
   "member": "Thành viên",
-  "forgot password": "Quên mật khẩu"
+  "forgot password": "Quên mật khẩu",
+  "open-search": "Mở tìm kiếm",
+  "close-search": "Đóng"
 }
 

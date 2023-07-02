@@ -33,7 +33,7 @@ export const handleRequestError = (error) => {
     if (localStorage.getItem('servicesToken')) {
       localStorage.clear();
       setTimeout(() => {
-        // window.location.href('/login')
+        window.location.href('/login')
       }, 2000);
     }
     return;
