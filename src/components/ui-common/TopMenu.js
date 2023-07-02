@@ -197,7 +197,7 @@ class TopMenu extends React.Component {
                             </div>
                         </div>
                         : <span onClick={this.handleChangeMobileSearch}
-                                style={{marginTop: '5px'}}>{!this.state.openSearch ?
+                                style={{marginTop: '5px' , cursor:'pointer'}}>{!this.state.openSearch ?
                             <FormattedMessage id="open-search"/> : ""}</span>}
                     <LocaleOptions/>
                     <Link to="/cart" className="cart-icon"
