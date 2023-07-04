@@ -119,9 +119,9 @@ class AuthenticateForm extends React.Component {
                     console.log(json);
 
                     if (json.status === 200) {
-                        this.setState({pendingRequest: false});
-
                         this.props.checkLoadData(0);
+                        setTimeout(()=>{console.log("pending")},2000);
+                        this.setState({pendingRequest: false});
                         toast.success(this.props.language === 'en' ? 'Login successfully!' : "Đăng nhập thành công!");
                         this.props.login(json.data);
 
@@ -155,8 +155,9 @@ class AuthenticateForm extends React.Component {
                         (json) => {
                             if (json.status === 200) {
                                 // this.props.login(json.data);
+                                toast.success(this.props.language === 'en' ? 'Register successfully! Please check your email for password!' : "Đăng ký thành công! Vui lòng check mail để lấy password");
                                 this.setState({bgcolor: testData[2].bgcolor, completed: 50, pendingRequest: false});
-                                toast.success(this.props.language === 'en' ? 'Register successfully!' : "Đăng ký thành công!");
+                                setTimeout(()=>{console.log("pending")},2000);
                                 this.changeForm();
                             } else {
                                 this.setState({
@@ -195,17 +196,18 @@ class AuthenticateForm extends React.Component {
 
                     if (json.status === 200) {
                         if (json.data === false) {
-                            this.setState({pendingRequest: false});
                             toast.error(this.props.language === 'en' ? 'Username not found!' : "Tài khoản đăng nhập không tồn tại!");
-                        } else{
-                            this.setState({pendingRequest: false, forgetForm: false, loginForm: true});
+                            setTimeout(()=>{console.log("pending")},2000);
+                            this.setState({pendingRequest: false});
+                        } else {
                             toast.success(this.props.language === 'en' ? 'Your new password have sent successfully!' : "Mật khẩu mới gửi về email thành công!");
+                            setTimeout(()=>{console.log("pending")},2000);
+                            this.setState({pendingRequest: false, forgetForm: false, loginForm: true});
                         }
                     } else {
                         this.setState({pendingRequest: false});
                         this.setState({error: 'There is someproblem, please contact admin'});
                         toast.error(this.props.language === 'en' ? 'Username not found!' : "Tài khoản đăng nhập không tồn tại!");
-
                     }
                 });
         }

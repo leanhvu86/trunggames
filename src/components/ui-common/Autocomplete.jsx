@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import {connect} from "formik";
+import {logout} from "../../constants/userActions";
 
 class Autocomplete extends Component {
     static propTypes = {
@@ -135,9 +137,11 @@ class Autocomplete extends Component {
                            type="text"
                            onChange={onChange}
                            onKeyDown={onKeyDown}
+                           placeholder={this.props.language === 'en' ? "Find Game or Package" : "Tìm trò chơi hoặc gói nạp"}
                            value={userInput}
                     />: <input style={{width:'500px'}}
                                type="text"
+                               placeholder={this.props.language === 'en' ? "Find Game or Package" : "Tìm trò chơi hoặc gói nạp"}
                                onChange={onChange}
                                onKeyDown={onKeyDown}
                                value={userInput}
@@ -150,4 +154,4 @@ class Autocomplete extends Component {
     }
 }
 
-export default Autocomplete;
+export default(Autocomplete);

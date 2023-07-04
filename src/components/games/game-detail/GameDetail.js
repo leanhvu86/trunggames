@@ -24,7 +24,9 @@ class GameDetail extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
-        console.log(this.props.package)
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
     }
 
 

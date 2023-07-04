@@ -35,14 +35,18 @@ class GameDetailSearchBar extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
     }
+
     componentDidUpdate(prevProps) {
-        if(this.state.gameId!==this.props.game.id){
+        if (this.state.gameId !== this.props.game.id) {
             this.loadPackageChangeGame();
         }
     }
 
-    loadPackageChangeGame(){
+    loadPackageChangeGame() {
         if (this.props.packages) {
             this.setState({packages: this.props.packages, gameId: this.props.game.id});
             let attList = [];
@@ -207,27 +211,27 @@ class GameDetailSearchBar extends React.Component {
         return (
             <div className="row">
                 <div className="col">
-          <span className="search-bar-icon-filter" id="hot-search" onClick={this.handleClick.bind(this, 1)}>
-            <i className="fa fa-fire" aria-hidden="true"/>
-              &nbsp;
-              <FormattedMessage id="Hot"/>
-          </span>
+                      <span className="search-bar-icon-filter" id="hot-search" onClick={this.handleClick.bind(this, 1)}>
+                        <i className="fa fa-fire" aria-hidden="true"/>
+                          &nbsp;
+                          <FormattedMessage id="Hot"/>
+                      </span>
                     <span className="search-bar-icon-filter" id="new-search" onClick={this.handleClick.bind(this, 2)}>
-            <i className="fa fa-clock-o" aria-hidden="true"/>
-                        &nbsp;
-                        <FormattedMessage id="New"/>
-          </span>
+                        <i className="fa fa-clock-o" aria-hidden="true"/>
+                                    &nbsp;
+                                    <FormattedMessage id="New"/>
+                      </span>
                     <span className="search-bar-icon-filter" id="price-search" onClick={this.handleClick.bind(this, 3)}>
-            <i className="fa fa-usd" aria-hidden="true"/>
-                        &nbsp;
-                        <FormattedMessage id="Price"/>
-          </span>
+                        <i className="fa fa-usd" aria-hidden="true"/>
+                                    &nbsp;
+                                    <FormattedMessage id="Price"/>
+                      </span>
                     <span className="search-bar-icon-filter" id="rating-search"
                           onClick={this.handleClick.bind(this, 4)}>
-            <i className="fa fa-thumbs-o-up" aria-hidden="true"/>
-                        &nbsp;
-                        <FormattedMessage id="Rating"/>
-          </span>
+                        <i className="fa fa-thumbs-o-up" aria-hidden="true"/>
+                                    &nbsp;
+                                    <FormattedMessage id="Rating"/>
+                      </span>
                 </div>
                 <div className="col"/>
                 <div className="col">
@@ -261,34 +265,46 @@ class GameDetailSearchBar extends React.Component {
         return (
             <div className="row">
                 <div className="col-8">
-          <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 1)}>
-            <i className="fa fa-fire" aria-hidden="true"/>
-              &nbsp;
-              <FormattedMessage id="Hot"/>
-          </span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 2)}>
-            <i className="fa fa-clock-o" aria-hidden="true"/>
-                        &nbsp;
-                        <FormattedMessage id="New"/>
-          </span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 3)}>
-            <i className="fa fa-usd" aria-hidden="true"/>
-                        &nbsp;
-                        <FormattedMessage id="Price"/>
-          </span>
-                    <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 4)}>
-            <i className="fa fa-thumbs-o-up" aria-hidden="true"/>
-                        &nbsp;
-                        <FormattedMessage id="Rating"/>
-          </span>
+                    <div className="row">
+                        <div className="col">
+                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 1)}>
+                                <i className="fa fa-fire" aria-hidden="true"/>
+                                &nbsp;
+                                <FormattedMessage id="Hot"/>
+                            </span>
+                        </div>
+                        <div className="col">
+                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 2)}>
+                                <i className="fa fa-clock-o" aria-hidden="true"/>
+                                &nbsp;
+                                <FormattedMessage id="New"/>
+                              </span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 3)}>
+                                <i className="fa fa-usd" aria-hidden="true"/>
+                                &nbsp;
+                                <FormattedMessage id="Price"/>
+                            </span>
+                        </div>
+                        <div className="col">
+                            <span className="search-bar-icon-filter" onClick={this.handleClick.bind(this, 4)}>
+                                <i className="fa fa-thumbs-o-up" aria-hidden="true"/>
+                                &nbsp;
+                                <FormattedMessage id="Rating"/>
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-4">
                     <div style={{float: 'right', display: 'flex', justifyContent: 'center'}}>
-            <span>
-              <i className="fa fa-chevron-left icon-button" aria-hidden="true"/>
-                &nbsp;&nbsp;&nbsp;Page&nbsp;&nbsp;&nbsp;
-                <i className="fa fa-chevron-right icon-button" aria-hidden="true"/>
-            </span>
+                    <span>
+                      <i className="fa fa-chevron-left icon-button" aria-hidden="true"/>
+                        &nbsp;&nbsp;&nbsp;Page&nbsp;&nbsp;&nbsp;
+                        <i className="fa fa-chevron-right icon-button" aria-hidden="true"/>
+                    </span>
                     </div>
                 </div>
             </div>

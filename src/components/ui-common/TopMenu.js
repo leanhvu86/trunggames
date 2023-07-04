@@ -6,8 +6,7 @@ import {logout} from '../../constants/userActions';
 import LocaleOptions from './Locale';
 import {FormattedMessage} from 'react-intl';
 import configData from '../../config.json';
-import {setPackage, setPackageView, viewGame} from "../../constants/cartActions";
-import {Hint} from "react-autocomplete-hint";
+import {setPackage, viewGame} from "../../constants/cartActions";
 import Autocomplete from "./Autocomplete";
 
 class TopMenu extends React.Component {
@@ -39,6 +38,9 @@ class TopMenu extends React.Component {
         this.props.allPackages.forEach((pack) => {
             listPackTemp.push(pack.name);
         })
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
         this.setState({gameOptions: listTemp, options: listTemp, packageOptions: listPackTemp});
     }
 
@@ -191,7 +193,7 @@ class TopMenu extends React.Component {
                                 </select>
                             </div>
                             <div className="col">
-                                <Autocomplete style={{width: '500px'}}
+                                <Autocomplete style={{width: '500px'}} language={this.props.language}
                                               suggestions={this.state.options} onChange={this.onKeyDown}
                                 />
                             </div>
@@ -285,7 +287,7 @@ class TopMenu extends React.Component {
                             </select>
                         </div>
                         <div className="col-8">
-                            <Autocomplete
+                            <Autocomplete language={this.props.language}
                                           suggestions={this.state.options} onChange={this.onKeyDown}
                             />
                         </div>

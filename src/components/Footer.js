@@ -10,11 +10,14 @@ class Footer extends React.Component {
         super(props);
         this.state = {loaded: false};
         this.onHandleClick = this.onHandleClick.bind(this);
+        this.onHandleClickSendMail = this.onHandleClickSendMail.bind(this);
     }
 
     onHandleClick() {
-        window.location.href('/login');
-        console.log('login')
+        window.open('tel:+84787652222');
+    }
+    onHandleClickSendMail() {
+        window.open('mailto:trungbet2512@gmail.com');
     }
 
     render() {
@@ -24,26 +27,27 @@ class Footer extends React.Component {
                     <div className="col col-lg-3 col-md-6 col-sm-6">
                         <div>
                             <p className="footer-title">
-                                <FormattedMessage id="address info"/>
+                                <FormattedMessage id="information"/>
                             </p>
-                            <p className="footer-item">
+                            <p className="footer-item" onClick={this.onHandleClick} style={{cursor:'pointer'}}>
                                 <i className="fa fa-phone " aria-hidden="true"/>
                                 &nbsp;&nbsp;(+84)&nbsp;787&nbsp;652&nbsp;222
                             </p>
-                            <p className="footer-item">
-                                <i className="fa fa-envelope " aria-hidden="true"/>
-                                &nbsp;&nbsp;trungbet2512@gmail.com
+                            <p className="footer-item" onClick={this.onHandleClickSendMail} style={{cursor:'pointer'}}>
+                                <i className="fa fa-envelope " aria-hidden="true"/>trungbet2512@gmail.com
                             </p>
                         </div>
                     </div>
                     <div className="col col-lg-3 col-md-6 col-sm-6 d-none d-sm-block">
                         <div>
                             <p className="footer-title">
-                                <FormattedMessage id="information"/>
+                                <FormattedMessage id="collection"/>
                             </p>
                             <p className="footer-item">
-                                <a className="footer-item"> <FormattedMessage id="contact"/>
-                                </a>
+                                <Link to="/game" className="footer-item">
+                                    <FormattedMessage id="shop"/>
+                                </Link>
+
                             </p>
                             <p className="footer-item">
                                 <Link to="/about-us" className="footer-item">

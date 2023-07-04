@@ -31,6 +31,9 @@ class Cart extends React.Component {
         };
         this.props.deselectAll(1);
         parent.scrollTo(0, 0);
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
     }
 
     //to remove the item completely
@@ -64,7 +67,7 @@ class Cart extends React.Component {
     scanCheckoutInfo() {
         let lstCheckout = [];
         let totalPrice = 0;
-        if(this.props.items.length>0)
+        if (this.props.items.length > 0)
             this.props.items.forEach((item) => {
                 if (item.checkout) {
                     totalPrice += item.amount;
@@ -157,16 +160,24 @@ class Cart extends React.Component {
                                     </div> :
                                     <div className="row">
                                         <div className="row" style={{width: '100%'}}>
-                                            <input type="checkbox" checked={item.checkout}
-                                                   onChange={() => this.handleCheckout(this, item.packageId)}/>
-                                            <div className="crop" style={{paddingLeft: '5px'}}>
-                                                <img src={item.previewUrl} alt={item.name}/>
+                                            <div className="col">
+                                                <br/>
+                                                <br/>
+                                                <input type="checkbox" checked={item.checkout}
+                                                       onChange={() => this.handleCheckout(this, item.packageId)}/>
+                                            </div>
+                                            <div className="col">
+                                                <div className="crop" style={{paddingLeft: '5px'}}>
+                                                    <img src={item.previewUrl} alt={item.name}/>
+                                                </div>
                                             </div>
                                         </div>
                                         <br/>
                                         <br/>
                                         <br/>
-                                        <span className="package-name " style={{width: '100%'}}>{item.name}</span>
+                                        <br/>
+                                        <span className="package-name "
+                                              style={{width: '100%',}}>{item.name}</span>
                                     </div>
                                 }
                             </div>
@@ -258,18 +269,22 @@ class Cart extends React.Component {
                 <h3 style={{color: 'white', paddingLeft: '10%'}}><FormattedMessage id="cart"/></h3>
                 <div className="container pack-content">
                     <br/>
-                    <div className="row " style={{fontWeight: 'bolder'}}>
-                        <div className="col">
-                            <input type="checkbox" onChange={() => this.handleCheckoutAll(this)}
-                                   checked={this.props.checkoutAll}/> &nbsp;&nbsp;<FormattedMessage
-                            id="select_all"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>{this.state.selected}&nbsp;&nbsp;<FormattedMessage id="item_selected"/></span>
-                        </div>
-                        <div className="col">
-                            <button className="btn btn-outline-primary float-right" onClick={() => this.onCheckout(this)}
-                                    disabled={this.state.selected <= 0 || this.state.processSending}>
-                                <FormattedMessage id="checkout"/>
-                            </button>
+                    {window.innerWidth < 1000 ?
+                        <div className="row " style={{fontWeight: 'bolder'}}>
+                            <div className="col-8">
+                                <input type="checkbox" onChange={() => this.handleCheckoutAll(this)}
+                                       checked={this.props.checkoutAll}/> &nbsp;&nbsp;<FormattedMessage
+                                id="select_all"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>{this.state.selected}&nbsp;&nbsp;<FormattedMessage id="item_selected"/></span>
+                            </div>
+                            <div className="col-4">
+                                <button className="btn btn-outline-primary float-right"
+                                        onClick={() => this.onCheckout(this)}
+                                        disabled={this.state.selected <= 0 || this.state.processSending}>
+                                    <FormattedMessage id="checkout"/>
+                                </button>
+
+                            </div>
                             <div className="float-right" style={{fontSize: '20px', paddingRight: '10px'}}>
                                 <p>
                                     <a style={{color: 'white'}}> <FormattedMessage id="total_price"/>:</a>
@@ -280,7 +295,30 @@ class Cart extends React.Component {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                        : <div className="row " style={{fontWeight: 'bolder'}}>
+                            <div className="col">
+                                <input type="checkbox" onChange={() => this.handleCheckoutAll(this)}
+                                       checked={this.props.checkoutAll}/> &nbsp;&nbsp;<FormattedMessage
+                                id="select_all"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>{this.state.selected}&nbsp;&nbsp;<FormattedMessage id="item_selected"/></span>
+                            </div>
+                            <div className="col">
+                                <button className="btn btn-outline-primary float-right"
+                                        onClick={() => this.onCheckout(this)}
+                                        disabled={this.state.selected <= 0 || this.state.processSending}>
+                                    <FormattedMessage id="checkout"/>
+                                </button>
+                                <div className="float-right" style={{fontSize: '20px', paddingRight: '10px'}}>
+                                    <p>
+                                        <a style={{color: 'white'}}> <FormattedMessage id="total_price"/>:</a>
+                                        <b className="currency">
+                                            <CurrencyFormat displayType={'text'} value={this.state.total}
+                                                            thousandSeparator={true} prefix={this.props.currency}/>
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>}
                 </div>
                 <div className="container pack-content">
                     <div className="row">
@@ -299,18 +337,21 @@ class Cart extends React.Component {
                                     <FormattedMessage id="price_package"/>
 
                                 </div>
-                                <div className="col">
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <FormattedMessage id="quantity"/>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="float-right">
-                                                <FormattedMessage id="amount"/>
+                                {window.innerWidth > 1000 ?
+                                    <div className="col">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                <FormattedMessage id="quantity"/>
+                                            </div>
+                                            <div className="col-6">
+                                                <div className="float-right">
+                                                    <FormattedMessage id="amount"/>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> : null
+                                }
+
                             </div>
                         </div>
                     </div>

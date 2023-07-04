@@ -17,7 +17,7 @@ import NavBar from './components/ui-common/NavBar';
 import ScrollButton from './components/ui-common/ScrollButton';
 import TopMenu from './components/ui-common/TopMenu';
 import configData from './config.json';
-import {checkLoadData, rawData, removePackageView, setPackage} from './constants/cartActions';
+import {checkLoadData, rawData, setPackage} from './constants/cartActions';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const mapStateToProps = (state) => {
@@ -61,9 +61,9 @@ class App extends React.Component {
     componentDidMount() {
         const AnimationFramerRes = window.requestAnimationFrame((e) => console.log(e));
         window.cancelAnimationFrame(AnimationFramerRes);
-        // document.addEventListener('contextmenu', (e) => {
-        //     e.preventDefault();
-        // });
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
         this.props.checkLoadData(0);
         this.loadData();
         this.props.setPackage({});
@@ -75,7 +75,6 @@ class App extends React.Component {
             .then((json) => {
                 // this.props.rawData(JSON.parse(atob(json.data)));
                 this.props.rawData(json.data);
-                this.props.removePackageView(0);
             })
             .catch((error) => {
                 console.log(error);

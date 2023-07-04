@@ -65,7 +65,9 @@ class PackageDetail extends React.Component {
         if (existItem) {
             this.setState({checkDuplicate: true});
         }
-
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
     }
 
     onChange(value) {
