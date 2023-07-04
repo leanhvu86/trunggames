@@ -20,7 +20,7 @@ const ListOrder = () => {
     pageSize: 10,
     pageNumber: 0,
     orderBy: 'createdAt',
-    orderType: 'asc'
+    orderType: 'desc'
   });
   const [searchValue, setSearchValue] = useState({
     name: '',

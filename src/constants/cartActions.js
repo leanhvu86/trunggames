@@ -14,7 +14,7 @@ import {
     SET_PACKAGE_VIEW,
     REMOVE_PACKAGE_VIEW,
     FILTER_PACKAGE,
-    SET_PACKAGE
+    SET_PACKAGE, VIEW_TOP_SALE
 } from './action-types/cart-actions'
 
 //load data
@@ -63,6 +63,13 @@ export const viewGame = (data) => {
 export const setPackageView = (data) => {
     return {
         type: SET_PACKAGE_VIEW,
+        data
+    }
+}
+// set view top sale
+export const viewTopSale = (data) => {
+    return {
+        type: VIEW_TOP_SALE,
         data
     }
 }

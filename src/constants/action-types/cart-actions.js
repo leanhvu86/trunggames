@@ -7,6 +7,7 @@ export const SET_PACKAGE_VIEW = 'SET_PACKAGE_VIEW';
 export const REMOVE_PACKAGE_VIEW = 'REMOVE_PACKAGE_VIEW';
 export const FILTER_GAME = 'FILTER_GAME';
 export const FILTER_PACKAGE = 'FILTER_PACKAGE';
+export const VIEW_TOP_SALE = 'VIEW_TOP_SALE';
 export const SET_PACKAGE = 'SET_PACKAGE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_ITEM = 'REMOVE_ITEM';

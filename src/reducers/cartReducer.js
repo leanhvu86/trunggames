@@ -13,7 +13,7 @@ import {
     VIEW_GAME,
     CHECK_LOAD_DATA,
     SET_PACKAGE_VIEW,
-    REMOVE_PACKAGE_VIEW, FILTER_PACKAGE, SET_PACKAGE
+    REMOVE_PACKAGE_VIEW, FILTER_PACKAGE, SET_PACKAGE, VIEW_TOP_SALE
 } from '../constants/action-types/cart-actions';
 import {LOGIN_SUCCESS, LOG_OUT, UPDATE_USER} from '../constants/action-types/user-actions';
 
@@ -131,6 +131,14 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             filterPackages: list
+        };
+    }
+    if (action.type === VIEW_TOP_SALE) {
+        // console.log(list);
+        return {
+            ...state,
+            packages: state.topSale,
+            filterPackages: state.topSale
         };
     }
     if (action.type === VIEW_GAME) {

@@ -4,7 +4,7 @@ import * as CurrencyFormat from 'react-currency-format';
 import StarsRating from 'react-star-rate';
 import GameContent from './GameContent';
 import {connect} from 'react-redux';
-import {addToCart, filterPackage, setPackage} from '../../../constants/cartActions';
+import {addToCart, filterPackage, setPackage, viewTopSale} from '../../../constants/cartActions';
 import {FormattedMessage} from 'react-intl';
 
 class GameDetailSearchBar extends React.Component {
@@ -26,7 +26,6 @@ class GameDetailSearchBar extends React.Component {
             attCheck: '',
             textSearch: ''
         };
-
     }
 
     componentDidMount() {
@@ -544,6 +543,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id) => {
             dispatch(addToCart(id));
+        },
+        viewTopSale: (id) => {
+            dispatch(viewTopSale(id));
         },
         setPackage: (id) => {
             dispatch(setPackage(id));
