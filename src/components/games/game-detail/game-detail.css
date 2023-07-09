@@ -168,7 +168,6 @@ select {
 }
 .pack-content-mobile:hover {
   color: #ff8000;
-
 }
 .pack-content-mobile {
   margin: 4px auto;
@@ -200,6 +199,11 @@ select {
   font-weight: bold;
 }
 
+.view-more-button:hover {
+  color: #ff8000;
+  cursor: pointer;
+}
+
 .grid-container {
   display: grid;
   column-gap: 1em;
@@ -225,5 +229,4 @@ select {
       'c c';
   }
 }
-
 
