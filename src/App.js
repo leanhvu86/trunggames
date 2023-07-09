@@ -51,6 +51,7 @@ class App extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
+        document.title = 'Trunggames Dịch vụ nạp game giá rẻ';
     }
 
     state = {
@@ -61,9 +62,9 @@ class App extends React.Component {
     componentDidMount() {
         const AnimationFramerRes = window.requestAnimationFrame((e) => console.log(e));
         window.cancelAnimationFrame(AnimationFramerRes);
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
         this.props.checkLoadData(0);
         this.loadData();
         this.props.setPackage({});

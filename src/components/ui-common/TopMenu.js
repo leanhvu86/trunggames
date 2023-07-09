@@ -38,9 +38,9 @@ class TopMenu extends React.Component {
         this.props.allPackages.forEach((pack) => {
             listPackTemp.push(pack.name);
         })
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
         this.setState({gameOptions: listTemp, options: listTemp, packageOptions: listPackTemp});
     }
 

@@ -24,9 +24,10 @@ class GameDetail extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
+        document.title =  this.props.game.name +'- Trunggames';
     }
 
 

@@ -31,9 +31,9 @@ class Cart extends React.Component {
         };
         this.props.deselectAll(1);
         parent.scrollTo(0, 0);
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
     }
 
     //to remove the item completely

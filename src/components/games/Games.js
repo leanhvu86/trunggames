@@ -48,6 +48,7 @@ class Games extends React.Component {
       root: {}
     };
     this.filterList = this.filterList.bind(this);
+    document.title = ' Danh mục các game'+'- Trunggames';
   }
 
   componentDidMount() {

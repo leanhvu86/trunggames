@@ -130,7 +130,7 @@ class MobilePopular extends React.Component {
                         <div className="img-block w-100">
                             <span/>
                             <Link
-                                to="/game-detail"
+                                to="/package-detail"
                                 className="product-nav-links p-0">
                                 <img src={each.previewUrl} alt="Dragon Nest" onClick={() => this.handleClick(each, 1)}/>
                             </Link>

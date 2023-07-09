@@ -65,9 +65,11 @@ class PackageDetail extends React.Component {
         if (existItem) {
             this.setState({checkDuplicate: true});
         }
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
+        // document.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault();
+        // });
+        document.title = this.props.packageView.name +'- Trunggames ';
+
     }
 
     onChange(value) {

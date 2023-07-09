@@ -25,6 +25,8 @@ class Blog extends React.Component {
         this.returnBlog = this.returnBlog.bind(this);
         this.viewContent = this.viewContent.bind(this);
         this.props.removePackageView(0);
+        document.title = this.props.language === 'vi' ? 'Nơi chia sẻ kiến thức về game ' +'- Trunggames '
+            : 'Sharing about knowledage about game '+'- Trunggames ';
 
     }
 
@@ -36,6 +38,7 @@ class Blog extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
+        document.title =  blog.title +'- Trunggames ';
     }
 
     returnBlog() {
@@ -112,9 +115,11 @@ class Blog extends React.Component {
                                 }}
                             />
                         </div>
-                        {this.state.blogView.link !== '' ? <a href={this.state.blogView.link}>Link: {this.state.blogView.link}</a> : null}
+                        {this.state.blogView.link !== '' ?
+                            <a href={this.state.blogView.link}>Link: {this.state.blogView.link}</a> : null}
                         <br/>
-                        <span style={{float:'right',cursor:'pointer'}} onClick={()=>this.returnBlog()}><FormattedMessage id="return"/></span>
+                        <span style={{float: 'right', cursor: 'pointer'}}
+                              onClick={() => this.returnBlog()}><FormattedMessage id="return"/></span>
                     </div>
                     <div className="col-lg-5">
                         <div className="row">
@@ -128,7 +133,8 @@ class Blog extends React.Component {
                                             <br/>
                                             <div className="p-2 ">
                                                 <div>
-                                                    <div className="blog-title ellipsis-text hover-blog">{blog.title}</div>
+                                                    <div
+                                                        className="blog-title ellipsis-text hover-blog">{blog.title}</div>
                                                 </div>
                                                 <span className="blog-info">
                           {blog.postDate} | {blog.author}
