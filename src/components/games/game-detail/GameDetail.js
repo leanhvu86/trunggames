@@ -13,7 +13,7 @@ import { addToCart, setPackage } from '../../../constants/cartActions';
 import { connect } from 'react-redux';
 
 class GameDetail extends React.Component {
-<<<<<<< HEAD
+
     constructor(props) {
         super(props);
         this.state = {
@@ -33,25 +33,6 @@ class GameDetail extends React.Component {
             window.location.href='/'
         document.title =  this.props.game.name +'- Trunggames';
     }
-=======
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false,
-      package: 0,
-      packageView: undefined
-    };
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    // document.addEventListener('contextmenu', (e) => {
-    //     e.preventDefault();
-    // });
-    document.title = this.props.game.name + '- Trunggames';
-  }
->>>>>>> 7ab3c67d06bee30fbfef7ba93b5bff48d37151f8
-
   onChange(value) {
     // parent class change handler is always called with field name and value
     this.setState({ loaded: value });
