@@ -80,3 +80,7 @@ hr {
   flex-shrink: 0;
 }
 
+.btn-load-more:hover {
+  color: #ff8000;
+}
+

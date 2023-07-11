@@ -26,8 +26,9 @@ const ListOrder = () => {
     name: '',
     status: '-1'
   });
-  const [enableLoadMore, setEnableLoadMore] = useState(false);
+  const [enableLoadMore, setEnableLoadMore] = useState(true);
   const [listOrder, setListOrder] = useState([]);
+  const [filteredOrder, setFilteredOrder] = useState([]);
 
   const orderStatus = {
     '-1': formatMessage({ id: 'all' }),
@@ -45,7 +46,7 @@ const ListOrder = () => {
   };
 
   const handleChangeFilter = (key, value) => {
-    setFilter((prev) => ({ ...prev, key: value }));
+    setFilter((prev) => ({ ...prev, [key]: value }));
   };
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const ListOrder = () => {
         params: filter
       })
       .then((res) => {
-        const newOrders = res.data.filter((order) => !listOrder.some((item) => item.id === order.id)).concat(listOrder);
+        const newOrders = listOrder.concat(res.data.filter((order) => !listOrder.some((item) => item.id === order.id)));
         setListOrder(newOrders);
         if (res.data?.length < filter.pageSize) {
           setEnableLoadMore(false);
@@ -63,19 +64,32 @@ const ListOrder = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         navigate('/login');
       });
   }, [filter]);
 
   const handleFilter = (orders) => {
-    return orders.filter((order) => {
-      const conditions = [true];
-      conditions.push(order.code?.includes(searchValue.name));
-      conditions.push(order.status === searchValue.status || searchValue.status === '-1');
-      return conditions.every((condition) => condition);
-    });
+    const data = orders
+      .filter((order) => {
+        const conditions = [true];
+        conditions.push(order.code?.includes(searchValue.name));
+        conditions.push(order.status === searchValue.status || searchValue.status === '-1');
+        return conditions.every((condition) => condition);
+      })
+      .slice(0, (filter.pageNumber + 1) * filter.pageSize);
+    if (data?.length === listOrder.length && enableLoadMore) {
+      setEnableLoadMore(false);
+    } else {
+      setEnableLoadMore(true);
+    }
+    setFilteredOrder(data);
+    return data;
   };
+
+  useEffect(() => {
+    handleFilter(listOrder);
+  }, [listOrder]);
+
   return (
     <div>
       <Translation>{(t) => <TopMenu t={t} />}</Translation>
@@ -110,7 +124,7 @@ const ListOrder = () => {
             </select>
           </div>
         </div>
-        {handleFilter(listOrder).map((order) => (
+        {filteredOrder.map((order) => (
           <div key={order.code} className="order-item row px-4 py-2">
             <div className="col-12 p-0 order-time pb-2">{moment(order.createdAt).format('LLL')}</div>
             <div className="order-code col-md-8 col-12 p-0">
@@ -135,6 +149,7 @@ const ListOrder = () => {
         {enableLoadMore && (
           <div className="d-flex justify-content-center">
             <div
+              className="cursor-pointer btn-load-more"
               onClick={() => {
                 handleChangeFilter('pageNumber', filter.pageNumber + 1);
               }}

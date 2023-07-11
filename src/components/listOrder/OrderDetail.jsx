@@ -4,7 +4,7 @@ import moment from 'moment/moment';
 import React, { useEffect, useState } from 'react';
 import { Translation } from 'react-i18next';
 import { FormattedMessage, useIntl } from 'react-intl';
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axiosServices from '../../services';
 import Footer from '../Footer';
 import ParallaxImage from '../parallax/ParallaxImage';
@@ -92,7 +92,14 @@ export const OrderDetail = () => {
           </div>
           <div className="col-md-4 col-12 p-0">
             <b>{formatMessage({ id: 'status' })}:</b>&nbsp;
-            <span className={classNames('order-status', { 'text-success': order.status === '3' }, { 'text-danger': order.status === '4' }, { 'text-warning': order.status !== '3' })}>
+            <span
+              className={classNames(
+                'order-status',
+                { 'text-success': order.status === '3' },
+                { 'text-danger': order.status === '4' },
+                { 'text-warning': order.status !== '3' }
+              )}
+            >
               {orderStatus[order.status]}
             </span>
           </div>
@@ -101,27 +108,62 @@ export const OrderDetail = () => {
             {formatMessage({ id: 'amount' })}: {order.totalAmount?.toLocaleString()} VND
           </div>
         </div>
-        <div className="p-2 border border-divider rounded">
-          <div className="row">
-            <div className="col-3 list-order-title">{formatMessage({ id: 'package name' })}</div>
-            <div className="col-3 list-order-title">{formatMessage({ id: 'game name' })}</div>
-            <div className="col-2 list-order-title">{formatMessage({ id: 'price' })}</div>
-            <div className="col-2 list-order-title">{formatMessage({ id: 'Quantity' })}</div>
-            <div className="col-2 list-order-title">{formatMessage({ id: 'Amount' })}</div>
+        <div className="d-xs-none d-sm-none d-md-block">
+          <div className="p-2 border border-divider rounded">
+            <div className="row">
+              <div className="col-3 list-order-title">{formatMessage({ id: 'package name' })}</div>
+              <div className="col-3 list-order-title">{formatMessage({ id: 'game name' })}</div>
+              <div className="col-2 list-order-title">{formatMessage({ id: 'price' })}</div>
+              <div className="col-2 list-order-title">{formatMessage({ id: 'Quantity' })}</div>
+              <div className="col-2 list-order-title">{formatMessage({ id: 'Amount' })}</div>
+            </div>
           </div>
-        </div>
-        <div className="p-2 border border-divider rounded mt-2">
           {order.orderDetailList?.map((item) => (
-            <div className="row" key={item.id}>
-              <div className="col-3">
-                <p className="m-0 p-0">{item.gamePackage.name}</p>
+            <div key={item.id} className="p-2 border border-divider rounded mt-2">
+              <div className="row">
+                <div className="col-3">
+                  <p className="m-0 p-0">{item.gamePackage.name}</p>
+                </div>
+                <div className="col-3">
+                  <p className="m-0 p-0">{item.game.name}</p>
+                </div>
+                <div className="col-2">{item.price.toLocaleString() + ' VND'}</div>
+                <div className="col-2">{item.quantity}</div>
+                <div className="col-2">{item.amount.toLocaleString() + ' VND'}</div>
               </div>
-              <div className="col-3">
-                <p className="m-0 p-0">{item.game.name}</p>
+            </div>
+          ))}
+        </div>
+        <div className="d-xs-block d-sm-block d-md-none">
+          {order.orderDetailList?.map((item) => (
+            <div key={item.id} className="p-2 border border-divider rounded mt-2">
+              <div className="row">
+                <div className="col-12">
+                  <p className="m-0 p-0">
+                    <b>{formatMessage({ id: 'package name' })}: </b>
+                    {item.gamePackage.name}
+                  </p>
+                </div>
+                <div className="col-12">
+                  <p className="m-0 p-0">
+                    <b>{formatMessage({ id: 'game name' })}: </b>
+                    {item.game.name}
+                  </p>
+                </div>
+                <div className="col-7">
+                  <b>{formatMessage({ id: 'price' })}: </b>
+                  {item.price.toLocaleString() + ' VND'}
+                </div>
+                <div className="col-5">
+                  <b>{formatMessage({ id: 'Quantity' })}: </b>
+                  {item.quantity}
+                </div>
+                <hr />
+                <div className="col-12 order-amount">
+                  <b>{formatMessage({ id: 'Amount' })}: </b>
+                  {item.amount.toLocaleString() + ' VND'}
+                </div>
               </div>
-              <div className="col-2">{item.price.toLocaleString() + ' VND'}</div>
-              <div className="col-2">{item.quantity}</div>
-              <div className="col-2">{item.amount.toLocaleString() + ' VND'}</div>
             </div>
           ))}
         </div>
