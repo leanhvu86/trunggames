@@ -31,7 +31,7 @@ class GameDetail extends React.Component {
         console.log(this.props.game)
         if(this.props.game=== undefined||this.props.game.name=== undefined)
             window.location.href='/'
-        document.title =  this.props.game.name +'- Trunggames';
+        document.title =  this.props.game.name +'- Trung games';
     }
   onChange(value) {
     // parent class change handler is always called with field name and value

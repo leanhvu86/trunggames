@@ -68,7 +68,7 @@ class PackageDetail extends React.Component {
     // document.addEventListener('contextmenu', (e) => {
     //     e.preventDefault();
     // });
-    document.title = this.props.packageView.name + '- Trunggames ';
+    document.title = this.props.packageView.name + '- Trung games ';
   }
 
   onChange(value) {

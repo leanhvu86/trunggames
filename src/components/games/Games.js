@@ -19,7 +19,8 @@ import { FormattedMessage } from 'react-intl';
 const mapStateToProps = (state) => {
   return {
     listGame: state.listGame,
-    gameList: state.gameList
+    gameList: state.gameList,
+    language:state.language
   };
 };
 
@@ -48,7 +49,8 @@ class Games extends React.Component {
       root: {}
     };
     this.filterList = this.filterList.bind(this);
-    document.title = ' Danh mục các game'+'- Trunggames';
+    document.title = this.props.language === 'vi' ? 'Danh mục các game - Trung Games'
+        : 'Shop game - Trung Games ';
   }
 
   componentDidMount() {

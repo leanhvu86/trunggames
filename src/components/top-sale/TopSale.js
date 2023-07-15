@@ -20,7 +20,7 @@ class TopSale extends React.Component {
             packageView: undefined
         };
         this.props.viewTopSale(0);
-        document.title = 'Top Sale gói nạp'+'- Trunggames';
+        document.title = 'Top Sale - Trung games';
     }
 
     onChange(value) {
