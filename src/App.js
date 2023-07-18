@@ -52,7 +52,7 @@ class App extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
-        document.title = this.props.language === 'vi' ? 'Trung games - Dịch vụ nạp game giá rẻ'
+        document.title = this.props.language === 'vi' ? 'Trung Games - Dịch vụ nạp game giá rẻ'
             : 'Trung Games - Cheap game top-up service';
     }
 

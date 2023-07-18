@@ -25,8 +25,8 @@ class Blog extends React.Component {
         this.returnBlog = this.returnBlog.bind(this);
         this.viewContent = this.viewContent.bind(this);
         this.props.removePackageView(0);
-        document.title = this.props.language === 'vi' ? 'Nơi chia sẻ kiến thức về game ' +'- Trung games '
-            : 'Sharing about knowledge about game '+'- Trung games ';
+        document.title = this.props.language === 'vi' ? 'Nơi chia sẻ kiến thức về game ' +'- Trung Games '
+            : 'Sharing about knowledge about game '+'- Trung Games ';
 
     }
 
@@ -38,7 +38,7 @@ class Blog extends React.Component {
             top: 0,
             behavior: 'smooth'
         });
-        document.title =  blog.title +'- Trung games ';
+        document.title =  blog.title +'- Trung Games ';
     }
 
     returnBlog() {

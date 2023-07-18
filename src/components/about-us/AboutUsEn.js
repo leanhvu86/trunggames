@@ -13,7 +13,7 @@ class AboutUsEn extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loaded: false };
-    document.title = 'About us - Trung games ';
+    document.title = 'About us - Trung Games ';
 
   }
 
