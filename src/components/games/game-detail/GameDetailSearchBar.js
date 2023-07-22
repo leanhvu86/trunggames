@@ -338,7 +338,7 @@ class GameDetailSearchBar extends React.Component {
                                     <br/>
                                     <span>
                     <FormattedMessage id="Máy chủ"/>
-                    :&nbsp;{item.server ? item.server[0].name : 'Global'}{' '}
+                    :&nbsp;{item.listServer}{' '}
                   </span>
                                 </div>
                             </div>
@@ -494,7 +494,7 @@ class GameDetailSearchBar extends React.Component {
                                             <div className="col-4">
                         <span>
                           <FormattedMessage id="Máy chủ"/>
-                          :&nbsp;{item.server ? item.server[0].name : 'Global'}{' '}
+                          :&nbsp;{item.listServer }{' '}
                         </span>
                                             </div>
                                             <div className="col-8">

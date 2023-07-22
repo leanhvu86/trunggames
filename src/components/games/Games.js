@@ -288,7 +288,8 @@ class Games extends React.Component {
         </div>
         <div className="row">
           <div className="col-3">
-            <Tippy placement="right" content={<span>Click to open or close category!</span>}>
+            <Tippy placement="right" content={ this.props.language === 'vi' ? <span>Bấm đây để mở danh mục!</span>
+                : <span>Click to open or close category!</span>}>
               <h3 className="category-title" onClick={() => this.handleOpenCategory(this)}>
                 <FormattedMessage id="category.list" />
               </h3>

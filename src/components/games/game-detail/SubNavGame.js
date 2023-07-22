@@ -104,7 +104,7 @@ class SubNavGame extends React.Component {
                 borderRadius: '15px'
               }}
             >
-              <strong style={{ color: 'white' }}>About {this.props.game.name}</strong>
+              <strong style={{ color: 'white' }}>{this.props.language === 'en' ? "About": "Về"} {this.props.game.name}</strong>
               <br />
               <CKEditor
                 editor={ClassicEditor}
